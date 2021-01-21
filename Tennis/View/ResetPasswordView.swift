@@ -63,7 +63,7 @@ struct ResetPasswordView: View {
                     .opacity(vm.resetEmail != "" ? 1 : 0.5)
                     .disabled(vm.resetEmail != "" ? false : true)
                     .alert(isPresented: $vm.alert, content: {
-                        Alert(title: Text("Error"), message: Text(vm.alertMsg), dismissButton: .destructive(Text("Ok")))
+                        Alert(title: Text(""), message: Text(vm.alertMsg), dismissButton: .destructive(Text("Ok")))
                     })
                     Spacer()
                 }

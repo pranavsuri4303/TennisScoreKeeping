@@ -24,11 +24,12 @@ struct RegisterView: View {
             
             VStack{
                 Spacer(minLength: 0)
+
                 Image("signup")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     //Dynamic Frame...
-                    .padding(.horizontal,35)
+                    .padding([.leading, .bottom, .trailing],35)
                     .padding()
                 HStack{
                     
@@ -42,6 +43,7 @@ struct RegisterView: View {
                         Text("Please sign up to create account")
                             .foregroundColor(Color.white.opacity(0.5))
                     })
+                    .padding(.bottom)
                     
                     Spacer(minLength: 0)
                 }
@@ -129,6 +131,7 @@ struct RegisterView: View {
                 self.startAnimate.toggle()
             }
         })
+        
 
     }
 }

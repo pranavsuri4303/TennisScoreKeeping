@@ -15,9 +15,8 @@ struct ContentView: View {
             if logged{
                 
                 Home()
-                    .navigationTitle("Home")
-                    .navigationBarHidden(false)
                     .preferredColorScheme(.light)
+                    .navigationBarHidden(true)
             }
             else{
                 LoginView()
