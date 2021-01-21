@@ -1,28 +1,21 @@
 //
-//  RegisterView.swift
+//  NewUserView.swift
 //  Tennis
 //
-//  Created by Sameer Suri on 21/1/21.
+//  Created by Sameer Suri on 22/1/21.
 //
 
 import SwiftUI
 
-struct RegisterView: View {
-    
-    @StateObject var vm = RegisterViewModel()
-
-    
-    @State private var goToLogin = false
-    
+struct NewUserView: View {
+    @StateObject var vm = NewUserModel()
     @State var startAnimate = false
+
     var body: some View {
         ZStack{
-            
-            
             VStack{
-                Spacer(minLength: 0)
-                
-                Image("signup")
+                Spacer()
+                Image("newUser2")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     //Dynamic Frame...
@@ -32,12 +25,12 @@ struct RegisterView: View {
                     
                     VStack(alignment: .leading, spacing: 12, content: {
                         
-                        Text("Create Account")
+                        Text("New user details")
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                         
-                        Text("Please sign up to create account")
+                        Text("Please enter the following details for a more personalized experience.")
                             .foregroundColor(Color.white.opacity(0.5))
                     })
                     .padding(.bottom)
@@ -46,42 +39,49 @@ struct RegisterView: View {
                 }
                 .padding()
                 .padding(.leading,15)
-                
                 HStack{
-                    
-                    Image(systemName: "envelope")
+                    Image(systemName: "person")
                         .font(.title2)
                         .foregroundColor(.white)
                         .frame(width: 35)
                     
-                    TextField("EMAIL", text: $vm.email)
+                    TextField("Name", text: $vm.name)
                         .autocapitalization(.none)
                 }
                 .padding()
-                .background(Color.white.opacity(vm.email == "" ? 0.02 : 0.12))
+                .background(Color.white.opacity(vm.name == "" ? 0.02 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
-                
                 HStack{
-                    
-                    Image(systemName: "lock")
+                    Image(systemName: "calendar")
                         .font(.title2)
                         .foregroundColor(.white)
                         .frame(width: 35)
                     
-                    SecureField("PASSWORD", text: $vm.password)
+                    TextField("Year of Birth", text: $vm.yob)
                         .autocapitalization(.none)
                 }
                 .padding()
-                .background(Color.white.opacity(vm.password == "" ? 0.02 : 0.12))
+                .background(Color.white.opacity(vm.yob == "" ? 0.02 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
-                .padding(.top)
-                
+                HStack{
+                    Image(systemName: "flag")
+                        .font(.title2)
+                        .foregroundColor(.white)
+                        .frame(width: 35)
+                    
+                    TextField("Nationality", text: $vm.nationality)
+                        .autocapitalization(.none)
+                }
+                .padding()
+                .background(Color.white.opacity(vm.nationality == "" ? 0.02 : 0.12))
+                .cornerRadius(15)
+                .padding(.horizontal)
                 HStack(spacing: 15){
                     
-                    Button(action: {vm.createUser()}, label: {
-                        Text("SIGN UP")
+                    Button(action: {}, label: {
+                        Text("Create account")
                             .fontWeight(.heavy)
                             .foregroundColor(.black)
                             .padding(.vertical)
@@ -89,52 +89,22 @@ struct RegisterView: View {
                             .background(Color("green"))
                             .clipShape(Capsule())
                     })
-                    .opacity(vm.email != "" && vm.password != "" ? 1 : 0.5)
-                    .disabled(vm.email != "" && vm.password != "" ? false : true)
+                    .opacity(vm.name != "" && vm.yob != "" && vm.nationality != "" ? 1 : 0.5)
+                    .disabled(vm.name != "" && vm.yob != "" && vm.nationality != "" ? false : true)
                     .alert(isPresented: $vm.alert, content: {
                         Alert(title: Text("Error"), message: Text(vm.alertMsg), dismissButton: .destructive(Text("Ok")))
                     })
                     
                 }
-                .padding(.top)
-                
-                Button(action: {}, label: {
-                    Image("googleLogo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 40, height: 40, alignment: .center)
-                    
-                })
-                .padding(.all)
-                
-                
-                // SignUp...
-                
-                
-                HStack(spacing: 5){
-                    
-                    Text("Already have an account? ")
-                        .foregroundColor(Color.white.opacity(0.6))
-                    
-                    Button("Login"){
-                        goToLogin.toggle()
-                    }
-                    .foregroundColor(Color("green"))
-                    .fullScreenCover(isPresented: $goToLogin) {
-                        LoginView()
-                    }
-                }
                 .padding(.vertical)
-            }
-            .background(Color("bg").ignoresSafeArea(.all, edges: .all))
+                Spacer()
+            }.background(Color("bg").ignoresSafeArea(.all, edges: .all))
             .animation(startAnimate ? .easeOut : .none)
-            
+           
             if vm.isLoading{
                 LoadingScreenView()
             }
-            
-        }
-        .onAppear(perform: {
+        }.onAppear(perform: {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.startAnimate.toggle()
             }
@@ -144,3 +114,8 @@ struct RegisterView: View {
     }
 }
 
+struct NewUserView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewUserView()
+    }
+}

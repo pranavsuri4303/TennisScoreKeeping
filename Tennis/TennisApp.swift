@@ -14,6 +14,7 @@ struct TennisApp: App {
     @UIApplicationDelegateAdaptor(Delegate.self) var delegate
 
     var body: some Scene {
+        
         WindowGroup {
             ContentView()
         }
@@ -28,4 +29,5 @@ class Delegate : NSObject,UIApplicationDelegate{
         FirebaseApp.configure()
         return true
     }
+    
 }

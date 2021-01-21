@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ResetPasswordView: View {
     @StateObject var vm = LoginViewModel()
+    @AppStorage("status") var logged = false
 
     var body: some View{
         ZStack{

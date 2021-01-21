@@ -16,6 +16,7 @@ struct LoginView : View {
     @AppStorage("stored_Password") var Stored_Password = ""
     
     @AppStorage("status") var logged = false
+    @State private var goToSignup = false
     
     @State var startAnimate = false
     @State var showingDetail = false
@@ -141,21 +142,31 @@ struct LoginView : View {
                         withAnimation{self.logged = true}
                     }))
                 })
+                Button(action: {}, label: {
+                    Image("googleLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40, alignment: .center)
+                    
+                })
+                .padding(.all)
                 
                 // SignUp...
                 
-                Spacer(minLength: 0)
                 
                 HStack(spacing: 5){
                     
                     Text("Don't have an account? ")
                         .foregroundColor(Color.white.opacity(0.6))
+                    Button("Signup"){
+                        goToSignup.toggle()
+                    }
+                    .foregroundColor(Color("green"))
+                    .fullScreenCover(isPresented: $goToSignup) {
+                        RegisterView()
+                    }
                     
-                    Button(action: {}, label: {
-                        Text("Signup")
-                            .fontWeight(.heavy)
-                            .foregroundColor(Color("green"))
-                    })
+                    
                 }
                 .padding(.vertical)
             }

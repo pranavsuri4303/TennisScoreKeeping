@@ -16,13 +16,7 @@ class RegisterViewModel : ObservableObject{
     
     // User Data....
     
-    @AppStorage("stored_User") var Stored_User = ""
-    
-    @AppStorage("stored_Password") var Stored_Password = ""
-    
     @AppStorage("status") var logged = false
-    
-    @Published var store_Info = false
     
     // For Alerts..
     @Published var alert = false
@@ -45,7 +39,6 @@ class RegisterViewModel : ObservableObject{
                 return
             }else{
                 withAnimation{self.logged = true}
-
             }
           
         }
