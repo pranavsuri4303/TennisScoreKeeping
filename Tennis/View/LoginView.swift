@@ -163,7 +163,7 @@ struct LoginView : View {
                     }
                     .foregroundColor(Color("green"))
                     .fullScreenCover(isPresented: $goToSignup) {
-                        RegisterView()
+                        RegisterView( resisterViewPresented: $goToSignup)
                     }
                     
                     

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct NewUserView: View {
-    @StateObject var vm = NewUserModel()
+    @Binding var isPresented : Bool
+    @StateObject var vm : RegisterViewModel
     @State var startAnimate = false
 
     var body: some View {
@@ -80,7 +81,11 @@ struct NewUserView: View {
                 .padding(.horizontal)
                 HStack(spacing: 15){
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        isPresented.toggle()
+                        vm.createUser()
+    
+                    }, label: {
                         Text("Create account")
                             .fontWeight(.heavy)
                             .foregroundColor(.black)
@@ -114,8 +119,3 @@ struct NewUserView: View {
     }
 }
 
-struct NewUserView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewUserView()
-    }
-}

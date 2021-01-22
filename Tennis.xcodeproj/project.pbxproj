@@ -15,7 +15,6 @@
 		76278C1825B9E27C0005EBD4 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 76278C1725B9E27C0005EBD4 /* FirebaseFunctions */; };
 		76278C1A25B9E27C0005EBD4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 76278C1925B9E27C0005EBD4 /* FirebaseAuth */; };
 		76278C1F25B9E8060005EBD4 /* NewUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76278C1E25B9E8060005EBD4 /* NewUserView.swift */; };
-		76278C2425B9E8200005EBD4 /* NewUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76278C2325B9E8200005EBD4 /* NewUserViewModel.swift */; };
 		764A60C925B90E5600789373 /* TennisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A60C825B90E5600789373 /* TennisApp.swift */; };
 		764A60CB25B90E5600789373 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A60CA25B90E5600789373 /* ContentView.swift */; };
 		764A60CD25B90E5600789373 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 764A60CC25B90E5600789373 /* Assets.xcassets */; };
@@ -52,7 +51,6 @@
 
 /* Begin PBXFileReference section */
 		76278C1E25B9E8060005EBD4 /* NewUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserView.swift; sourceTree = "<group>"; };
-		76278C2325B9E8200005EBD4 /* NewUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewModel.swift; sourceTree = "<group>"; };
 		764A60C525B90E5500789373 /* Tennis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tennis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		764A60C825B90E5600789373 /* TennisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisApp.swift; sourceTree = "<group>"; };
 		764A60CA25B90E5600789373 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -174,8 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				764A612725B91C8E00789373 /* LoginView.swift */,
-				764A617525B9475000789373 /* RegisterView.swift */,
 				764A617D25B9479700789373 /* ResetPasswordView.swift */,
+				764A617525B9475000789373 /* RegisterView.swift */,
 				76278C1E25B9E8060005EBD4 /* NewUserView.swift */,
 				76D1B85725BAEE2000FE1B4B /* Home.swift */,
 				76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */,
@@ -188,7 +186,6 @@
 			children = (
 				764A611A25B91C7300789373 /* LoginViewModel.swift */,
 				764A618225B9493F00789373 /* RegisterViewModel.swift */,
-				76278C2325B9E8200005EBD4 /* NewUserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -336,7 +333,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				76278C1F25B9E8060005EBD4 /* NewUserView.swift in Sources */,
-				76278C2425B9E8200005EBD4 /* NewUserViewModel.swift in Sources */,
 				764A618325B9493F00789373 /* RegisterViewModel.swift in Sources */,
 				764A612825B91C8E00789373 /* LoginView.swift in Sources */,
 				764A611B25B91C7300789373 /* LoginViewModel.swift in Sources */,

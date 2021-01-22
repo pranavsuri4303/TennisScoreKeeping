@@ -156,11 +156,11 @@ struct SlideMenu : View {
                 
                 VStack(alignment: .leading, spacing: 12) {
                     
-                    Text("\(Auth.auth().currentUser?.displayName ?? "Pranav")")
+                    Text("\(Auth.auth().currentUser?.displayName ?? "User")")
                         .font(.title3)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
-                    Text("@pranav_suri")
+                    Text("SAMPLE")
                         .foregroundColor(.gray)
                     
                     
@@ -204,7 +204,6 @@ struct SlideMenu : View {
                         try! Auth.auth().signOut()
                         withAnimation{logged = false}
                     }) {
-                        
                         Text("Log out")
                             .foregroundColor(Color("green"))
                     }
