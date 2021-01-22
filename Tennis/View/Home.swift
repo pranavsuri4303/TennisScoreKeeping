@@ -19,31 +19,19 @@ struct HomePage : View {
     @Binding var x : CGFloat
     
     var body: some View{
-        
-        // Home View With CUstom Nav bar...
-        
         VStack{
-            
             HStack{
-                
                 Button(action: {
-                    
                     // opening menu,...
-                    
                     withAnimation{
-                        
                         x = 0
                     }
-                    
                 }) {
-                    
                     Image(systemName: "line.horizontal.3")
                         .font(.system(size: 24))
                         .foregroundColor(Color("green"))
                 }
-                
                 Spacer(minLength: 0)
-                
                 Text("Home")
                     .fontWeight(.bold)
                     .foregroundColor(.white)
@@ -254,7 +242,7 @@ struct SlideMenu : View {
 }
 
 
-var menuButtons = ["Profile","Dashboard","Topics","Bookmarks","Moments"]
+var menuButtons = ["Profile","Dashboard","String"]
 
 struct MenuButton : View {
     

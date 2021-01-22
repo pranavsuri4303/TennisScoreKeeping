@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		760719B925BB52F000F09A1A /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760719B825BB52F000F09A1A /* DashboardView.swift */; };
+		760719BE25BB52FB00F09A1A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760719BD25BB52FB00F09A1A /* ProfileView.swift */; };
+		760719C325BB530600F09A1A /* StringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760719C225BB530600F09A1A /* StringView.swift */; };
 		76278C0E25B9E27C0005EBD4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 76278C0D25B9E27C0005EBD4 /* FirebaseFirestore */; };
 		76278C1025B9E27C0005EBD4 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 76278C0F25B9E27C0005EBD4 /* FirebaseDatabase */; };
 		76278C1225B9E27C0005EBD4 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 76278C1125B9E27C0005EBD4 /* FirebaseFirestoreSwift-Beta */; };
@@ -50,6 +53,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		760719B825BB52F000F09A1A /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		760719BD25BB52FB00F09A1A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		760719C225BB530600F09A1A /* StringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringView.swift; sourceTree = "<group>"; };
 		76278C1E25B9E8060005EBD4 /* NewUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserView.swift; sourceTree = "<group>"; };
 		764A60C525B90E5500789373 /* Tennis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tennis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		764A60C825B90E5600789373 /* TennisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisApp.swift; sourceTree = "<group>"; };
@@ -177,6 +183,9 @@
 				76278C1E25B9E8060005EBD4 /* NewUserView.swift */,
 				76D1B85725BAEE2000FE1B4B /* Home.swift */,
 				76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */,
+				760719B825BB52F000F09A1A /* DashboardView.swift */,
+				760719BD25BB52FB00F09A1A /* ProfileView.swift */,
+				760719C225BB530600F09A1A /* StringView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -333,8 +342,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				76278C1F25B9E8060005EBD4 /* NewUserView.swift in Sources */,
+				760719BE25BB52FB00F09A1A /* ProfileView.swift in Sources */,
+				760719B925BB52F000F09A1A /* DashboardView.swift in Sources */,
 				764A618325B9493F00789373 /* RegisterViewModel.swift in Sources */,
 				764A612825B91C8E00789373 /* LoginView.swift in Sources */,
+				760719C325BB530600F09A1A /* StringView.swift in Sources */,
 				764A611B25B91C7300789373 /* LoginViewModel.swift in Sources */,
 				76D1B86025BAEE4700FE1B4B /* LoadingScreenView.swift in Sources */,
 				76D1B85825BAEE2000FE1B4B /* Home.swift in Sources */,
@@ -429,7 +441,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -484,7 +496,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
