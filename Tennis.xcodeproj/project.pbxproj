@@ -25,12 +25,12 @@
 		764A611B25B91C7300789373 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A611A25B91C7300789373 /* LoginViewModel.swift */; };
 		764A612825B91C8E00789373 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A612725B91C8E00789373 /* LoginView.swift */; };
 		764A613D25B9204B00789373 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A613C25B9204B00789373 /* Constants.swift */; };
-		764A615B25B92CDD00789373 /* LoadingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A615A25B92CDD00789373 /* LoadingScreenView.swift */; };
-		764A616625B92D7D00789373 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A616525B92D7D00789373 /* Home.swift */; };
 		764A616E25B934C200789373 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 764A616D25B934C200789373 /* GoogleService-Info.plist */; };
 		764A617625B9475000789373 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A617525B9475000789373 /* RegisterView.swift */; };
 		764A617E25B9479700789373 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A617D25B9479700789373 /* ResetPasswordView.swift */; };
 		764A618325B9493F00789373 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A618225B9493F00789373 /* RegisterViewModel.swift */; };
+		76D1B85825BAEE2000FE1B4B /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D1B85725BAEE2000FE1B4B /* Home.swift */; };
+		76D1B86025BAEE4700FE1B4B /* LoadingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,12 +68,12 @@
 		764A611A25B91C7300789373 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		764A612725B91C8E00789373 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		764A613C25B9204B00789373 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		764A615A25B92CDD00789373 /* LoadingScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingScreenView.swift; path = ../../../Login_Face_ID/Login_Face_ID/View/LoadingScreenView.swift; sourceTree = "<group>"; };
-		764A616525B92D7D00789373 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Home.swift; path = ../../../Login_Face_ID/Login_Face_ID/View/Home.swift; sourceTree = "<group>"; };
 		764A616D25B934C200789373 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		764A617525B9475000789373 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		764A617D25B9479700789373 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		764A618225B9493F00789373 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		76D1B85725BAEE2000FE1B4B /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,12 +173,12 @@
 		764A60FE25B90E8900789373 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				764A616525B92D7D00789373 /* Home.swift */,
-				764A615A25B92CDD00789373 /* LoadingScreenView.swift */,
 				764A612725B91C8E00789373 /* LoginView.swift */,
 				764A617525B9475000789373 /* RegisterView.swift */,
 				764A617D25B9479700789373 /* ResetPasswordView.swift */,
 				76278C1E25B9E8060005EBD4 /* NewUserView.swift */,
+				76D1B85725BAEE2000FE1B4B /* Home.swift */,
+				76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -335,17 +335,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				764A615B25B92CDD00789373 /* LoadingScreenView.swift in Sources */,
 				76278C1F25B9E8060005EBD4 /* NewUserView.swift in Sources */,
 				76278C2425B9E8200005EBD4 /* NewUserViewModel.swift in Sources */,
 				764A618325B9493F00789373 /* RegisterViewModel.swift in Sources */,
 				764A612825B91C8E00789373 /* LoginView.swift in Sources */,
 				764A611B25B91C7300789373 /* LoginViewModel.swift in Sources */,
+				76D1B86025BAEE4700FE1B4B /* LoadingScreenView.swift in Sources */,
+				76D1B85825BAEE2000FE1B4B /* Home.swift in Sources */,
 				764A617E25B9479700789373 /* ResetPasswordView.swift in Sources */,
 				764A60CB25B90E5600789373 /* ContentView.swift in Sources */,
 				764A60C925B90E5600789373 /* TennisApp.swift in Sources */,
 				764A617625B9475000789373 /* RegisterView.swift in Sources */,
-				764A616625B92D7D00789373 /* Home.swift in Sources */,
 				764A613D25B9204B00789373 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,7 +508,7 @@
 				DEVELOPMENT_TEAM = 3B5M536V2W;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Tennis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -530,7 +530,7 @@
 				DEVELOPMENT_TEAM = 3B5M536V2W;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Tennis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
