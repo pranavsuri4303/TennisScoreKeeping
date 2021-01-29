@@ -59,6 +59,7 @@ struct RegisterView: View {
                         
                         TextField("EMAIL", text: $vm.email)
                             .autocapitalization(.none)
+                            .keyboardType(.emailAddress)
                     }
                     .padding()
                     .background(Color.white.opacity(vm.email == "" ? 0.02 : 0.12))

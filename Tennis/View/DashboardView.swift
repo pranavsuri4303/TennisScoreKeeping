@@ -8,13 +8,32 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @State var showAddString = false
     var body: some View {
-        Text("Dashboard")
+        ZStack{
+            GeometryReader{ geo in
+                VStack{
+                    ZStack{
+                        Text("Dashboard")
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.white)
+                        HStack{
+                            Spacer()
+                            Button(action: {
+                                self.showAddString.toggle()
+                            }, label: {
+                                Image(systemName: "plus")
+                                    .foregroundColor(Color("green"))
+
+                            }).sheet(isPresented: $showAddString) {
+                                NewMatchView()
+                            }.padding(.all)
+                        }
+                    }
+                    Spacer()
+                }.background(Color("bg").ignoresSafeArea(.all, edges: .all))
+            }
+        }
     }
 }
 
-struct DashboardView_Previews: PreviewProvider {
-    static var previews: some View {
-        DashboardView()
-    }
-}

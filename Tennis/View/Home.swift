@@ -10,17 +10,38 @@ import Firebase
 
 struct Home: View {
     var body: some View {
-        HomeView()
+        ViewSwitcher()
     }
 }
 
 struct HomePage : View {
+    var body: some View{
+        Color.red
+    }
+}
+
+struct ViewSwitcher : View {
     
-    @Binding var x : CGFloat
+    // for future use...
+    @State var width = UIScreen.main.bounds.width - 90
+    // to hide view...
+    @State var x = -UIScreen.main.bounds.width + 90
+    
+    @State var currentSelectedMenuView : SlideMenuView = .dashboard
     
     var body: some View{
-        VStack{
-            HStack{
+        
+        ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
+            switch currentSelectedMenuView {
+            case .profile : ProfileView()
+            case .string : StringView()
+            case .dashboard : DashboardView()
+            case .none: HomePage()
+                
+            }
+            
+            Group{
+           
                 Button(action: {
                     // opening menu,...
                     withAnimation{
@@ -31,39 +52,12 @@ struct HomePage : View {
                         .font(.system(size: 24))
                         .foregroundColor(Color("green"))
                 }
-                Spacer(minLength: 0)
-                Text("Home")
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                
-                Spacer(minLength: 0)
-            }
+            
             .padding()
-            .background(Color("bg").ignoresSafeArea(.all, edges: .all))
             .shadow(color: Color.white.opacity(0.0), radius: 5, x: 0, y: 5)
+            }
             
-            Spacer()
-        }
-        // for drag gesture...
-        .contentShape(Rectangle())
-        .background(Color("bg").ignoresSafeArea(.all, edges: .all))
-    }
-}
-
-struct HomeView : View {
-    
-    // for future use...
-    @State var width = UIScreen.main.bounds.width - 90
-    // to hide view...
-    @State var x = -UIScreen.main.bounds.width + 90
-    
-    var body: some View{
-        
-        ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)) {
-            
-            HomePage(x: $x)
-            
-            SlideMenu()
+            SlideMenu(currentSelectedView: $currentSelectedMenuView, x: $x)
                 .offset(x: x)
                 .background(Color.white.opacity(x == 0 ? 0.1 : 0).ignoresSafeArea(.all, edges: .vertical).onTapGesture {
                     
@@ -114,17 +108,19 @@ struct HomeView : View {
                 }
             }
         }))
+        
     }
 }
 
 struct SlideMenu : View {
-    
+    @Binding var currentSelectedView : SlideMenuView
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
     @State var show = true
     @AppStorage("status") var logged = false
+    @Binding var x : CGFloat
 
     
-    var body: some View{
+    var body: some View {
         
         HStack(spacing: 0){
             
@@ -166,13 +162,12 @@ struct SlideMenu : View {
                     
                     // Menu Buttons....
                     
-                    ForEach(menuButtons,id: \.self){menu in
+                    ForEach(menuButtons , id : \.self){menu in
                         
-                        Button(action: {
-                            // switch your actions or work based on title....
-                        }) {
-                            MenuButton(title: menu)
-                        }
+                       
+                        MenuButton(x: $x, currentSelectedHome: $currentSelectedView, slideMenuItem: menu , title : menu.rawValue)
+                            
+                        
                     }
                     
                     Divider()
@@ -182,7 +177,7 @@ struct SlideMenu : View {
                         // switch your actions or work based on title....
                     }) {
                         
-                        MenuButton(title: "Twitter Ads")
+                        MenuButton(x: $x, currentSelectedHome: .constant(.none), slideMenuItem: .none, title: "Twitter Ads")
                     }
                     
                     Divider()
@@ -242,11 +237,20 @@ struct SlideMenu : View {
 }
 
 
-var menuButtons = ["Profile","Dashboard","String"]
+var menuButtons : [SlideMenuView] {
+    var all = SlideMenuView.allCases
+    all.removeLast()
+    return all
+}
+
 
 struct MenuButton : View {
+    @Binding var x : CGFloat
+    @Binding  var currentSelectedHome : SlideMenuView
     
+    var slideMenuItem : SlideMenuView
     var title : String
+    
     
     var body: some View{
         
@@ -259,12 +263,24 @@ struct MenuButton : View {
                 .frame(width: 24, height: 24)
                 .foregroundColor(.gray)
             
+            
             Text(title)
                 .foregroundColor(.white)
+                
             
             Spacer(minLength: 0)
         }
         .padding(.vertical,12)
+        .onTapGesture {
+            currentSelectedHome = slideMenuItem
+            withAnimation { 
+                
+                x = -UIScreen.main.bounds.width
+            }
+           
+            
+        }
+        
     }
 }
 

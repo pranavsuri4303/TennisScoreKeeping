@@ -61,6 +61,7 @@ struct NewUserView: View {
                     
                     TextField("Year of Birth", text: $vm.yob)
                         .autocapitalization(.none)
+                        .keyboardType(.numberPad)
                 }
                 .padding()
                 .background(Color.white.opacity(vm.yob == "" ? 0.02 : 0.12))
