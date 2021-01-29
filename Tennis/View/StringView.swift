@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StringView: View {
-  @State var showAddString = false
+    @StateObject var vm = StringsViewModel()
     var body: some View {
         ZStack{
             GeometryReader{ geo in
@@ -20,12 +20,12 @@ struct StringView: View {
                         HStack{
                             Spacer()
                             Button(action: {
-                                self.showAddString.toggle()
+                                self.vm.showAddString.toggle()
                             }, label: {
                                 Image(systemName: "plus")
                                     .foregroundColor(Color("green"))
 
-                            }).sheet(isPresented: $showAddString) {
+                            }).sheet(isPresented: $vm.showAddString) {
                                 AddNewStringView()
                             }.padding(.all)
                         }

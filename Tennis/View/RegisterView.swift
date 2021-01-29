@@ -11,7 +11,7 @@ struct RegisterView: View {
     
     @StateObject var vm = RegisterViewModel()
     
-    @Binding var resisterViewPresented : Bool
+    @Binding var registerViewPresented : Bool
     
     @State var newUserViewPresented = false
     
@@ -124,7 +124,7 @@ struct RegisterView: View {
                             .foregroundColor(Color.white.opacity(0.6))
                         
                         Button("Login"){
-                            resisterViewPresented.toggle()
+                            registerViewPresented.toggle()
                             
                         }
                         .foregroundColor(Color("green"))

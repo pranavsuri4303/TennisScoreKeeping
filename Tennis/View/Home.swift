@@ -257,11 +257,20 @@ struct MenuButton : View {
         HStack(spacing: 15){
             
             // both title and image names are same....
-            Image(title)
-                .resizable()
-                .renderingMode(.template)
-                .frame(width: 24, height: 24)
-                .foregroundColor(.gray)
+            if title == "String"{
+                Image(systemName: "number")
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(.gray)
+            }else{
+                Image(title)
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(.gray)
+            }
+            
             
             
             Text(title)

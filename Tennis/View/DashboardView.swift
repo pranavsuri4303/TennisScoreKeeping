@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DashboardView: View {
-    @State var showAddString = false
+    @State var showAddMatch = false
     var body: some View {
         ZStack{
             GeometryReader{ geo in
@@ -20,12 +20,12 @@ struct DashboardView: View {
                         HStack{
                             Spacer()
                             Button(action: {
-                                self.showAddString.toggle()
+                                self.showAddMatch.toggle()
                             }, label: {
                                 Image(systemName: "plus")
                                     .foregroundColor(Color("green"))
 
-                            }).sheet(isPresented: $showAddString) {
+                            }).sheet(isPresented: $showAddMatch) {
                                 NewMatchView()
                             }.padding(.all)
                         }

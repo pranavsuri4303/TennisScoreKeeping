@@ -35,7 +35,7 @@ struct AddNewStringView: View {
                     .padding(.leading,15)
                     HStack{
                         
-                        Image(systemName: "envelope")
+                        Image(systemName: "number")
                             .font(.title2)
                             .foregroundColor(.white)
                             .frame(width: 35)
@@ -100,7 +100,9 @@ struct AddNewStringView: View {
                     
                     Spacer()
                     Button(action: {
-                            vm.addString()                    }, label: {
+                        vm.addString()
+                        vm.showAddString.toggle()
+                    }, label: {
                                 Text("Add String")
                                     .fontWeight(.heavy)
                                     .foregroundColor(.black)
@@ -115,7 +117,9 @@ struct AddNewStringView: View {
                         })
                 }
                 .background(Color("bg").ignoresSafeArea(.all, edges: .all))
-                
+                if vm.isLoading{
+                    LoadingScreenView()
+                }
             }
             
         }

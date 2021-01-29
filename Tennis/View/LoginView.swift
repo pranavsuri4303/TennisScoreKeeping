@@ -28,7 +28,7 @@ struct LoginView : View {
                 
                 Spacer(minLength: 0)
                 
-                Image("welcomeLogo")
+                Image("homeLogo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     //Dynamic Frame...
@@ -163,7 +163,7 @@ struct LoginView : View {
                     }
                     .foregroundColor(Color("green"))
                     .fullScreenCover(isPresented: $goToSignup) {
-                        RegisterView( resisterViewPresented: $goToSignup)
+                        RegisterView( registerViewPresented: $goToSignup)
                     }
                     
                     

@@ -13,7 +13,7 @@ class StringsViewModel : ObservableObject{
     @Published var stringName = ""
     @Published var mainsTension = 50
     @Published var crossTension = 50
-    @Published var date = Date(timeIntervalSinceReferenceDate: 0)
+    @Published var date = Date(timeIntervalSinceNow: 0)
     @Published var notes = ""
     // User Data....
     
@@ -22,15 +22,30 @@ class StringsViewModel : ObservableObject{
     @Published var alertMsg = ""
     // Loading Screen...
     @Published var isLoading = false
-    
+    @Published var showAddString = false
     // Getting BioMetricType....
     
 
     // Create User...
     func addString() {
+        isLoading = true
         let db = Firestore.firestore()
         let userDoc = (Auth.auth().currentUser?.uid)!
         let docRef  = db.collection("users").document(userDoc)
+        let data: [String: Any] = ["name": stringName,
+                                   "mains": mainsTension,
+                                   "cross": crossTension,
+                                   "date": date]
+        docRef.updateData(["strings": FieldValue.arrayUnion([data])]){err in
+            if let err = err{
+                self.isLoading = false
+                self.alert.toggle()
+                self.alertMsg = err.localizedDescription
+            }else{
+                self.isLoading = false
+            }
+            
+        }
     }
 
 }
