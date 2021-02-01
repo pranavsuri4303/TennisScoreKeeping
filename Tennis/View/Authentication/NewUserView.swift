@@ -9,19 +9,29 @@ import SwiftUI
 
 struct NewUserView: View {
     @Binding var isPresented : Bool
-    @StateObject var vm : RegisterViewModel
+    @StateObject var vm : RegisterVM
     @State var startAnimate = false
-
+    
     var body: some View {
         ZStack{
             VStack{
                 Spacer()
-                Image("newUser2")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    //Dynamic Frame...
-                    .padding([.leading, .bottom, .trailing],35)
-                    .padding()
+                if vm.gender == "Male"{
+                    Image("Male")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        //Dynamic Frame...
+                        .padding([.leading, .bottom, .trailing],35)
+                        .padding()
+                }else{
+                    Image("Female")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        //Dynamic Frame...
+                        .padding([.leading, .bottom, .trailing],35)
+                        .padding()
+                }
+                
                 HStack{
                     
                     VStack(alignment: .leading, spacing: 12, content: {
@@ -80,12 +90,20 @@ struct NewUserView: View {
                 .background(Color.white.opacity(vm.nationality == "" ? 0.02 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
+                Picker(selection: $vm.gender, label: Text(""), content: {
+                        Text("Male").tag("Male")
+                            .foregroundColor(Color.white)
+                        Text("Female").foregroundColor(Color.white).tag("Female")
+                })
+                    .pickerStyle(SegmentedPickerStyle())
+                .padding(.all)
+                
                 HStack(spacing: 15){
                     
                     Button(action: {
                         isPresented.toggle()
                         vm.createUser()
-    
+                        
                     }, label: {
                         Text("Create account")
                             .fontWeight(.heavy)
@@ -106,7 +124,7 @@ struct NewUserView: View {
                 Spacer()
             }.background(Color("bg").ignoresSafeArea(.all, edges: .all))
             .animation(startAnimate ? .easeOut : .none)
-           
+            
             if vm.isLoading{
                 LoadingScreenView()
             }

@@ -9,14 +9,16 @@ import SwiftUI
 import LocalAuthentication
 import Firebase
 
-class StringsViewModel : ObservableObject{
+class StringsVM : ObservableObject{
+    // Firebase Stuff
+    let db = Firestore.firestore()
+    let uidStr = (Auth.auth().currentUser?.uid)!
     @Published var stringName = ""
     @Published var mainsTension = 50
     @Published var crossTension = 50
     @Published var date = Date(timeIntervalSinceNow: 0)
     @Published var notes = ""
     // User Data....
-    
     // For Alerts..
     @Published var alert = false
     @Published var alertMsg = ""
@@ -26,12 +28,11 @@ class StringsViewModel : ObservableObject{
     // Getting BioMetricType....
     
 
+    
     // Create User...
     func addString() {
         isLoading = true
-        let db = Firestore.firestore()
-        let userDoc = (Auth.auth().currentUser?.uid)!
-        let docRef  = db.collection("users").document(userDoc)
+        let docRef  = db.collection("users").document(uidStr)
         let data: [String: Any] = ["name": stringName,
                                    "mains": mainsTension,
                                    "cross": crossTension,
@@ -47,5 +48,7 @@ class StringsViewModel : ObservableObject{
             
         }
     }
-
+    
+    
 }
+

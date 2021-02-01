@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RegisterView: View {
     
-    @StateObject var vm = RegisterViewModel()
+    @StateObject var vm = RegisterVM()
     
     @Binding var registerViewPresented : Bool
     
@@ -96,8 +96,8 @@ struct RegisterView: View {
                                 .background(Color("green"))
                                 .clipShape(Capsule())
                         })
-                        .opacity(vm.email != "" && vm.password != "" ? 1 : 0.5)
-                        .disabled(vm.email != "" && vm.password != "" ? false : true)
+                        .opacity(vm.email != "" && vm.password != "" && (vm.gender != "Male" || vm.gender != "Female") ? 1 : 0.5)
+                        .disabled(vm.email != "" && vm.password != "" && (vm.gender != "Male" || vm.gender != "Female") ? false : true)
                         .alert(isPresented: $vm.alert, content: {
                             Alert(title: Text("Error"), message: Text(vm.alertMsg), dismissButton: .destructive(Text("Ok")))
                         })

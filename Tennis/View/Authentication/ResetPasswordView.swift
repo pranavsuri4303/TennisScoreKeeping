@@ -52,6 +52,8 @@ struct ResetPasswordView: View {
                     .background(Color.white.opacity(vm.resetEmail == "" ? 0.02 : 0.12))
                     .cornerRadius(15)
                     .padding(.horizontal)
+                    Spacer()
+
                     Button(action: vm.resetPassword, label: {
                         Text("Reset Password")
                             .fontWeight(.heavy)
@@ -66,7 +68,6 @@ struct ResetPasswordView: View {
                     .alert(isPresented: $vm.alert, content: {
                         Alert(title: Text(""), message: Text(vm.alertMsg), dismissButton: .destructive(Text("Ok")))
                     })
-                    Spacer()
                 }
                 .background(Color("bg").ignoresSafeArea(.all, edges: .all))
 

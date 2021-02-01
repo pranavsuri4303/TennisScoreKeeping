@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddNewStringView: View {
-    @StateObject var vm = StringsViewModel()
+    @StateObject var vm = StringsVM()
     var body: some View {
         ZStack{
             GeometryReader{ geo in

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewMatchView: View {
-    @StateObject var vm = NewMatchViewModel()
+    @StateObject var vm = MatchVM()
     @State var matchScorerIsPresented = false
     var body: some View {
         ZStack{
@@ -60,9 +60,14 @@ struct NewMatchView: View {
                             .foregroundColor(Color.white)
                         Spacer()
                         Picker(selection: $vm.server, label: Text(""), content: {
-                                Text("\(vm.p1Name)").tag(Player.player1)
+                                Text("\(vm.p1Name)")
+                                    .tag(Player.player1)
                                     .foregroundColor(Color.white)
-                                Text("\(vm.p2Name)").foregroundColor(Color.white).tag(Player.player2)                    })
+                                Text("\(vm.p2Name)")
+                                    .tag(Player.player2)
+                                    .foregroundColor(Color.white)
+                            
+                        })
                             .pickerStyle(SegmentedPickerStyle())
                     }.padding(.horizontal)
                     
@@ -74,6 +79,16 @@ struct NewMatchView: View {
                             Text("Sudden death").tag(Deuce.noDeuce)
                                 .foregroundColor(Color.white)
                             Text("One Deuce").foregroundColor(Color.white).tag(Deuce.oneDeuce)
+                    }).pickerStyle(SegmentedPickerStyle())
+                    .padding(.horizontal)
+                    Picker(selection: $vm.trackingStyle, label: Text(""), content: {
+                            Text("Basic")
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                                .tag(Tracking.basic)
+                            Text("Advanced").tag(Tracking.advanced)
+                                .foregroundColor(Color.white)
+                        Text("Expert").foregroundColor(Color.white).tag(Tracking.expert)
                     }).pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal)
                     HStack{
@@ -105,7 +120,14 @@ struct NewMatchView: View {
                             .clipShape(Capsule())
                     })
                     .fullScreenCover(isPresented: $matchScorerIsPresented, content: {
-                        MatchScoringView(isPresented: $matchScorerIsPresented, playerTwoName: $vm.p2Name, playerOneName: $vm.p1Name, server: $vm.server)
+                        if vm.trackingStyle == .basic{
+                            BasicMatchScoringView(isPresented: $matchScorerIsPresented, vm: vm)
+                        } else if vm.trackingStyle == .advanced{
+                            AdvancedMatchScoringView(isPresented: $matchScorerIsPresented, vm: vm)
+                        }else{
+                            ExpertMatchScoringView(isPresented: $matchScorerIsPresented, vm: vm)
+                        }
+                        
                     })
                     .opacity(vm.p2Name != "" ? 1 : 0.5)
                     .disabled(vm.p2Name != "" ? false : true)

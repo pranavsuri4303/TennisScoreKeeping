@@ -9,12 +9,13 @@ import SwiftUI
 import LocalAuthentication
 import Firebase
 
-class RegisterViewModel : ObservableObject{
+class RegisterVM : ObservableObject{
     @Published var email = ""
     @Published var password = ""
     @Published var name = ""
     @Published var yob = ""
     @Published var nationality = ""
+    @Published var gender = "Male"
     // User Data....
     
     @AppStorage("status") var logged = false
@@ -56,6 +57,7 @@ class RegisterViewModel : ObservableObject{
                     "uid": "\(String(describing: uidStr))",
                     "yob": "\(self.yob)",
                     "nationality": "\(self.nationality)",
+                    "gender": "\(self.gender)"
                 ]
                 db.collection("users").document(uidStr).setData(docData) { err in
                     if let err = err {

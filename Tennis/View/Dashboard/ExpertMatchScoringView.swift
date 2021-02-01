@@ -1,18 +1,17 @@
 //
-//  MatchScoreingView.swift
+//  ExpertMatchScoringView.swift
 //  Tennis
 //
-//  Created by Sameer Suri on 29/1/21.
+//  Created by Sameer Suri on 1/2/21.
 //
 
 import SwiftUI
 
-struct MatchScoringView: View {
+struct ExpertMatchScoringView
+: View {
     @Binding var isPresented: Bool
-    @Binding var playerTwoName: String
-    @Binding var playerOneName: String
-    @Binding var server: Player
-    @StateObject var vm = MatchScoringViewModel()
+    // Players Names
+    @StateObject var vm :MatchVM
     
     @State var dashboardIsPresented = false
     var body: some View {
@@ -32,15 +31,15 @@ struct MatchScoringView: View {
                 
             }
             VStack{
-                Text("Score")
-                    .font(.title)
+                Text("Expert")
+                    .font(.title2)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.white)
                 HStack{
                     VStack(alignment: .leading, spacing: 10){
                         VStack{
                             HStack{
-                                Text("\(playerOneName)")
+                                Text("\(vm.p1Name)")
                                     .font(.title3)
                                     .foregroundColor(.white)
                                     .multilineTextAlignment(.leading)
@@ -56,7 +55,7 @@ struct MatchScoringView: View {
                         }
                         VStack{
                             HStack{
-                                Text("\(playerTwoName)")
+                                Text("\(vm.p2Name)")
                                     .font(.title3)
                                     .foregroundColor(.white)
                                     .multilineTextAlignment(.leading)
@@ -75,31 +74,42 @@ struct MatchScoringView: View {
                     }.padding()
                     Spacer()
                     VStack(spacing: 10){
-                        Text("\(vm.p1GamesScore)")
+                        Text("\(vm.p1Sets)")
                             .font(.title3)
                             .foregroundColor(Color("green"))
                             .multilineTextAlignment(.leading)
-                        Text("\(vm.p2GamesScore)")
+                        Text("\(vm.p2Sets)")
                             .font(.title3)
                             .foregroundColor(Color("green"))
                             .multilineTextAlignment(.leading)
                     }.padding()
                     VStack(spacing: 10){
-                        Text("\(vm.ptsScore(of: vm.p1Pts, against: vm.p2Pts))")
+                        Text("\(vm.p1Games)")
                             .font(.title3)
                             .foregroundColor(Color("green"))
                             .multilineTextAlignment(.leading)
-                        Text("\(vm.ptsScore(of: vm.p2Pts, against: vm.p1Pts))")
+                        Text("\(vm.p2Games)")
                             .font(.title3)
                             .foregroundColor(Color("green"))
                             .multilineTextAlignment(.leading)
                     }.padding()
+                    VStack(spacing: 10){
+                        Text("\(vm.ptsScoreTranslator(pts: vm.p1Pts))")
+                            .font(.title3)
+                            .foregroundColor(Color("green"))
+                            .multilineTextAlignment(.leading)
+                        Text("\(vm.ptsScoreTranslator(pts: vm.p1Pts))")
+                            .font(.title3)
+                            .foregroundColor(Color("green"))
+                            .multilineTextAlignment(.leading)
+                    }.padding()
+                    
                 }.background(Color(.white).opacity(0.1).cornerRadius(8))
                 .padding()
             }
             VStack{
                 HStack{
-                    Text("\(playerOneName)")
+                    Text("\(vm.p1Name)")
                         .font(.title2)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.leading)
@@ -114,17 +124,56 @@ struct MatchScoringView: View {
                     }
                     
                 }.padding()
-                Button(action: {
-                    vm.pointWon(by: .player1)
-                }, label: {
-                    Text("Player 1")
-                })
-
+                
             }.background(Color(.white).opacity(0.1).cornerRadius(8))
             .padding(.horizontal)
+            HStack{
+                VStack(){
+                    Button(action: {}, label: {
+                        Spacer()
+
+                        Text("SERVE IN")
+                            .font(.headline)
+                            .foregroundColor(Color("blue"))
+                            .multilineTextAlignment(.center)
+                        Spacer()
+
+                    })
+                    .edgesIgnoringSafeArea(.all)
+                }.frame(height: 100, alignment: .center)
+                .background(Color("Orange").opacity(0.5).cornerRadius(8))
+                VStack(){
+                        Button(action: {}, label: {
+                            Spacer()
+
+                            Text("FIRST FAULT")
+                                .font(.headline)
+                                .foregroundColor(Color("blue"))
+                                .multilineTextAlignment(.center)
+                            Spacer()
+
+                        })
+                        .edgesIgnoringSafeArea(.all)
+                    }.frame(height: 100, alignment: .center)
+                    .background(Color("Orange").opacity(0.5).cornerRadius(8))
+                VStack(){
+                        Button(action: {}, label: {
+                            Spacer()
+
+                            Text("ACE")
+                                .font(.headline)
+                                .foregroundColor(Color("blue"))
+                                .multilineTextAlignment(.center)
+                            Spacer()
+
+                        })
+                        .edgesIgnoringSafeArea(.all)
+                    }.frame(height: 100, alignment: .center)
+                    .background(Color("Orange").opacity(0.5).cornerRadius(8))
+            }.padding(.horizontal)
             VStack{
                 HStack{
-                    Text("\(playerTwoName)")
+                    Text("\(vm.p2Name)")
                         .font(.title2)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.leading)
@@ -139,24 +188,27 @@ struct MatchScoringView: View {
                     }
                     
                 }.padding()
-                Button(action: {
-                    vm.pointWon(by: .player2)
-                }, label: {
-                    Text("Player 2")
-                })
             }.background(Color(.white).opacity(0.1).cornerRadius(8))
             .padding(.horizontal)
+            HStack{
+                VStack(){
+                    Button(action: {}, label: {
+                        Spacer()
+                        Text("POINT WON")
+                            .font(.headline)
+                            .foregroundColor(Color("blue"))
+                            .multilineTextAlignment(.center)
+                        Spacer()
+                    })
+                    .edgesIgnoringSafeArea(.all)
+                }.frame(height: 100, alignment: .center)
+                .background(Color("Orange").opacity(0.5).cornerRadius(8))
+
+            }.padding(.horizontal)
+            
             Spacer()
         }.background(Color("bg").ignoresSafeArea(.all, edges: .all))
         
         
     }
 }
-
-
-
-
-
-
-
-
