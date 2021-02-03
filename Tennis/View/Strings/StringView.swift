@@ -34,7 +34,8 @@ struct StringView: View {
                     
                     
                     ScrollView{
-                        ForEach(stringListViewModel.strings, id: \.self) { (id)  in
+                        
+                        ForEach(stringListViewModel.strings.reversed(), id: \.self) { (id)  in
                             VStack{
                                 HStack{
                                     Text("\(id.name)")
@@ -77,21 +78,5 @@ struct StringView: View {
         
         
     }
+
 }
-
-struct CellView: View {
-    @State var name = ""
-    @State var mains = ""
-    @State var cross = ""
-    @State var date = ""
-    
-    var body: some View {
-        VStack{
-            Text("\(name)")
-            
-        }.background(Color(.white).opacity(0.1))
-    }
-}
-
-
-

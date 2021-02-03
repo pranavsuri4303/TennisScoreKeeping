@@ -100,20 +100,23 @@ struct AddNewStringView: View {
                     Spacer()
                     Button(action: {
                         vm.addString()
-                        vm.showAddString.toggle()
                     }, label: {
-                                Text("Add String")
-                                    .fontWeight(.heavy)
-                                    .foregroundColor(.black)
-                                    .padding(.vertical)
-                                    .frame(width: UIScreen.main.bounds.width - 150)
-                                    .background(Color("green"))
-                                    .clipShape(Capsule())
-                            }).opacity(vm.stringName != "" ? 1 : 0.5)
-                        .disabled(vm.stringName != "" ? false : true)
-                        .alert(isPresented: $vm.alert, content: {
-                            Alert(title: Text(""), message: Text(vm.alertMsg), dismissButton: .destructive(Text("Ok")))
-                        })
+                        Text("Add String")
+                            .fontWeight(.heavy)
+                            .foregroundColor(.black)
+                            .padding(.vertical)
+                            .frame(width: UIScreen.main.bounds.width - 150)
+                            .background(Color("green"))
+                            .clipShape(Capsule())
+                    }).opacity(vm.stringName != "" ? 1 : 0.5)
+                    .disabled(vm.stringName != "" ? false : true)
+                    .sheet(isPresented: $vm.showAddString, content: {
+                        self
+                    })
+                    .alert(isPresented: $vm.alert, content: {
+                        Alert(title: Text(""), message: Text(vm.alertMsg), dismissButton: .destructive(Text("Ok")))
+                        
+                    })
                 }
                 .background(Color("bg").ignoresSafeArea(.all, edges: .all))
                 if vm.isLoading{

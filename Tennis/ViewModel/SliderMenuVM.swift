@@ -24,18 +24,16 @@ class SliderMenueVM : ObservableObject{
     
     func loadImageFromStorage(){
         if DownloadedProfileImage.shared.image == nil {
-         operation =  Storage.storage().reference().child(imagePath).getData(maxSize: .max) { (data, error) in
-            print(data)
-            data.publisher
-                .compactMap {$0}
-                .map { data in
-                    UIImage(data: data)
-                }
-                .assign(to: \.image, on: DownloadedProfileImage.shared)
+            operation =  Storage.storage().reference().child(imagePath).getData(maxSize: .max) { (data, error) in
+                print(data)
+                data.publisher
+                    .compactMap {$0}
+                    .map { data in
+                        UIImage(data: data)
+                    }
+                    .assign(to: \.image, on: DownloadedProfileImage.shared)
                 
+            }
         }
-        }
-       
-        
     }
 }

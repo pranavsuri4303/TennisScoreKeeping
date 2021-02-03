@@ -44,6 +44,7 @@ class StringsVM : ObservableObject{
                 self.alertMsg = err.localizedDescription
             }else{
                 self.isLoading = false
+                self.showAddString = false
             }
             
         }

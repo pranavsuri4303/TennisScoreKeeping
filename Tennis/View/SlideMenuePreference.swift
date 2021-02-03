@@ -8,8 +8,8 @@
 import SwiftUI
 
 enum SlideMenuView : String , Equatable , CaseIterable {
-    case dashboard = "Dashboard"
     case profile = "Profile"
+    case dashboard = "Dashboard"
     case string = "String"
     case players = "Players"
     case matches = "Matches"

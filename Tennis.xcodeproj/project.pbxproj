@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		760719B925BB52F000F09A1A /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760719B825BB52F000F09A1A /* DashboardView.swift */; };
-		760719BE25BB52FB00F09A1A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760719BD25BB52FB00F09A1A /* ProfileView.swift */; };
 		760719C325BB530600F09A1A /* AddNewStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760719C225BB530600F09A1A /* AddNewStringView.swift */; };
 		7619A62925CA421800014ADA /* PlayerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7619A62825CA421700014ADA /* PlayerProfileView.swift */; };
 		7619A63B25CA68BA00014ADA /* SliderMenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7619A63A25CA68B900014ADA /* SliderMenuVM.swift */; };
@@ -46,6 +45,7 @@
 		76C952BA25C8CDEF00E6D432 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */; };
 		76D1B85825BAEE2000FE1B4B /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D1B85725BAEE2000FE1B4B /* Home.swift */; };
 		76D1B86025BAEE4700FE1B4B /* LoadingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */; };
+		76D731A025CA7BB7001D2D64 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D7319F25CA7BB7001D2D64 /* ProfileView.swift */; };
 		76DBB01425C29C8E00F238D9 /* StringsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DBB01325C29C8E00F238D9 /* StringsVM.swift */; };
 		76FA5EEC25C7E457005DACE9 /* AdvancedMatchScoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5EEB25C7E457005DACE9 /* AdvancedMatchScoringView.swift */; };
 		76FA5EF125C7E495005DACE9 /* ExpertMatchScoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5EF025C7E495005DACE9 /* ExpertMatchScoringView.swift */; };
@@ -72,7 +72,6 @@
 
 /* Begin PBXFileReference section */
 		760719B825BB52F000F09A1A /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		760719BD25BB52FB00F09A1A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		760719C225BB530600F09A1A /* AddNewStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStringView.swift; sourceTree = "<group>"; };
 		7619A62825CA421700014ADA /* PlayerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProfileView.swift; sourceTree = "<group>"; };
 		7619A63A25CA68B900014ADA /* SliderMenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderMenuVM.swift; sourceTree = "<group>"; };
@@ -108,6 +107,7 @@
 		76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76D1B85725BAEE2000FE1B4B /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenView.swift; sourceTree = "<group>"; };
+		76D7319F25CA7BB7001D2D64 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		76DBB01325C29C8E00F238D9 /* StringsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsVM.swift; sourceTree = "<group>"; };
 		76FA5EEB25C7E457005DACE9 /* AdvancedMatchScoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedMatchScoringView.swift; sourceTree = "<group>"; };
 		76FA5EF025C7E495005DACE9 /* ExpertMatchScoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertMatchScoringView.swift; sourceTree = "<group>"; };
@@ -239,9 +239,9 @@
 				76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */,
 				762F87C725C9C0C9004B46FD /* Match */,
 				76AADBBF25C6717900EB0C43 /* Dashboard */,
-				760719BD25BB52FB00F09A1A /* ProfileView.swift */,
 				76AADBBB25C6716D00EB0C43 /* Strings */,
 				9FCFE65A25C354100011F8C2 /* SlideMenuePreference.swift */,
+				76D7319F25CA7BB7001D2D64 /* ProfileView.swift */,
 				7619A62D25CA422000014ADA /* Players */,
 				76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */,
 			);
@@ -441,7 +441,6 @@
 				76278C1F25B9E8060005EBD4 /* NewUserView.swift in Sources */,
 				7662D3F525C391A1004544BF /* NewMatchView.swift in Sources */,
 				9FCFE65B25C354100011F8C2 /* SlideMenuePreference.swift in Sources */,
-				760719BE25BB52FB00F09A1A /* ProfileView.swift in Sources */,
 				7619A62925CA421800014ADA /* PlayerProfileView.swift in Sources */,
 				7662D3FA25C392BB004544BF /* MatchVM.swift in Sources */,
 				76343B8625C2B2140061ABB5 /* StringView.swift in Sources */,
@@ -459,6 +458,7 @@
 				7619A63B25CA68BA00014ADA /* SliderMenuVM.swift in Sources */,
 				764A60CB25B90E5600789373 /* ContentView.swift in Sources */,
 				762F87DA25CA34FE004B46FD /* ProfileImagePickerView.swift in Sources */,
+				76D731A025CA7BB7001D2D64 /* ProfileView.swift in Sources */,
 				76DBB01425C29C8E00F238D9 /* StringsVM.swift in Sources */,
 				764A60C925B90E5600789373 /* TennisApp.swift in Sources */,
 				76FA5EEC25C7E457005DACE9 /* AdvancedMatchScoringView.swift in Sources */,

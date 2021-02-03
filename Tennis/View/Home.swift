@@ -32,15 +32,15 @@ struct ViewSwitcher : View {
     // to hide view...
    
     
-    @State var currentSelectedMenuView : SlideMenuView = .dashboard
+    @State var currentSelectedMenuView : SlideMenuView = .profile
     @GestureState var gestureState : CGFloat = 0
     @StateObject var isSliderMenuPresented = SliderMenuPresentationManager.shared
     var body: some View{
         
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
             switch currentSelectedMenuView {
-            case .profile : ProfileView()
             case .string : StringView()
+            case .profile : ProfileView()
             case .dashboard : DashboardView()
             case .players : PlayersSearchView()
             case .matches : MatchesHistoryView()
@@ -159,18 +159,6 @@ struct SlideMenu : View {
                         
                     }
                     
-                    Divider()
-                        .padding(.top)
-                    
-                    Button(action: {
-                        // switch your actions or work based on title....
-                    }) {
-                        
-                        MenuButton( currentSelectedHome: .constant(.none), slideMenuItem: .none, title: "Twitter Ads")
-                    }
-                    
-                    Divider()
-                        .frame(height: nil)
                     Spacer()
                     Button(action: {
                         SliderMenuPresentationManager.shared.isPresented.toggle()
@@ -179,35 +167,9 @@ struct SlideMenu : View {
                     }) {
                         Text("Log out")
                             .foregroundColor(Color("green"))
+                            .padding(.bottom)
                     }
                     .padding(.top,20)
-                    
-                    
-                    Divider()
-                        .padding(.bottom)
-                    
-                    HStack{
-                        
-                        Button(action: {}) {
-                            
-                            Image("help")
-                                .renderingMode(.template)
-                                .resizable()
-                                .frame(width: 26, height: 26)
-                                .foregroundColor(Color("green"))
-                        }
-                        
-                        Spacer(minLength: 0)
-                        
-                        Button(action: {}) {
-                            
-                            Image("barcode")
-                                .renderingMode(.template)
-                                .resizable()
-                                .frame(width: 26, height: 26)
-                                .foregroundColor(Color("green"))
-                        }
-                    }
                 }
                 
                 
@@ -261,7 +223,7 @@ struct MenuButton : View {
                 Image(systemName: "person.2")
                     .resizable()
                     .renderingMode(.template)
-                    .frame(width: 24, height: 24)
+                    .frame(width: 24, height: 22, alignment: .center)
                     .foregroundColor(.gray)
                     .aspectRatio(contentMode: .fill)
             }else{
