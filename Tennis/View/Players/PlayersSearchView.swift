@@ -134,7 +134,7 @@ struct SearchPlayerRowView : View {
                 .background(Color(.white).opacity(0.1).cornerRadius(8))
                 .edgesIgnoringSafeArea(.all)
                 .onDisappear {
-                    searchPlayerVM.operation?.cancel()
+                   
                 }
             })
     }
