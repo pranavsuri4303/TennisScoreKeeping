@@ -48,8 +48,6 @@ class RegisterVM : ObservableObject{
                         switch result {
                         
                         case .success(let path):
-                            
-                            
                             let change = res?.user.createProfileChangeRequest()
                             change?.displayName = self.name
                             change?.commitChanges(){ erro in

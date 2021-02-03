@@ -8,6 +8,11 @@
 import SwiftUI
 import Firebase
 
+class DownloadedProfileImage : ObservableObject {
+    @Published  var image  : UIImage? = nil
+    static let shared = DownloadedProfileImage()
+}
+
 struct Home: View {
     var body: some View {
         ViewSwitcher()
@@ -37,10 +42,9 @@ struct ViewSwitcher : View {
             case .profile : ProfileView()
             case .string : StringView()
             case .dashboard : DashboardView()
-            case .players : PlayersView()
+            case .players : PlayersSearchView()
             case .matches : MatchesHistoryView()
             case .none: HomePage()
-                
             }
             
             
@@ -94,7 +98,8 @@ struct ViewSwitcher : View {
 struct SlideMenu : View {
     @Binding var currentSelectedView : SlideMenuView
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
-
+    @ObservedObject var sliderMenueVM = DownloadedProfileImage.shared
+    let _x = SliderMenueVM()
     @AppStorage("status") var logged = false
     
     
@@ -111,9 +116,18 @@ struct SlideMenu : View {
                         Circle()
                             .foregroundColor(.white).opacity(0.3)
                             .frame(width: 80, height: 80, alignment: .center)
-                        Image("logo")
-                            .resizable()
-                            .frame(width: 60, height: 60, alignment: .center)
+                        
+                        if let profileImage = sliderMenueVM.image {
+                            Image(uiImage: profileImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .clipShape(Circle())
+                                .frame(width: 70, height: 70, alignment: .center)
+                        }else {
+                            Image("logo")
+                                .resizable()
+                                .frame(width: 60, height: 60, alignment: .center)
+                        }
                     }.frame(alignment: .center)
                 }
                 VStack(alignment: .leading, spacing: 12) {

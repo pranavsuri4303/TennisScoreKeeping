@@ -8,7 +8,6 @@
 
 import Firebase
 import Combine
-import CodableFirebase
 
 struct StringModel : Hashable  {
     let id = UUID.init()
@@ -54,4 +53,3 @@ class StringsListVM: ObservableObject {
     }
 }
 
-extension Timestamp: TimestampType {}

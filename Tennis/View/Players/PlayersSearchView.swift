@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PlayersView: View {
+struct PlayersSearchView: View {
     @State var showSearch = false
     @StateObject var vm = PlayersVM()
     
@@ -76,24 +76,12 @@ struct PlayersView: View {
                     }else{
                         ScrollView{
                             ForEach(vm.players, id: \.self) { player in
-                                Button(action: {}, label: {
-                                    HStack(alignment: .center){
-                                        Image("\(player.gender)")
-                                            .resizable()
-                                            .frame(width: 50, height: 50, alignment: .center)
-                                            .scaledToFit()
-                                        Text("\(player.name)")
-                                            .font(.title2)
-                                            .multilineTextAlignment(.leading)
-                                            .foregroundColor(.white)
-                                            .edgesIgnoringSafeArea(.all)
-                                        Spacer()
-                                        Image(systemName: "chevron.right")
-                                            .foregroundColor(Color("green"))
-                                    }.padding(.all)
-                                    .background(Color(.white).opacity(0.1).cornerRadius(8))
-                                    .edgesIgnoringSafeArea(.all)
-                                })
+                                NavigationLink(
+                                    destination: PlayerProfileView(),
+                                    label: {
+                                        SearchPlayerRowView(player: player)
+                                        
+                                    })
                             }
                         }.padding()
                         .edgesIgnoringSafeArea(.bottom)
@@ -104,9 +92,48 @@ struct PlayersView: View {
                 }.background(Color("bg").ignoresSafeArea(.all, edges: .all))
             }
         }
-        
-        
     }
 }
 
 
+struct SearchPlayerRowView : View {
+    let player : PlayerModel
+    @ObservedObject var searchPlayerVM : SearchPlayerVM
+    
+    init(player : PlayerModel) {
+        self.player = player
+        self.searchPlayerVM = SearchPlayerVM(player: player)
+    }
+    
+    var body: some View{
+        HStack(alignment: .center){
+            if let downloadedImage = searchPlayerVM.downloadedImage {
+                Image(uiImage: downloadedImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .clipShape(Circle())
+                    .frame(width: 50, height: 50, alignment: .center)
+            }
+            else {
+                Image("\(player.gender)")
+                    .resizable()
+                    .frame(width: 50, height: 50, alignment: .center)
+                    .scaledToFit()
+            }
+            
+            Text("\(player.name)")
+                .font(.title2)
+                .multilineTextAlignment(.leading)
+                .foregroundColor(.white)
+                .edgesIgnoringSafeArea(.all)
+            Spacer()
+            Image(systemName: "chevron.right")
+                .foregroundColor(Color("green"))
+        }.padding(.all)
+        .background(Color(.white).opacity(0.1).cornerRadius(8))
+        .edgesIgnoringSafeArea(.all)
+        .onDisappear {
+            searchPlayerVM.operation?.cancel()
+        }
+    }
+}

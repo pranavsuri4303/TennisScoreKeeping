@@ -5,18 +5,23 @@
 //  Created by Sameer Suri on 31/1/21.
 //
 
+
 import SwiftUI
 import LocalAuthentication
 import Firebase
-
+import Combine
 class PlayersVM : ObservableObject{
+    var subscriptions : Set<AnyCancellable> = []
     @Published var playerName = ""
     // For Alerts..
     @Published var alert = false
     @Published var alertMsg = ""
     @Published var players: [PlayerModel] = []
     // Firebase Stuff
+    
+  
     func searchPlayer(){
+       
         players = []
         let usersRef = Firestore.firestore().collection("users")
         let query = usersRef.whereField("email", isGreaterThanOrEqualTo: "\(playerName)")
@@ -27,18 +32,25 @@ class PlayersVM : ObservableObject{
                 self.alert.toggle()
                 self.alertMsg = err.localizedDescription
             }else{
+                self.players = []
+
                 for document in results!.documents{
-                    let name = document["name"] as? String
-                    let gender = document["gender"] as? String?
-                    let player = PlayerModel(name: name! ,gender: (((gender) ?? "Neutral") ?? "Neutral") )
-                    print(player)
+                   guard
+                    let name = document["name"] as? String,
+                    let gender = document["gender"] as? String,
+                    let imagePath = document["uid"] as? String
+                    
+                   else {return}
+                    let player = PlayerModel(name: name ,gender: gender, imagePath: imagePath + "/profileImage.jpeg" )
+                    
+                    
                     self.players.append(player)
                 }
-                print(self.players)
+               
                 
             }
         }
-        print("\(playerName)")
+        
     }
     
 }
@@ -46,4 +58,5 @@ struct PlayerModel : Hashable  {
     let id = UUID.init()
     let name : String
     let gender: String
+    let imagePath : String
 }
