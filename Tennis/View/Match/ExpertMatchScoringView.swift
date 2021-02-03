@@ -73,16 +73,16 @@ struct ExpertMatchScoringView
                         
                     }.padding()
                     Spacer()
-                    VStack(spacing: 10){
-                        Text("\(vm.p1Sets)")
-                            .font(.title3)
-                            .foregroundColor(Color("green"))
-                            .multilineTextAlignment(.leading)
-                        Text("\(vm.p2Sets)")
-                            .font(.title3)
-                            .foregroundColor(Color("green"))
-                            .multilineTextAlignment(.leading)
-                    }.padding()
+//                    VStack(spacing: 10){
+//                        Text("\(vm.p1Sets)")
+//                            .font(.title3)
+//                            .foregroundColor(Color("green"))
+//                            .multilineTextAlignment(.leading)
+//                        Text("\(vm.p2Sets)")
+//                            .font(.title3)
+//                            .foregroundColor(Color("green"))
+//                            .multilineTextAlignment(.leading)
+//                    }.padding()
                     VStack(spacing: 10){
                         Text("\(vm.p1Games)")
                             .font(.title3)

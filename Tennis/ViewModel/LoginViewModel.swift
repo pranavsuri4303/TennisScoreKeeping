@@ -63,6 +63,10 @@ class LoginViewModel : ObservableObject{
         }
     }
     
+    func signInWithGoogle() {
+        print("Sign in with google")
+    }
+    
     // Verifying User...
     
     func verifyUser(){

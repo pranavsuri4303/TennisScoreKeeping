@@ -92,10 +92,9 @@ struct AddNewStringView: View {
                         Spacer()
                         DatePicker("", selection: $vm.date)
                             .foregroundColor(.white)
-                            .background(Color("green"))
                             .labelsHidden()
                             .cornerRadius(8)
-                            .accentColor(.black)
+                            .accentColor(Color("green"))
                     }.padding(.horizontal)
                     
                     Spacer()

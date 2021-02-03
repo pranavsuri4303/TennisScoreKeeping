@@ -18,6 +18,8 @@
 		76278C1825B9E27C0005EBD4 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 76278C1725B9E27C0005EBD4 /* FirebaseFunctions */; };
 		76278C1A25B9E27C0005EBD4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 76278C1925B9E27C0005EBD4 /* FirebaseAuth */; };
 		76278C1F25B9E8060005EBD4 /* NewUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76278C1E25B9E8060005EBD4 /* NewUserView.swift */; };
+		762F87CF25C9C0EC004B46FD /* MatchesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F87CE25C9C0EC004B46FD /* MatchesListView.swift */; };
+		762F87DA25CA34FE004B46FD /* ProfileImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F87D925CA34FE004B46FD /* ProfileImagePickerView.swift */; };
 		76343B8625C2B2140061ABB5 /* StringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76343B8525C2B2140061ABB5 /* StringView.swift */; };
 		764A60C925B90E5600789373 /* TennisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A60C825B90E5600789373 /* TennisApp.swift */; };
 		764A60CB25B90E5600789373 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A60CA25B90E5600789373 /* ContentView.swift */; };
@@ -28,7 +30,6 @@
 		764A611B25B91C7300789373 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A611A25B91C7300789373 /* LoginViewModel.swift */; };
 		764A612825B91C8E00789373 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A612725B91C8E00789373 /* LoginView.swift */; };
 		764A613D25B9204B00789373 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A613C25B9204B00789373 /* Constants.swift */; };
-		764A616E25B934C200789373 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 764A616D25B934C200789373 /* GoogleService-Info.plist */; };
 		764A617625B9475000789373 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A617525B9475000789373 /* RegisterView.swift */; };
 		764A617E25B9479700789373 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A617D25B9479700789373 /* ResetPasswordView.swift */; };
 		764A618325B9493F00789373 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A618225B9493F00789373 /* RegisterVM.swift */; };
@@ -39,6 +40,7 @@
 		76AADBA625C64F6A00EB0C43 /* PlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AADBA525C64F6A00EB0C43 /* PlayersView.swift */; };
 		76AADBAC25C64FD500EB0C43 /* CodableFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = 76AADBAB25C64FD500EB0C43 /* CodableFirebase */; };
 		76AADBB425C6514800EB0C43 /* PlayersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AADBB325C6514800EB0C43 /* PlayersVM.swift */; };
+		76C952BA25C8CDEF00E6D432 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */; };
 		76D1B85825BAEE2000FE1B4B /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D1B85725BAEE2000FE1B4B /* Home.swift */; };
 		76D1B86025BAEE4700FE1B4B /* LoadingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */; };
 		76DBB01425C29C8E00F238D9 /* StringsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DBB01325C29C8E00F238D9 /* StringsVM.swift */; };
@@ -70,6 +72,8 @@
 		760719BD25BB52FB00F09A1A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		760719C225BB530600F09A1A /* AddNewStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStringView.swift; sourceTree = "<group>"; };
 		76278C1E25B9E8060005EBD4 /* NewUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserView.swift; sourceTree = "<group>"; };
+		762F87CE25C9C0EC004B46FD /* MatchesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesListView.swift; sourceTree = "<group>"; };
+		762F87D925CA34FE004B46FD /* ProfileImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePickerView.swift; sourceTree = "<group>"; };
 		76343B8525C2B2140061ABB5 /* StringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringView.swift; sourceTree = "<group>"; };
 		764A60C525B90E5500789373 /* Tennis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tennis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		764A60C825B90E5600789373 /* TennisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisApp.swift; sourceTree = "<group>"; };
@@ -86,7 +90,6 @@
 		764A611A25B91C7300789373 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		764A612725B91C8E00789373 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		764A613C25B9204B00789373 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		764A616D25B934C200789373 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		764A617525B9475000789373 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		764A617D25B9479700789373 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		764A618225B9493F00789373 /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		76AADB9D25C64F3800EB0C43 /* StringsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsListVM.swift; sourceTree = "<group>"; };
 		76AADBA525C64F6A00EB0C43 /* PlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersView.swift; sourceTree = "<group>"; };
 		76AADBB325C6514800EB0C43 /* PlayersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersVM.swift; sourceTree = "<group>"; };
+		76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76D1B85725BAEE2000FE1B4B /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenView.swift; sourceTree = "<group>"; };
 		76DBB01325C29C8E00F238D9 /* StringsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsVM.swift; sourceTree = "<group>"; };
@@ -138,6 +142,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		762F87C725C9C0C9004B46FD /* Match */ = {
+			isa = PBXGroup;
+			children = (
+				7662D3F425C391A1004544BF /* NewMatchView.swift */,
+				7662D40125C39DBE004544BF /* BasicMatchScoringView.swift */,
+				76FA5EEB25C7E457005DACE9 /* AdvancedMatchScoringView.swift */,
+				76FA5EF025C7E495005DACE9 /* ExpertMatchScoringView.swift */,
+				76FA5EF525C7E6E9005DACE9 /* ScoringViewTemplates.swift */,
+				762F87CE25C9C0EC004B46FD /* MatchesListView.swift */,
+			);
+			path = Match;
+			sourceTree = "<group>";
+		};
 		764A60BC25B90E5500789373 = {
 			isa = PBXGroup;
 			children = (
@@ -167,7 +184,6 @@
 				764A60FE25B90E8900789373 /* View */,
 				764A60CC25B90E5600789373 /* Assets.xcassets */,
 				764A60D125B90E5600789373 /* Info.plist */,
-				764A616D25B934C200789373 /* GoogleService-Info.plist */,
 				764A60CE25B90E5600789373 /* Preview Content */,
 				764A613C25B9204B00789373 /* Constants.swift */,
 			);
@@ -206,11 +222,13 @@
 				76AADBC325C6718E00EB0C43 /* Authentication */,
 				76D1B85725BAEE2000FE1B4B /* Home.swift */,
 				76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */,
+				762F87C725C9C0C9004B46FD /* Match */,
 				76AADBBF25C6717900EB0C43 /* Dashboard */,
 				760719BD25BB52FB00F09A1A /* ProfileView.swift */,
 				76AADBBB25C6716D00EB0C43 /* Strings */,
 				9FCFE65A25C354100011F8C2 /* SlideMenuePreference.swift */,
 				76AADBA525C64F6A00EB0C43 /* PlayersView.swift */,
+				76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,11 +259,6 @@
 			isa = PBXGroup;
 			children = (
 				760719B825BB52F000F09A1A /* DashboardView.swift */,
-				7662D3F425C391A1004544BF /* NewMatchView.swift */,
-				7662D40125C39DBE004544BF /* BasicMatchScoringView.swift */,
-				76FA5EEB25C7E457005DACE9 /* AdvancedMatchScoringView.swift */,
-				76FA5EF025C7E495005DACE9 /* ExpertMatchScoringView.swift */,
-				76FA5EF525C7E6E9005DACE9 /* ScoringViewTemplates.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -257,6 +270,7 @@
 				764A617D25B9479700789373 /* ResetPasswordView.swift */,
 				764A617525B9475000789373 /* RegisterView.swift */,
 				76278C1E25B9E8060005EBD4 /* NewUserView.swift */,
+				762F87D925CA34FE004B46FD /* ProfileImagePickerView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -379,8 +393,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				764A60D025B90E5600789373 /* Preview Assets.xcassets in Resources */,
-				764A616E25B934C200789373 /* GoogleService-Info.plist in Resources */,
 				764A60CD25B90E5600789373 /* Assets.xcassets in Resources */,
+				76C952BA25C8CDEF00E6D432 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +427,7 @@
 				760719BE25BB52FB00F09A1A /* ProfileView.swift in Sources */,
 				7662D3FA25C392BB004544BF /* MatchVM.swift in Sources */,
 				76343B8625C2B2140061ABB5 /* StringView.swift in Sources */,
+				762F87CF25C9C0EC004B46FD /* MatchesListView.swift in Sources */,
 				760719B925BB52F000F09A1A /* DashboardView.swift in Sources */,
 				764A618325B9493F00789373 /* RegisterVM.swift in Sources */,
 				76FA5EF125C7E495005DACE9 /* ExpertMatchScoringView.swift in Sources */,
@@ -424,6 +439,7 @@
 				76AADB9E25C64F3800EB0C43 /* StringsListVM.swift in Sources */,
 				764A617E25B9479700789373 /* ResetPasswordView.swift in Sources */,
 				764A60CB25B90E5600789373 /* ContentView.swift in Sources */,
+				762F87DA25CA34FE004B46FD /* ProfileImagePickerView.swift in Sources */,
 				76DBB01425C29C8E00F238D9 /* StringsVM.swift in Sources */,
 				764A60C925B90E5600789373 /* TennisApp.swift in Sources */,
 				76FA5EEC25C7E457005DACE9 /* AdvancedMatchScoringView.swift in Sources */,

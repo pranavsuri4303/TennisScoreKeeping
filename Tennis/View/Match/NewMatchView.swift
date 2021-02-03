@@ -92,17 +92,17 @@ struct NewMatchView: View {
                     }).pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal)
                     HStack{
-                        Text("No. of Sets")
+                        Text("1 Set: First to 6 Games")
                             .foregroundColor(Color.white)
-                        Spacer()
-                        Picker(selection: $vm.noOfSets, label: Text(""), content: {
-                                Text("1")
-                                    .foregroundColor(.white)
-                                    .multilineTextAlignment(.center)
-                                    .tag(1)
-                                Text("3").tag(3)
-                                    .foregroundColor(Color.white)
-                        }).pickerStyle(SegmentedPickerStyle())
+//                        Spacer()
+//                        Picker(selection: $vm.noOfSets, label: Text(""), content: {
+//                                Text("1")
+//                                    .foregroundColor(.white)
+//                                    .multilineTextAlignment(.center)
+//                                    .tag(1)
+//                                Text("3").tag(3)
+//                                    .foregroundColor(Color.white)
+//                        }).pickerStyle(SegmentedPickerStyle())
                     }.padding(.horizontal)
 
                     Spacer()

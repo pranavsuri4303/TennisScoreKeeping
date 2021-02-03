@@ -33,11 +33,11 @@ struct PlayersView: View {
                             }
                             
                         }else{
-                                Text("Players")
-                                    .multilineTextAlignment(.center)
-                                    .foregroundColor(.white)
-                                    .padding()
-                            }
+                            Text("Players")
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.white)
+                                .padding()
+                        }
                         HStack{
                             Button(action: {}, label: {
                                 Image("plus")
@@ -76,24 +76,24 @@ struct PlayersView: View {
                     }else{
                         ScrollView{
                             ForEach(vm.players, id: \.self) { player in
-                                HStack(alignment: .center){
-                                    Image("\(player.gender)")
-                                        .resizable()
-                                        .frame(width: 50, height: 50, alignment: .center)
-                                        .scaledToFit()
-
-
-                                    Button(action: {}, label: {
+                                Button(action: {}, label: {
+                                    HStack(alignment: .center){
+                                        Image("\(player.gender)")
+                                            .resizable()
+                                            .frame(width: 50, height: 50, alignment: .center)
+                                            .scaledToFit()
                                         Text("\(player.name)")
                                             .font(.title2)
                                             .multilineTextAlignment(.leading)
                                             .foregroundColor(.white)
                                             .edgesIgnoringSafeArea(.all)
-                                    })
-                                    Spacer()
-                                }.padding(.all)
-                                .background(Color(.white).opacity(0.1).cornerRadius(8))
-                                .edgesIgnoringSafeArea(.all)
+                                        Spacer()
+                                        Image(systemName: "chevron.right")
+                                            .foregroundColor(Color("green"))
+                                    }.padding(.all)
+                                    .background(Color(.white).opacity(0.1).cornerRadius(8))
+                                    .edgesIgnoringSafeArea(.all)
+                                })
                             }
                         }.padding()
                         .edgesIgnoringSafeArea(.bottom)

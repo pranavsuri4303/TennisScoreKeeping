@@ -29,7 +29,7 @@ struct ViewSwitcher : View {
     
     @State var currentSelectedMenuView : SlideMenuView = .dashboard
     @GestureState var gestureState : CGFloat = 0
-    @ObservedObject var isSliderMenuPresented = SliderMenuPresentationManager.shared
+    @StateObject var isSliderMenuPresented = SliderMenuPresentationManager.shared
     var body: some View{
         
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
@@ -38,6 +38,7 @@ struct ViewSwitcher : View {
             case .string : StringView()
             case .dashboard : DashboardView()
             case .players : PlayersView()
+            case .matches : MatchesHistoryView()
             case .none: HomePage()
                 
             }
@@ -86,15 +87,6 @@ struct ViewSwitcher : View {
                 
             }
             
-           
-       
-                
-            
-          
-            
-        
-        // adding gesture or drag feature...
-               
         
     }
 }
@@ -167,6 +159,7 @@ struct SlideMenu : View {
                         .frame(height: nil)
                     Spacer()
                     Button(action: {
+                        SliderMenuPresentationManager.shared.isPresented.toggle()
                         try! Auth.auth().signOut()
                         withAnimation{logged = false}
                     }) {
@@ -256,6 +249,7 @@ struct MenuButton : View {
                     .renderingMode(.template)
                     .frame(width: 24, height: 24)
                     .foregroundColor(.gray)
+                    .aspectRatio(contentMode: .fill)
             }else{
                 Image(title)
                     .resizable()
@@ -282,7 +276,6 @@ struct MenuButton : View {
         
     }
 }
-
 
 struct SliderMenuTransition : AnimatableModifier {
     var xOffset : CGFloat

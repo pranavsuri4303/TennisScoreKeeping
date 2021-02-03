@@ -11,27 +11,58 @@ struct NewUserView: View {
     @Binding var isPresented : Bool
     @StateObject var vm : RegisterVM
     @State var startAnimate = false
+    @State var isPickerPresented : Bool  = false
+    @State var pickedUIImage : UIImage? = nil
     
     var body: some View {
         ZStack{
             VStack{
                 Spacer()
-                if vm.gender == "Male"{
-                    Image("Male")
+                Group{
+                if let pickedUIImage = pickedUIImage {
+               
+                    Image(uiImage: pickedUIImage)
                         .resizable()
+                        .clipShape(Circle())
                         .aspectRatio(contentMode: .fit)
-                        //Dynamic Frame...
-                        .padding([.leading, .bottom, .trailing],35)
-                        .padding()
-                }else{
-                    Image("Female")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        //Dynamic Frame...
-                        .padding([.leading, .bottom, .trailing],35)
-                        .padding()
+                    
+                        
+        
+                        
                 }
+                else {
+                   
+                    if vm.gender == "Male"{
+                        Circle()
+                            .fill(Color.white.opacity(0.2))
+                            .overlay(Image("Male")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        //Dynamic Frame...
+                                        .padding([.leading, .bottom, .trailing],35)
+                                        .padding())
                 
+                    }else{
+                        Circle()
+                            .fill(Color.white.opacity(0.2))
+                            .overlay(Image("Female")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        //Dynamic Frame...
+                                        .padding([.leading, .bottom, .trailing],35)
+                                        .padding())
+                    }
+                        
+                    
+    
+                }
+                }
+                .onTapGesture {
+                    isPickerPresented.toggle()
+                }
+                .sheet(isPresented: $isPickerPresented, content: {
+                    ImagePicker(selectedImage: $pickedUIImage)
+                })
                 HStack{
                     
                     VStack(alignment: .leading, spacing: 12, content: {
@@ -101,8 +132,13 @@ struct NewUserView: View {
                 HStack(spacing: 15){
                     
                     Button(action: {
+                        
                         isPresented.toggle()
-                        vm.createUser()
+                        DispatchQueue.main.async {
+                            
+                            vm.configProfileImageDataFrom(UIImage: pickedUIImage)
+                            vm.createUser()
+                        }
                         
                     }, label: {
                         Text("Create account")
@@ -135,6 +171,15 @@ struct NewUserView: View {
         })
         
         
+        
     }
+}
+
+struct Register_Preview : PreviewProvider {
+    static var previews: some View {
+        NewUserView(isPresented: .constant(false), vm: RegisterVM.init())
+    }
+    
+    
 }
 

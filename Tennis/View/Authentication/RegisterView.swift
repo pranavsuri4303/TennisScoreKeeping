@@ -16,6 +16,8 @@ struct RegisterView: View {
     @State var newUserViewPresented = false
     
     
+    
+    
     @State var startAnimate = false
     var body: some View {
 
@@ -85,6 +87,7 @@ struct RegisterView: View {
                     HStack(spacing: 15){
                         
                         Button(action: {
+                            
                             newUserViewPresented.toggle()
                             
                         }, label: {
@@ -156,7 +159,6 @@ struct RegisterView: View {
         
         
     }
-
 
 
 

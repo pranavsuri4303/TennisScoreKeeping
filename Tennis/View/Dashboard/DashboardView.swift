@@ -36,4 +36,18 @@ struct DashboardView: View {
         }
     }
 }
+struct Stats : Identifiable {
+    
+    var id = UUID().uuidString
+    var title : String
+    var value : String
+    var color : Color
+}
+var salesData = [
 
+    Stats(title: "Matches Played", value: "18,789", color: Color.orange),
+    Stats(title: "Matches won", value: "1,089", color: Color.red),
+    Stats(title: "Matches lost", value: "8,500", color: Color.blue),
+    Stats(title: "Win %", value: "2,000", color: Color.pink),
+    Stats(title: "Cancelled", value: "1,700", color: Color.purple),
+]
