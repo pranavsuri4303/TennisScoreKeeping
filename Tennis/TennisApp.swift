@@ -13,7 +13,8 @@ struct TennisApp: App {
     @UIApplicationDelegateAdaptor(Delegate.self) var delegate
 
     var body: some Scene {
-        //Testh
+        //Line removed here
+        //Test
         WindowGroup {
             ContentView()
         }
