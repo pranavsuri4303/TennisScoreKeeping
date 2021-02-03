@@ -105,7 +105,7 @@ struct SearchPlayerRowView : View {
     
     var body: some View{
         NavigationLink(
-            destination: Text("Destination"),
+            destination: PlayerProfileView(playerModel: .init(name: player.name, gender: player.gender, imagePath: "" , downloadedImage: searchPlayerVM.downloadedImage)) ,
             label: {
                 HStack(alignment: .center){
                     if let downloadedImage = searchPlayerVM.downloadedImage {

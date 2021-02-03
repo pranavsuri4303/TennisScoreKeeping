@@ -18,23 +18,34 @@ struct PlayerProfileView: View {
                     // Type 2 Parollax....
                     
                     if reader.frame(in: .global).minY > -480 {
-                        Image("Male")
-                            .resizable()
-                            .padding(.top,75)
-                            .aspectRatio(contentMode: .fill)
-                            // moving View Up....
-                            .offset(y: -reader.frame(in: .global).minY)
-                            // going to add parallax effect....
-                            .frame(width: UIScreen.main.bounds.width, height:  reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 480 : 480)
+                        if let playerImage = playerModel.downloadedImage {
+                            Image(uiImage: playerImage)
+                                .resizable()
+                                .padding(.top,75)
+                                .aspectRatio(contentMode: .fill)
+                                // moving View Up....
+                                .offset(y: -reader.frame(in: .global).minY)
+                                // going to add parallax effect....
+                                .frame(width: UIScreen.main.bounds.width, height:  reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 480 : 480)
+                        }else {
+                            Image(playerModel.gender == "Male" ? "Male":"Female" )
+                                .resizable()
+                                .padding(.top,75)
+                                .aspectRatio(contentMode: .fill)
+                                // moving View Up....
+                                .offset(y: -reader.frame(in: .global).minY)
+                                // going to add parallax effect....
+                                .frame(width: UIScreen.main.bounds.width, height:  reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 480 : 480)
+                        }
                     }
                 }
                 .frame(height: 480)
                 VStack(alignment: .leading,spacing: 15){
-                    Text("Player Name")
+                    Text(playerModel.name)
                         .font(.system(size: 35, weight: .bold))
                         .foregroundColor(.white)
                     
-                    Text("Player Gender")
+                    Text(playerModel.gender)
                         .font(.caption)
                         .foregroundColor(.white)
                         .padding(.top,5)
