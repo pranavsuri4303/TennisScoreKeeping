@@ -59,4 +59,5 @@ struct PlayerModel : Hashable  {
     let name : String
     let gender: String
     let imagePath : String
+    var downloadedImage : UIImage? = nil 
 }

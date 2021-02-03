@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlayerProfileView: View {
-    
+    let playerModel : PlayerModel
     var body: some View {
         NavigationView{
             ScrollView(.vertical, showsIndicators: false, content: {
@@ -63,3 +63,9 @@ struct PlayerProfileView: View {
     }
 }
 
+
+struct PlaterprofileView_Preview : PreviewProvider {
+    static var previews: some View {
+        PlayerProfileView(playerModel: .init(name: "Majid ElKpeer", gender: "Male", imagePath: ""))
+    }
+}

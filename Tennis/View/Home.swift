@@ -16,6 +16,9 @@ class DownloadedProfileImage : ObservableObject {
 struct Home: View {
     var body: some View {
         ViewSwitcher()
+            .onAppear(perform: {
+                SliderMenueVM.init().loadImageFromStorage()
+            })
     }
 }
 
@@ -99,7 +102,7 @@ struct SlideMenu : View {
     @Binding var currentSelectedView : SlideMenuView
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
     @ObservedObject var sliderMenueVM = DownloadedProfileImage.shared
-    let _x = SliderMenueVM()
+    let sliderVM = SliderMenueVM()
     @AppStorage("status") var logged = false
     
     
@@ -164,6 +167,7 @@ struct SlideMenu : View {
                         SliderMenuPresentationManager.shared.isPresented.toggle()
                         try! Auth.auth().signOut()
                         withAnimation{logged = false}
+                        DownloadedProfileImage.shared.image = nil
                     }) {
                         Text("Log out")
                             .foregroundColor(Color("green"))
@@ -185,7 +189,7 @@ struct SlideMenu : View {
             
             Spacer(minLength: 0)
         }
-        
+
             
         }
         

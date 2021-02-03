@@ -76,15 +76,12 @@ struct PlayersSearchView: View {
                     }else{
                         ScrollView{
                             ForEach(vm.players, id: \.self) { player in
-                                NavigationLink(
-                                    destination: PlayerProfileView(),
-                                    label: {
                                         SearchPlayerRowView(player: player)
-                                        
-                                    })
-                            }
+                                 
                         }.padding()
                         .edgesIgnoringSafeArea(.bottom)
+                        }
+                        
                     }
                     
                     
@@ -98,6 +95,7 @@ struct PlayersSearchView: View {
 
 struct SearchPlayerRowView : View {
     let player : PlayerModel
+    @State var isNavigationLinkState : Bool = false
     @ObservedObject var searchPlayerVM : SearchPlayerVM
     
     init(player : PlayerModel) {
@@ -106,34 +104,38 @@ struct SearchPlayerRowView : View {
     }
     
     var body: some View{
-        HStack(alignment: .center){
-            if let downloadedImage = searchPlayerVM.downloadedImage {
-                Image(uiImage: downloadedImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .clipShape(Circle())
-                    .frame(width: 50, height: 50, alignment: .center)
-            }
-            else {
-                Image("\(player.gender)")
-                    .resizable()
-                    .frame(width: 50, height: 50, alignment: .center)
-                    .scaledToFit()
-            }
-            
-            Text("\(player.name)")
-                .font(.title2)
-                .multilineTextAlignment(.leading)
-                .foregroundColor(.white)
+        NavigationLink(
+            destination: Text("Destination"),
+            label: {
+                HStack(alignment: .center){
+                    if let downloadedImage = searchPlayerVM.downloadedImage {
+                        Image(uiImage: downloadedImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(Circle())
+                            .frame(width: 50, height: 50, alignment: .center)
+                    }
+                    else {
+                        Image("\(player.gender)")
+                            .resizable()
+                            .frame(width: 50, height: 50, alignment: .center)
+                            .scaledToFit()
+                    }
+                    
+                    Text("\(player.name)")
+                        .font(.title2)
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(.white)
+                        .edgesIgnoringSafeArea(.all)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(Color("green"))
+                }.padding(.all)
+                .background(Color(.white).opacity(0.1).cornerRadius(8))
                 .edgesIgnoringSafeArea(.all)
-            Spacer()
-            Image(systemName: "chevron.right")
-                .foregroundColor(Color("green"))
-        }.padding(.all)
-        .background(Color(.white).opacity(0.1).cornerRadius(8))
-        .edgesIgnoringSafeArea(.all)
-        .onDisappear {
-            searchPlayerVM.operation?.cancel()
-        }
+                .onDisappear {
+                    searchPlayerVM.operation?.cancel()
+                }
+            })
     }
 }
