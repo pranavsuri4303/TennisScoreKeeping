@@ -17,6 +17,7 @@ struct BasicServerView: View {
                         Button(action: {
                             vm.serveIn.toggle()
                             vm.pointWon(by: vm.server, deuce: vm.deuceOrNo, servingPlayer: vm.server)
+                            
                         }, label: {
                             Spacer()
                             Text("POINT WON")
@@ -88,10 +89,10 @@ struct BasicServerView: View {
                     }
                     VStack(){
                         Button(action: {
+                            vm.aceCounter(server: vm.server)
                             vm.pointWon(by: vm.server, deuce: vm.deuceOrNo, servingPlayer: vm.server)
                         }, label: {
                             Spacer()
-                            
                             Text("ACE")
                                 .font(.headline)
                                 .foregroundColor(.white)
@@ -144,20 +145,22 @@ struct AdvancedServerView: View {
         HStack{
             if vm.serveIn {
                 HStack{
-                    VStack(){
-                        Button(action: {
-                            print("Winner")
-                        }, label: {
+                    
+                    Button(action: {
+                        print("Winner")
+                    }, label: {
+                        VStack(){
                             Spacer()
                             Text("WINNER")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .multilineTextAlignment(.center)
                             Spacer()
-                        })
-                        .edgesIgnoringSafeArea(.all)
-                    }.frame(height: 100, alignment: .center)
-                    .background(Color(.orange).cornerRadius(8))
+                        }.frame(height: 100, alignment: .center)
+                        .background(Color(.orange).cornerRadius(8))
+                    })
+                    .edgesIgnoringSafeArea(.all)
+                    
                     VStack(){
                         Button(action: {
                             print("Forced Error")
@@ -341,7 +344,7 @@ struct AdvancedNonServerView: View {
                 }.frame(height: 100, alignment: .center)
                 .background(Color(.orange).cornerRadius(8))
             }
-
+            
         }.padding(.horizontal)
     }
 }

@@ -48,6 +48,7 @@ struct ViewSwitcher : View {
             case .players : PlayersSearchView()
             case .matches : MatchesHistoryView()
             case .none: HomePage()
+            case .friends: Text("Friends")
             }
             
             

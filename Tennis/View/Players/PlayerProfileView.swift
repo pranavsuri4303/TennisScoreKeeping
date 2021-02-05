@@ -44,31 +44,39 @@ struct PlayerProfileView: View {
                     Text(playerModel.name)
                         .font(.system(size: 35, weight: .bold))
                         .foregroundColor(.white)
-                    
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(1)
                     Text(playerModel.gender)
-                        .font(.caption)
+                        .font(.subheadline)
                         .foregroundColor(.white)
-                        .padding(.top,5)
                     HStack{
-                        Text("")
                         Spacer()
+                        Button(action: {
+                        }, label: {
+                            Text("Add Friend")
+                                .fontWeight(.heavy)
+                                .foregroundColor(.black)
+                                .padding(.vertical)
+                                .frame(width: UIScreen.main.bounds.width - 150)
+                                .background(Color("green"))
+                                .clipShape(Capsule())
+                        }).padding()
+                        Spacer() 
                     }
-                    
-
-                    
                 }
                 .padding(.top, 25)
                 .padding(.horizontal)
                 .background(Color("bg"))
                 .cornerRadius(20)
-                .offset(y: 75)
+                .offset(y: -30)
                 .edgesIgnoringSafeArea(.horizontal)
             })
             .edgesIgnoringSafeArea(.all)
             .background(Color("bg").edgesIgnoringSafeArea(.all))
             .navigationBarHidden(true)
+
         }
-        .navigationTitle(Text("Player name"))
+        .navigationTitle(Text("\(playerModel.name)"))
         .foregroundColor(Color("bg"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -77,6 +85,6 @@ struct PlayerProfileView: View {
 
 struct PlaterprofileView_Preview : PreviewProvider {
     static var previews: some View {
-        PlayerProfileView(playerModel: .init(name: "Majid ElKpeer", gender: "Male", imagePath: ""))
+        PlayerProfileView(playerModel: .init(name: "Majid ElKpeer", gender: "Male", imagePath: "", nationality: "Indian"))
     }
 }

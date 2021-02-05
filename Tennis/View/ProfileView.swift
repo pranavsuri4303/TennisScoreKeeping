@@ -95,7 +95,8 @@ struct ProfileView: View {
                             .foregroundColor(Color.white)
                     }
                     
-                    
+
+
                 }
                 .padding(.top, 25)
                 .padding(.horizontal)

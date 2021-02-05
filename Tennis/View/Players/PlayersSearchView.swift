@@ -30,6 +30,7 @@ struct PlayersSearchView: View {
                                         vm.searchPlayer()
                                     })
                                     .foregroundColor(.white)
+                                    .accentColor(.white)
                             }
                             
                         }else{
@@ -76,10 +77,10 @@ struct PlayersSearchView: View {
                     }else{
                         ScrollView{
                             ForEach(vm.players, id: \.self) { player in
-                                        SearchPlayerRowView(player: player)
-                                 
-                        }.padding()
-                        .edgesIgnoringSafeArea(.bottom)
+                                SearchPlayerRowView(player: player)
+                                
+                            }.padding()
+                            .edgesIgnoringSafeArea(.bottom)
                         }
                         
                     }
@@ -105,7 +106,7 @@ struct SearchPlayerRowView : View {
     
     var body: some View{
         NavigationLink(
-            destination: PlayerProfileView(playerModel: .init(name: player.name, gender: player.gender, imagePath: "" , downloadedImage: searchPlayerVM.downloadedImage)) ,
+            destination: PlayerProfileView(playerModel: .init(name: player.name, gender: player.gender, imagePath: "", nationality: player.nationality , downloadedImage: searchPlayerVM.downloadedImage)) ,
             label: {
                 HStack(alignment: .center){
                     if let downloadedImage = searchPlayerVM.downloadedImage {
@@ -134,7 +135,7 @@ struct SearchPlayerRowView : View {
                 .background(Color(.white).opacity(0.1).cornerRadius(8))
                 .edgesIgnoringSafeArea(.all)
                 .onDisappear {
-                   
+                    
                 }
             })
     }

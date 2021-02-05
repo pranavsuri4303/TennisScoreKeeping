@@ -13,49 +13,45 @@ struct NewUserView: View {
     @State var startAnimate = false
     @State var isPickerPresented : Bool  = false
     @State var pickedUIImage : UIImage? = nil
-    
+    @State var country : String? = nil
+    @State var arrCountry = ["India","USA","France"] //Here Add Your data
+    @State var selectionIndex = 0
     var body: some View {
         ZStack{
             VStack{
                 Spacer()
                 Group{
-                if let pickedUIImage = pickedUIImage {
-               
-                    Image(uiImage: pickedUIImage)
-                        .resizable()
-                        .clipShape(Circle())
-                        .aspectRatio(contentMode: .fit)
-                    
+                    if let pickedUIImage = pickedUIImage {
                         
-        
-                        
-                }
-                else {
-                   
-                    if vm.gender == "Male"{
-                        Circle()
-                            .fill(Color.white.opacity(0.2))
-                            .overlay(Image("Male")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        //Dynamic Frame...
-                                        .padding([.leading, .bottom, .trailing],35)
-                                        .padding())
-                
-                    }else{
-                        Circle()
-                            .fill(Color.white.opacity(0.2))
-                            .overlay(Image("Female")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        //Dynamic Frame...
-                                        .padding([.leading, .bottom, .trailing],35)
-                                        .padding())
+                        Image(uiImage: pickedUIImage)
+                            .resizable()
+                            .clipShape(Circle())
+                            .aspectRatio(contentMode: .fit)
                     }
+                    else {
                         
-                    
-    
-                }
+                        if vm.gender == "Male"{
+                            Circle()
+                                .fill(Color.blue.opacity(1))
+                                .overlay(Image("Male")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            //Dynamic Frame...
+                                            .padding([.all],5))
+
+                        }else{
+                            Circle()
+                                .fill(Color.white.opacity(1))
+                                .overlay(Image("Female")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            //Dynamic Frame...
+                                            .padding([.all],5))
+                        }
+                        
+                        
+                        
+                    }
                 }
                 .onTapGesture {
                     isPickerPresented.toggle()
@@ -99,7 +95,6 @@ struct NewUserView: View {
                         .font(.title2)
                         .foregroundColor(.white)
                         .frame(width: 35)
-                    
                     TextField("Year of Birth", text: $vm.yob)
                         .autocapitalization(.none)
                         .keyboardType(.numberPad)
@@ -113,20 +108,19 @@ struct NewUserView: View {
                         .font(.title2)
                         .foregroundColor(.white)
                         .frame(width: 35)
-                    
-                    TextField("Nationality", text: $vm.nationality)
-                        .autocapitalization(.none)
+                    TextFieldWithInputView(data: Nationalities().list, placeholder: "Select your country", selectionIndex: self.$selectionIndex, selectedText: $vm.nationality)
+                        .frame(height: 0)
                 }
                 .padding()
-                .background(Color.white.opacity(vm.nationality == "" ? 0.02 : 0.12))
+                .background(Color.white.opacity(vm.nationality == nil ? 0.02 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 Picker(selection: $vm.gender, label: Text(""), content: {
-                        Text("Male").tag("Male")
-                            .foregroundColor(Color.white)
-                        Text("Female").foregroundColor(Color.white).tag("Female")
+                    Text("Male").tag("Male")
+                        .foregroundColor(Color.white)
+                    Text("Female").foregroundColor(Color.white).tag("Female")
                 })
-                    .pickerStyle(SegmentedPickerStyle())
+                .pickerStyle(SegmentedPickerStyle())
                 .padding(.all)
                 
                 HStack(spacing: 15){
@@ -183,3 +177,256 @@ struct Register_Preview : PreviewProvider {
     
 }
 
+struct Nationalities {
+    let list = [
+        "Afghanistan",
+        "Albania",
+        "Algeria",
+        "American Samoa",
+        "Andorra",
+        "Angola",
+        "Anguilla",
+        "Antarctica",
+        "Antigua and Barbuda",
+        "Argentina",
+        "Armenia",
+        "Aruba",
+        "Australia",
+        "Austria",
+        "Azerbaijan",
+        "Bahamas",
+        "Bahrain",
+        "Bangladesh",
+        "Barbados",
+        "Belarus",
+        "Belgium",
+        "Belize",
+        "Benin",
+        "Bermuda",
+        "Bhutan",
+        "Bolivia (Plurinational State of)",
+        "Bonaire, Sint Eustatius and Saba",
+        "Bosnia and Herzegovina",
+        "Botswana",
+        "Bouvet Island",
+        "Brazil",
+        "British Indian Ocean Territory",
+        "Brunei Darussalam",
+        "Bulgaria",
+        "Burkina Faso",
+        "Burundi",
+        "Cabo Verde",
+        "Cambodia",
+        "Cameroon",
+        "Canada",
+        "Cayman Islands",
+        "Central African Republic",
+        "Chad",
+        "Chile",
+        "China",
+        "Christmas Island",
+        "Cocos Islands",
+        "Colombia",
+        "Comoros",
+        "The Democratic Republic of Congo",
+        "Congo",
+        "Cook Islands",
+        "Costa Rica",
+        "Croatia",
+        "Cuba",
+        "Curaçao",
+        "Cyprus",
+        "Czechia",
+        "Côte d'Ivoire",
+        "Denmark",
+        "Djibouti",
+        "Dominica",
+        "The Dominican Republic",
+        "Ecuador",
+        "Egypt",
+        "El Salvador",
+        "Equatorial Guinea",
+        "Eritrea",
+        "Estonia",
+        "Eswatini",
+        "Ethiopia",
+        "Falkland Islands",
+        "Faroe Islands",
+        "Fiji",
+        "Finland",
+        "France",
+        "French Guiana",
+        "French Polynesia",
+        "French Southern Territories",
+        "Gabon",
+        "Gambia",
+        "Georgia",
+        "Germany",
+        "Ghana",
+        "Gibraltar",
+        "Greece",
+        "Greenland",
+        "Grenada",
+        "Guadeloupe",
+        "Guam",
+        "Guatemala",
+        "Guernsey",
+        "Guinea",
+        "Guinea-Bissau",
+        "Guyana",
+        "Haiti",
+        "Heard Island and McDonald Islands",
+        "Holy See",
+        "Honduras",
+        "Hong Kong",
+        "Hungary",
+        "Iceland",
+        "India",
+        "Indonesia",
+        "Iran",
+        "Iraq",
+        "Ireland",
+        "Isle of Man",
+        "Israel",
+        "Italy",
+        "Jamaica",
+        "Japan",
+        "Jersey",
+        "Jordan",
+        "Kazakhstan",
+        "Kenya",
+        "Kiribati",
+        "DPRK",
+        "Korea",
+        "Kuwait",
+        "Kyrgyzstan",
+        "Lao People's Democratic Republic",
+        "Latvia",
+        "Lebanon",
+        "Lesotho",
+        "Liberia",
+        "Libya",
+        "Liechtenstein",
+        "Lithuania",
+        "Luxembourg",
+        "Macao",
+        "Madagascar",
+        "Malawi",
+        "Malaysia",
+        "Maldives",
+        "Mali",
+        "Malta",
+        "Marshall Islands",
+        "Martinique",
+        "Mauritania",
+        "Mauritius",
+        "Mayotte",
+        "Mexico",
+        "Micronesia",
+        "Moldova",
+        "Monaco",
+        "Mongolia",
+        "Montenegro",
+        "Montserrat",
+        "Morocco",
+        "Mozambique",
+        "Myanmar",
+        "Namibia",
+        "Nauru",
+        "Nepal",
+        "Netherlands",
+        "New Caledonia",
+        "New Zealand",
+        "Nicaragua",
+        "Niger (the)",
+        "Nigeria",
+        "Niue",
+        "Norfolk Island",
+        "Northern Mariana Islands",
+        "Norway",
+        "Oman",
+        "Pakistan",
+        "Palau",
+        "Palestine",
+        "Panama",
+        "Papua New Guinea",
+        "Paraguay",
+        "Peru",
+        "Philippines",
+        "Pitcairn",
+        "Poland",
+        "Portugal",
+        "Puerto Rico",
+        "Qatar",
+        "Republic of North Macedonia",
+        "Romania",
+        "Russian Federation",
+        "Rwanda",
+        "Réunion",
+        "Saint Barthélemy",
+        "Saint Helena, Ascension and Tristan da Cunha",
+        "Saint Kitts and Nevis",
+        "Saint Lucia",
+        "Saint Martin",
+        "Saint Pierre and Miquelon",
+        "Saint Vincent and the Grenadines",
+        "Samoa",
+        "San Marino",
+        "Sao Tome and Principe",
+        "Saudi Arabia",
+        "Senegal",
+        "Serbia",
+        "Seychelles",
+        "Sierra Leone",
+        "Singapore",
+        "Sint Maarten",
+        "Slovakia",
+        "Slovenia",
+        "Solomon Islands",
+        "Somalia",
+        "South Africa",
+        "South Georgia and the South Sandwich Islands",
+        "South Sudan",
+        "Spain",
+        "Sri Lanka",
+        "Sudan (the)",
+        "Suriname",
+        "Svalbard and Jan Mayen",
+        "Sweden",
+        "Switzerland",
+        "Syrian Arab Republic",
+        "Taiwan",
+        "Tajikistan",
+        "Tanzania",
+        "Thailand",
+        "Timor-Leste",
+        "Togo",
+        "Tokelau",
+        "Tonga",
+        "Trinidad and Tobago",
+        "Tunisia",
+        "Turkey",
+        "Turkmenistan",
+        "Turks and Caicos Islands",
+        "Tuvalu",
+        "Uganda",
+        "Ukraine",
+        "United Arab Emirates",
+        "United Kingdom of Great Britain and Northern Ireland",
+        "United States Minor Outlying Islands",
+        "United States of America",
+        "Uruguay",
+        "Uzbekistan",
+        "Vanuatu",
+        "Venezuela (Bolivarian Republic of)",
+        "Viet Nam",
+        "Virgin Islands (British)",
+        "Virgin Islands",
+        "Wallis and Futuna",
+        "Western Sahara",
+        "Yemen",
+        "Zambia",
+        "Zimbabwe",
+        "Åland Islands"
+    ]
+}

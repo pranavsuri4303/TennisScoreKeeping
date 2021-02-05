@@ -67,8 +67,8 @@ struct StringView: View {
                             .foregroundColor(.white)
                             .cornerRadius(8)
                         }
-                    }.padding()
-                    
+                    }.padding(.horizontal)
+                    .edgesIgnoringSafeArea(.bottom)
                     
                     
                     Spacer()

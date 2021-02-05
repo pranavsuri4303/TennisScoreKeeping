@@ -21,29 +21,24 @@ final class MatchVM : ObservableObject{
     @Published var p1Games = 0
     @Published var p1Sets = 0
     // Player 2
-    @Published var p2Name: String = ""
+    @Published var p2Name = ""
     @Published var p2Pts = 0
     @Published var p2Games = 0
     @Published var p2Sets = 0
     // Serve
     @Published var serve = Serve.firstServe
     @Published var serveIn = false
-    @Published var doubleFaults = 0
-    @Published var totalServes = 0
-    @Published var totalFirstServes = 0
-    @Published var firstServesIn = 0
-    @Published var secondServesIn = 0
-    @Published var totalSecondServes = 0
+
     // For Alerts..
     @Published var alert = false
     @Published var alertMsg = ""
     // Loading Screen...
     @Published var isLoading = false
-    // Stats P1
-    @Published var p1TotalPts = 0
-    @Published var p2TotalPts = 0
-    @Published var p1DoubleFaults = 0
-    @Published var p2DoubleFaults = 0
+    
+    // Stats
+    @Published var p1Stats = PlayerStats()
+    @Published var p2Stats = PlayerStats()
+    
     
     func pointWon(by: Player, deuce: Deuce, servingPlayer: Player){
         switch by {
@@ -53,7 +48,7 @@ final class MatchVM : ObservableObject{
         case .player2:
             self.p2Pts += 1
             checkIfGameIsOver(p1: p1Pts, p2: p2Pts, deuce: deuce, servingPlayer: servingPlayer)
-
+            
         }
     }
     func resetPts() {
@@ -108,12 +103,33 @@ final class MatchVM : ObservableObject{
     func checkIfMatchIsOver(p1: Int, p2: Int) {
         if p1 == 6 || p2 == 6 {
             if p1>p2 {
+                resetPts()
+                resetGames()
                 print("Player 1 wins")
             }else if p1<p2 {
                 print("Player 2 wins")
+                resetPts()
+                resetGames()
             }
         }
     }
+    func aceCounter(server: Player) {
+        switch server {
+        case .player1:
+            p1Stats.aces += 1
+            print("Player 1 aces : \(p1Stats.aces)")
+        case .player2:
+            p2Stats.aces += 1
+            print("Player 2 aces : \(p2Stats.aces)")
+        }
+    }
+    func firstServe() {
+    }
+    func secondServe() {
+    }
+    func doubleFault() {
+    }
+    
     
     func ptsScoreTranslator(pts: Int) -> String {
         switch pts {
@@ -158,3 +174,16 @@ enum Serve {
     case firstServe
     case secondServe
 }
+
+struct PlayerStats {
+    var name = ""
+    var aces = 0
+    var totalPts = 0
+    var doubleFaults = 0
+    var totalServes = 0
+    var totalFirstServes = 0
+    var firstServesIn = 0
+    var totalSecondServes = 0
+    var secondServesIn = 0
+}
+

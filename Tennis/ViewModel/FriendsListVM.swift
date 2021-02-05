@@ -1,16 +1,15 @@
 //
-//  PLayersVM.swift
+//  FriendsListVM.swift
 //  Tennis
 //
-//  Created by Sameer Suri on 31/1/21.
+//  Created by Sameer Suri on 5/2/21.
 //
-
 
 import SwiftUI
 import LocalAuthentication
 import Firebase
 import Combine
-class PlayersVM : ObservableObject{
+class FriendsListVM : ObservableObject{
     var subscriptions : Set<AnyCancellable> = []
     @Published var playerName = ""
     // For Alerts..
@@ -39,27 +38,14 @@ class PlayersVM : ObservableObject{
                         let name = document["name"] as? String,
                         let gender = document["gender"] as? String,
                         let imagePath = document["uid"] as? String,
-                        let nationality = document["nationality"] as? String
+                    let nationality = document["nationality"] as? String
+
+                    
                     else {return}
-                    let player = PlayerModel(name: name ,gender: gender, imagePath: imagePath + "/profileImage.jpeg", nationality: nationality )
-                    
-                    
+                    let player = PlayerModel(name: name ,gender: gender, imagePath: imagePath + "/profileImage.jpeg", nationality: nationality)
                     self.players.append(player)
                 }
-                
-                
             }
         }
-        
     }
-    
-}
-struct PlayerModel : Hashable  {
-    let id = UUID.init()
-    let name : String
-    let gender: String
-    let imagePath : String
-    let nationality: String
-    var downloadedImage : UIImage? = nil
-    
 }
