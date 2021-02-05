@@ -42,11 +42,11 @@ struct BasicMatchScoringView: View {
                     VStack(alignment: .leading, spacing: 10){
                         VStack{
                             HStack{
-                                Text("\(vm.p1Name)")
+                                Text("\(vm.P1.name)")
                                     .font(.headline)
                                     .foregroundColor(.white)
                                     .multilineTextAlignment(.leading)
-                                if vm.server == .player1 {
+                                if vm.server == .p1 {
                                     Image(systemName: "bolt.fill")
                                         .foregroundColor(Color("green"))
                                 } else {
@@ -58,11 +58,11 @@ struct BasicMatchScoringView: View {
                         }
                         VStack{
                             HStack{
-                                Text("\(vm.p2Name)")
+                                Text("\(vm.P2.name)")
                                     .font(.headline)
                                     .foregroundColor(.white)
                                     .multilineTextAlignment(.leading)
-                                if vm.server == .player2 {
+                                if vm.server == .p2 {
                                     Image(systemName: "bolt.fill")
                                         .foregroundColor(Color("green"))
                                 } else {
@@ -87,38 +87,38 @@ struct BasicMatchScoringView: View {
 //                            .multilineTextAlignment(.leading)
 //                    }.padding()
                     VStack(spacing: 10){
-                        Text("\(vm.p1Games)")
+                        Text("\(vm.P1.games)")
                             .font(.headline)
                             .foregroundColor(Color("green"))
                             .multilineTextAlignment(.leading)
-                        Text("\(vm.p2Games)")
+                        Text("\(vm.P2.games)")
                             .font(.headline)
                             .foregroundColor(Color("green"))
                             .multilineTextAlignment(.leading)
                     }.padding()
                     VStack(spacing: 10){
-                        Text("\(vm.ptsScoreTranslator(pts: vm.p1Pts))")
+                        Text("\(vm.ptsToScore(pts: vm.P1.pts))")
                             .font(.headline)
                             .foregroundColor(Color("green"))
                             .multilineTextAlignment(.leading)
-                        Text("\(vm.ptsScoreTranslator(pts: vm.p2Pts))")
+                        Text("\(vm.ptsToScore(pts: vm.P2.pts))")
                             .font(.headline)
                             .foregroundColor(Color("green"))
                             .multilineTextAlignment(.leading)
                     }.padding()
                     
-                }.background(Color(.white).opacity(0.1).cornerRadius(8))
+                }.background(Color("White").opacity(0.1).cornerRadius(8))
                 .padding()
             }
             VStack{
                 VStack{
                     HStack{
-                        Text("\(vm.p1Name)")
+                        Text("\(vm.P1.name)")
                             .font(.title3)
                             .foregroundColor(.white)
                             .multilineTextAlignment(.leading)
                         Spacer()
-                        if vm.server == .player1 {
+                        if vm.server == .p1 {
                             Image(systemName: "bolt.fill")
                                 .foregroundColor(Color("green"))
                         } else {
@@ -129,9 +129,9 @@ struct BasicMatchScoringView: View {
                         
                     }.padding()
                     
-                }.background(Color(.white).opacity(0.1).cornerRadius(8))
+                }.background(Color("White").opacity(0.1).cornerRadius(8))
                 .padding(.horizontal)
-                if vm.server == .player1{
+                if vm.server == .p1{
                     BasicServerView(vm: vm)
                 }else{
                     BasicNonServerView(vm: vm)
@@ -140,12 +140,12 @@ struct BasicMatchScoringView: View {
             
             VStack{
                 HStack{
-                    Text("\(vm.p2Name)")
+                    Text("\(vm.P2.name)")
                         .font(.title3)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.leading)
                     Spacer()
-                    if vm.server == .player2 {
+                    if vm.server == .p2 {
                         Image(systemName: "bolt.fill")
                             .foregroundColor(Color("green"))
                     } else {
@@ -154,9 +154,9 @@ struct BasicMatchScoringView: View {
                             .hidden()
                     }
                 }.padding()
-            }.background(Color(.white).opacity(0.1).cornerRadius(8))
+            }.background(Color("White").opacity(0.1).cornerRadius(8))
             .padding(.horizontal)
-            if vm.server == .player2{
+            if vm.server == .p2{
                 BasicServerView(vm: vm)
             }else{
                 BasicNonServerView(vm: vm)

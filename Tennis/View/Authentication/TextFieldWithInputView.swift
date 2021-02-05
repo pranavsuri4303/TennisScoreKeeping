@@ -11,11 +11,11 @@ struct TextFieldWithInputView : UIViewRepresentable {
     var placeholder : String
     
     @Binding var selectionIndex : Int
-    @Binding var selectedText : String?
+    @Binding var selectedText : String
     
     private let textField = UITextField()
     private let picker = UIPickerView()
-    
+    private let keyboard = UIInputView()
     func makeCoordinator() -> TextFieldWithInputView.Coordinator {
         Coordinator(textfield: self)
     }

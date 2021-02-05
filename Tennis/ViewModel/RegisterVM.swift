@@ -14,7 +14,7 @@ class RegisterVM : ObservableObject{
     @Published var password = ""
     @Published var name = ""
     @Published var yob = ""
-    @Published var nationality: String?
+    @Published var nationality = ""
     @Published var gender = "Male"
     var imageData : Data?
     // User Data....
@@ -97,7 +97,7 @@ class RegisterVM : ObservableObject{
     }
     
     func configProfileImageDataFrom(UIImage image : UIImage?){
-        if let image = image , let data = image.jpegData(compressionQuality: 0.005){
+        if let image = image , let data = image.jpegData(compressionQuality: 1){
             self.imageData = data
         }
     }
@@ -106,7 +106,7 @@ class RegisterVM : ObservableObject{
         
         struct FaildToUploadImage : Error {}
         if let data = imageData {
-            Firebase.Storage.storage().reference().child(userID).child("profileImage.png").putData(data, metadata: nil) { (metaData, error) in
+            Firebase.Storage.storage().reference().child(userID).child("profileImage.jpeg").putData(data, metadata: nil) { (metaData, error) in
                 if let error = error {
                     completion(Result.failure(error))
                     return
@@ -114,8 +114,7 @@ class RegisterVM : ObservableObject{
                 if let metaData = metaData , let path = metaData.path {
                     completion(Result.success(path))
                     return
-                }
-                
+                }                
             }
             
         }

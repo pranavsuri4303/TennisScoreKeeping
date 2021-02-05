@@ -22,7 +22,7 @@ struct LoadingScreenView: View {
                 .frame(width: 60, height: 60)
                 .rotationEffect(.init(degrees: animate ? 360 : 0))
                 .padding(40)
-                .background(Color.white)
+                .foregroundColor(.white)
                 .cornerRadius(15)
         }
         .onAppear(perform: {

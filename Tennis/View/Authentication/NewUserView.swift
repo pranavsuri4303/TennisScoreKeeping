@@ -118,7 +118,7 @@ struct NewUserView: View {
                 Picker(selection: $vm.gender, label: Text(""), content: {
                     Text("Male").tag("Male")
                         .foregroundColor(Color.white)
-                    Text("Female").foregroundColor(Color.white).tag("Female")
+                    Text("Female").foregroundColor(Color(.white)).tag("Female")
                 })
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.all)

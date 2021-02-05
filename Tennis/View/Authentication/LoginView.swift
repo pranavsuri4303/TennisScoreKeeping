@@ -45,7 +45,7 @@ struct LoginView : View {
                             .foregroundColor(.white)
                         
                         Text("Please sign in to continue")
-                            .foregroundColor(Color.white.opacity(0.5))
+                            .foregroundColor(Color(.white).opacity(0.5))
                     })
                     
                     Spacer(minLength: 0)
@@ -64,7 +64,7 @@ struct LoginView : View {
                         .autocapitalization(.none)
                 }
                 .padding()
-                .background(Color.white.opacity(vm.email == "" ? 0.02 : 0.12))
+                .foregroundColor(Color(.white).opacity(vm.email == "" ? 0.02 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 
@@ -79,7 +79,7 @@ struct LoginView : View {
                         .autocapitalization(.none)
                 }
                 .padding()
-                .background(Color.white.opacity(vm.password == "" ? 0.02 : 0.12))
+                .foregroundColor(Color(.white).opacity(vm.password == "" ? 0.02 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 .padding(.top)
@@ -157,7 +157,7 @@ struct LoginView : View {
                 HStack(spacing: 5){
                     
                     Text("Don't have an account? ")
-                        .foregroundColor(Color.white.opacity(0.6))
+                        .foregroundColor(Color(.white).opacity(0.6))
                     Button("Signup"){
                         goToSignup.toggle()
                     }

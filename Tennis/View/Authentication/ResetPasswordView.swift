@@ -31,7 +31,7 @@ struct ResetPasswordView: View {
                                 .foregroundColor(.white)
                             
                             Text("Enter email to reset password")
-                                .foregroundColor(Color.white.opacity(0.5))
+                                .foregroundColor(Color(.white).opacity(0.5))
                         })
                         
                         Spacer(minLength: 0)
@@ -49,7 +49,7 @@ struct ResetPasswordView: View {
                             .autocapitalization(.none)
                     }
                     .padding(.all)
-                    .background(Color.white.opacity(vm.resetEmail == "" ? 0.02 : 0.12))
+                    .foregroundColor(Color(.white).opacity(vm.resetEmail == "" ? 0.02 : 0.12))
                     .cornerRadius(15)
                     .padding(.horizontal)
                     Spacer()

@@ -38,11 +38,11 @@
 		7662D3F525C391A1004544BF /* NewMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7662D3F425C391A1004544BF /* NewMatchView.swift */; };
 		7662D3FA25C392BB004544BF /* MatchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7662D3F925C392BB004544BF /* MatchVM.swift */; };
 		7662D40225C39DBE004544BF /* BasicMatchScoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7662D40125C39DBE004544BF /* BasicMatchScoringView.swift */; };
+		768F059A25CDA03800E29BA7 /* FriendRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F059925CDA03800E29BA7 /* FriendRequestView.swift */; };
 		76AADB9E25C64F3800EB0C43 /* StringsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AADB9D25C64F3800EB0C43 /* StringsListVM.swift */; };
 		76AADBA625C64F6A00EB0C43 /* PlayersSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AADBA525C64F6A00EB0C43 /* PlayersSearchView.swift */; };
 		76AADBAC25C64FD500EB0C43 /* CodableFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = 76AADBAB25C64FD500EB0C43 /* CodableFirebase */; };
 		76AADBB425C6514800EB0C43 /* PlayersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AADBB325C6514800EB0C43 /* PlayersVM.swift */; };
-		76B8152625CD0F8E0029EE83 /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8152525CD0F8E0029EE83 /* FriendsListView.swift */; };
 		76B8152B25CD0FE90029EE83 /* FriendsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8152A25CD0FE90029EE83 /* FriendsListVM.swift */; };
 		76B8153025CD3AF10029EE83 /* TextFieldWithInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8152F25CD3AF10029EE83 /* TextFieldWithInputView.swift */; };
 		76C952BA25C8CDEF00E6D432 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */; };
@@ -104,10 +104,10 @@
 		7662D3F425C391A1004544BF /* NewMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMatchView.swift; sourceTree = "<group>"; };
 		7662D3F925C392BB004544BF /* MatchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVM.swift; sourceTree = "<group>"; };
 		7662D40125C39DBE004544BF /* BasicMatchScoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicMatchScoringView.swift; sourceTree = "<group>"; };
+		768F059925CDA03800E29BA7 /* FriendRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestView.swift; sourceTree = "<group>"; };
 		76AADB9D25C64F3800EB0C43 /* StringsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsListVM.swift; sourceTree = "<group>"; };
 		76AADBA525C64F6A00EB0C43 /* PlayersSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersSearchView.swift; sourceTree = "<group>"; };
 		76AADBB325C6514800EB0C43 /* PlayersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersVM.swift; sourceTree = "<group>"; };
-		76B8152525CD0F8E0029EE83 /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		76B8152A25CD0FE90029EE83 /* FriendsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListVM.swift; sourceTree = "<group>"; };
 		76B8152F25CD3AF10029EE83 /* TextFieldWithInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithInputView.swift; sourceTree = "<group>"; };
 		76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 				76D7319F25CA7BB7001D2D64 /* ProfileView.swift */,
 				7619A62D25CA422000014ADA /* Players */,
 				76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */,
-				76B8152525CD0F8E0029EE83 /* FriendsListView.swift */,
+				768F059925CDA03800E29BA7 /* FriendRequestView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -465,7 +465,6 @@
 				76D1B86025BAEE4700FE1B4B /* LoadingScreenView.swift in Sources */,
 				76D1B85825BAEE2000FE1B4B /* Home.swift in Sources */,
 				76AADB9E25C64F3800EB0C43 /* StringsListVM.swift in Sources */,
-				76B8152625CD0F8E0029EE83 /* FriendsListView.swift in Sources */,
 				764A617E25B9479700789373 /* ResetPasswordView.swift in Sources */,
 				7619A63B25CA68BA00014ADA /* SliderMenuVM.swift in Sources */,
 				764A60CB25B90E5600789373 /* ContentView.swift in Sources */,
@@ -476,6 +475,7 @@
 				76FA5EEC25C7E457005DACE9 /* AdvancedMatchScoringView.swift in Sources */,
 				7619A64025CA699200014ADA /* SearchPlayerVM.swift in Sources */,
 				76FA5EF625C7E6E9005DACE9 /* ScoringViewTemplates.swift in Sources */,
+				768F059A25CDA03800E29BA7 /* FriendRequestView.swift in Sources */,
 				76AADBB425C6514800EB0C43 /* PlayersVM.swift in Sources */,
 				764A617625B9475000789373 /* RegisterView.swift in Sources */,
 				764A613D25B9204B00789373 /* Constants.swift in Sources */,

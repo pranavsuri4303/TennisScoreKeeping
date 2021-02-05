@@ -16,7 +16,7 @@ struct BasicServerView: View {
                     VStack(){
                         Button(action: {
                             vm.serveIn.toggle()
-                            vm.pointWon(by: vm.server, deuce: vm.deuceOrNo, servingPlayer: vm.server)
+                            vm.pointWon(by: vm.server, deuce: vm.deuceType, servingPlayer: vm.server)
                             
                         }, label: {
                             Spacer()
@@ -41,7 +41,7 @@ struct BasicServerView: View {
                             
                             Text("SERVE IN")
                                 .font(.headline)
-                                .foregroundColor(Color(.white))
+                                .foregroundColor(.white)
                                 .multilineTextAlignment(.center)
                             Spacer()
                             
@@ -69,10 +69,10 @@ struct BasicServerView: View {
                         VStack(){
                             Button(action: {
                                 vm.serve = .firstServe
-                                if vm.server == .player1{
-                                    vm.pointWon(by: .player2, deuce: vm.deuceOrNo, servingPlayer: vm.server)
-                                }else if vm.server == .player2{
-                                    vm.pointWon(by: .player1, deuce: vm.deuceOrNo, servingPlayer: vm.server)
+                                if vm.server == .p1{
+                                    vm.pointWon(by: .p2, deuce: vm.deuceType, servingPlayer: vm.server)
+                                }else if vm.server == .p2{
+                                    vm.pointWon(by: .p1, deuce: vm.deuceType, servingPlayer: vm.server)
                                 }
                             }, label: {
                                 Spacer()
@@ -90,7 +90,7 @@ struct BasicServerView: View {
                     VStack(){
                         Button(action: {
                             vm.aceCounter(server: vm.server)
-                            vm.pointWon(by: vm.server, deuce: vm.deuceOrNo, servingPlayer: vm.server)
+                            vm.pointWon(by: vm.server, deuce: vm.deuceType, servingPlayer: vm.server)
                         }, label: {
                             Spacer()
                             Text("ACE")
@@ -114,14 +114,14 @@ struct BasicNonServerView: View {
         HStack{
             VStack(){
                 Button(action: {
-                    if vm.server == .player1{
+                    if vm.server == .p1{
                         vm.serveIn = false
                         vm.serve = .firstServe
-                        vm.pointWon(by: .player2, deuce: vm.deuceOrNo, servingPlayer: vm.server)
+                        vm.pointWon(by: .p2, deuce: vm.deuceType, servingPlayer: vm.server)
                     }else{
                         vm.serveIn = false
                         vm.serve = .firstServe
-                        vm.pointWon(by: .player1, deuce: vm.deuceOrNo, servingPlayer: vm.server)
+                        vm.pointWon(by: .p1, deuce: vm.deuceType, servingPlayer: vm.server)
                     }
                 }, label: {
                     Spacer()
@@ -200,7 +200,7 @@ struct AdvancedServerView: View {
                             
                             Text("SERVE IN")
                                 .font(.headline)
-                                .foregroundColor(Color(.white))
+                                .foregroundColor(.white)
                                 .multilineTextAlignment(.center)
                             Spacer()
                             
@@ -228,10 +228,10 @@ struct AdvancedServerView: View {
                         VStack(){
                             Button(action: {
                                 vm.serve = .firstServe
-                                if vm.server == .player1{
-                                    vm.pointWon(by: .player2, deuce: vm.deuceOrNo, servingPlayer: vm.server)
-                                }else if vm.server == .player2{
-                                    vm.pointWon(by: .player1, deuce: vm.deuceOrNo, servingPlayer: vm.server)
+                                if vm.server == .p1{
+                                    vm.pointWon(by: .p2, deuce: vm.deuceType, servingPlayer: vm.server)
+                                }else if vm.server == .p1{
+                                    vm.pointWon(by: .p1, deuce: vm.deuceType, servingPlayer: vm.server)
                                 }
                             }, label: {
                                 Spacer()
@@ -248,7 +248,7 @@ struct AdvancedServerView: View {
                     }
                     VStack(){
                         Button(action: {
-                            vm.pointWon(by: vm.server, deuce: vm.deuceOrNo, servingPlayer: vm.server)
+                            vm.pointWon(by: vm.server, deuce: vm.deuceType, servingPlayer: vm.server)
                         }, label: {
                             Spacer()
                             

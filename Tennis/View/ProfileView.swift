@@ -15,12 +15,12 @@ struct ProfileView: View {
                 Text("Welcome")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
-                    .foregroundColor(Color(.white))
+                    .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .padding(.top, 75)
                 Spacer()
             }.padding()
-            .background(Color(.white).opacity(0))
+            .background(Color("White").opacity(0))
             
             ScrollView(.vertical, showsIndicators: false, content: {
                 GeometryReader{reader in
@@ -59,13 +59,13 @@ struct ProfileView: View {
                         Text("Current String")
                             .font(.title3)
                             .fontWeight(.bold)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(.white)
                             .multilineTextAlignment(.leading)
                         Spacer()
                         Text("")
                             .font(.title3)
                             .fontWeight(.regular)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(.white)
                     }
                     Divider()
                         .foregroundColor(.white)
@@ -74,25 +74,25 @@ struct ProfileView: View {
                         Text("Latest Match")
                             .font(.title3)
                             .fontWeight(.bold)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(.white)
                             .multilineTextAlignment(.leading)
                         Spacer()
                         Text("")
                             .font(.title3)
                             .fontWeight(.regular)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(.white)
                     }
                     HStack{
                         Text("Outcome")
                             .font(.title3)
                             .fontWeight(.bold)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(.white)
                             .multilineTextAlignment(.leading)
                         Spacer()
                         Text("")
                             .font(.title3)
                             .fontWeight(.regular)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(.white)
                     }
                     
 

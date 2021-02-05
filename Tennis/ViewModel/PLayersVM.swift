@@ -26,14 +26,14 @@ class PlayersVM : ObservableObject{
         let usersRef = Firestore.firestore().collection("users")
         let query = usersRef.whereField("email", isGreaterThanOrEqualTo: "\(playerName)")
             .whereField("email", isLessThanOrEqualTo: "\(playerName)z")
-        
+            .order(by: "email", descending: false)
+
         query.getDocuments { (results, err) in
             if let err = err{
                 self.alert.toggle()
                 self.alertMsg = err.localizedDescription
             }else{
                 self.players = []
-                
                 for document in results!.documents{
                     guard
                         let name = document["name"] as? String,

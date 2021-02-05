@@ -10,6 +10,10 @@ import SwiftUI
 struct NewMatchView: View {
     @StateObject var vm = MatchVM()
     @State var matchScorerIsPresented = false
+    @State var selectionP1 = 0
+    @State var selectionP2 = 0
+    @State var p1Other = false
+    @State var p2Other = false
     var body: some View {
         ZStack{
             GeometryReader{ geo in
@@ -29,71 +33,114 @@ struct NewMatchView: View {
                         //Dynamic Frame...
                         .padding(.all,20)
                         .padding()
-                    
-                    HStack{
-                        Image(systemName: "1.circle")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .frame(width: 35)
-                        TextField("PLAYER 1 NAME", text: $vm.p1Name)
-                            .autocapitalization(.words)
+                    Group{
+                        HStack{
+                            Image(systemName: "1.circle")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                                .frame(width: 35)
+                            if p1Other{
+                                TextField("Player 1 Name", text: $vm.P1.name)
+                                    .autocapitalization(.words)
+                            }else{
+                                TextFieldWithInputView(data: Friends().list2, placeholder: "Select Player 1", selectionIndex: self.$selectionP1, selectedText: $vm.P1.name)
+                                    .frame(height: 0)
+                            }
+                        }
+                        .padding(.all)
+                        .foregroundColor(Color(.white).opacity(vm.P1.name == "" ? 0.02 : 0.12))
+                        .cornerRadius(15)
+                        .padding(.horizontal)
+                        VStack(alignment: .center){
+                            Button(action: {
+                                self.p1Other.toggle()
+                                vm.P1.name = ""
+                            }, label: {
+                                if p1Other{
+                                    Text("Recording for yourself or a friend?")
+                                        .font(.subheadline)
+                                        .foregroundColor(Color("green"))
+                                }else{
+                                    Text("Recording for someone else?")
+                                        .font(.subheadline)
+                                        .foregroundColor(Color("green"))
+                                }
+                            })
+                        }
+                        HStack{
+                            Image(systemName: "2.circle")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                                .frame(width: 35)
+                            if p2Other{
+                                TextField("Player 2 Name", text: $vm.P2.name)
+                                    .autocapitalization(.words)
+                            }else{
+                                TextFieldWithInputView(data: Friends().list, placeholder: "Select Player 2", selectionIndex: self.$selectionP2, selectedText: $vm.P2.name)
+                                    .frame(height: 0)
+                            }
+                        }
+                        .padding()
+                        .foregroundColor(Color(.white).opacity(vm.P2.name == "" ? 0.02 : 0.12))
+                        .cornerRadius(15)
+                        .padding(.horizontal)
+                        VStack(alignment: .center){
+                            Button(action: {
+                                self.p2Other.toggle()
+                                vm.P2.name = ""
+                            }, label: {
+                                if p2Other{
+                                    Text("Player in your friends list?")
+                                        .font(.subheadline)
+                                        .foregroundColor(Color("green"))
+                                }else{
+                                    Text("Player outside your friends list?")
+                                        .font(.subheadline)
+                                        .foregroundColor(Color("green"))
+                                }
+                            })
+                        }
                     }
-                    .padding(.all)
-                    .background(Color.white.opacity(vm.p1Name == "" ? 0.02 : 0.12))
-                    .cornerRadius(15)
-                    .padding(.horizontal)
-                    HStack{
-                        Image(systemName: "2.circle")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .frame(width: 35)
-                        
-                        TextField("PLAYER 2 NAME", text: $vm.p2Name)
-                            .autocapitalization(.words)
-                    }
-                    .padding(.all)
-                    .background(Color.white.opacity(vm.p2Name == "" ? 0.02 : 0.12))
-                    .cornerRadius(15)
-                    .padding(.horizontal)
+
                     HStack{
                         Text("Server")
-                            .foregroundColor(Color.white)
+                            .foregroundColor(.white)
                         Spacer()
                         Picker(selection: $vm.server, label: Text(""), content: {
-                                Text("\(vm.p1Name)")
-                                    .tag(Player.player1)
-                                    .foregroundColor(Color.white)
-                                Text("\(vm.p2Name)")
-                                    .tag(Player.player2)
-                                    .foregroundColor(Color.white)
+                            Text("\(vm.P1.name)")
+                                    .tag(PlayerType.p1)
+                                    .foregroundColor(.white)
+                            Text("\(vm.P2.name)")
+                                    .tag(PlayerType.p2)
+                                    .foregroundColor(.white)
                             
                         })
                             .pickerStyle(SegmentedPickerStyle())
                     }.padding(.horizontal)
                     
-                    Picker(selection: $vm.deuceOrNo, label: Text(""), content: {
+                    Picker(selection: $vm.deuceType, label: Text(""), content: {
                             Text("Deuce")
                                 .foregroundColor(.white)
                                 .multilineTextAlignment(.center)
-                                .tag(Deuce.deuce)
-                            Text("Sudden death").tag(Deuce.noDeuce)
-                                .foregroundColor(Color.white)
-                            Text("One Deuce").foregroundColor(Color.white).tag(Deuce.oneDeuce)
+                                .tag(DeuceType.deuce)
+                            Text("Sudden death").tag(DeuceType.noDeuce)
+                                .foregroundColor(.white)
+                            Text("One Deuce").foregroundColor(Color(.white)).tag(DeuceType.oneDeuce)
                     }).pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal)
                     Picker(selection: $vm.trackingStyle, label: Text(""), content: {
                             Text("Basic")
                                 .foregroundColor(.white)
                                 .multilineTextAlignment(.center)
-                                .tag(Tracking.basic)
-                            Text("Advanced").tag(Tracking.advanced)
-                                .foregroundColor(Color.white)
-                        Text("Expert").foregroundColor(Color.white).tag(Tracking.expert)
+                                .tag(TrackingType.basic)
+                            Text("Advanced").tag(TrackingType.advanced)
+                                .foregroundColor(.white)
+                        Text("Expert").foregroundColor(Color(.white)).tag(TrackingType.expert)
                     }).pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal)
                     HStack{
                         Text("1 Set: First to 6 Games")
-                            .foregroundColor(Color.white)
+                            .foregroundColor(.white)
 //                        Spacer()
 //                        Picker(selection: $vm.noOfSets, label: Text(""), content: {
 //                                Text("1")
@@ -101,14 +148,14 @@ struct NewMatchView: View {
 //                                    .multilineTextAlignment(.center)
 //                                    .tag(1)
 //                                Text("3").tag(3)
-//                                    .foregroundColor(Color.white)
+//                                    .foregroundColor(.white)
 //                        }).pickerStyle(SegmentedPickerStyle())
                     }.padding(.horizontal)
 
                     Spacer()
                     Button(action: {
                         matchScorerIsPresented.toggle()
-                        print(vm.p2Name)
+                        print(vm.P2.name)
                         
                     }, label: {
                         Text("START MATCH")
@@ -129,8 +176,8 @@ struct NewMatchView: View {
                         }
                         
                     })
-                    .opacity(vm.p2Name != "" ? 1 : 0.5)
-                    .disabled(vm.p2Name != "" ? false : true)
+                    .opacity(vm.P2.name != "" ? 1 : 0.5)
+                    .disabled(vm.P2.name != "" ? false : true)
                     .alert(isPresented: $vm.alert, content: {
                         Alert(title: Text("Error"), message: Text(vm.alertMsg), dismissButton: .destructive(Text("Ok")))
                     })
@@ -151,3 +198,13 @@ struct NewMatchView_Previews: PreviewProvider {
     }
 }
 
+
+struct Friends {
+    var list = ["",
+                "Aldrin",
+                "Jemma"]
+    var list2 = ["You",
+                "Aldrin",
+                "Jemma"]
+    
+}

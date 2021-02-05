@@ -43,7 +43,7 @@ struct RegisterView: View {
                                 .foregroundColor(.white)
                             
                             Text("Please sign up to create account")
-                                .foregroundColor(Color.white.opacity(0.5))
+                                .foregroundColor(Color(.white).opacity(0.5))
                         })
                         .padding(.bottom)
                         
@@ -64,7 +64,7 @@ struct RegisterView: View {
                             .keyboardType(.emailAddress)
                     }
                     .padding()
-                    .background(Color.white.opacity(vm.email == "" ? 0.02 : 0.12))
+                    .foregroundColor(Color(.white).opacity(vm.email == "" ? 0.02 : 0.12))
                     .cornerRadius(15)
                     .padding(.horizontal)
                     
@@ -79,7 +79,7 @@ struct RegisterView: View {
                             .autocapitalization(.none)
                     }
                     .padding()
-                    .background(Color.white.opacity(vm.password == "" ? 0.02 : 0.12))
+                    .foregroundColor(Color(.white).opacity(vm.password == "" ? 0.02 : 0.12))
                     .cornerRadius(15)
                     .padding(.horizontal)
                     .padding(.top)
@@ -124,7 +124,7 @@ struct RegisterView: View {
                     HStack(spacing: 5){
                         
                         Text("Already have an account? ")
-                            .foregroundColor(Color.white.opacity(0.6))
+                            .foregroundColor(Color(.white).opacity(0.6))
                         
                         Button("Login"){
                             registerViewPresented.toggle()

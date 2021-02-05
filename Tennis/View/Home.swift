@@ -66,7 +66,7 @@ struct ViewSwitcher : View {
             .clipped()
             
             .padding()
-            .shadow(color: Color.white.opacity(0.0), radius: 5, x: 0, y: 5)
+            .shadow(color: Color(.white).opacity(0.0), radius: 5, x: 0, y: 5)
             
             
             if isSliderMenuPresented.isPresented {
@@ -118,7 +118,7 @@ struct SlideMenu : View {
                 VStack(alignment: .center){
                     ZStack{
                         Circle()
-                            .foregroundColor(.white).opacity(0.3)
+                            .foregroundColor(Color(.white).opacity(0.3))
                             .frame(width: 80, height: 80, alignment: .center)
                         
                         if let profileImage = sliderMenueVM.image {
