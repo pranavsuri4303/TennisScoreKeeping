@@ -98,7 +98,7 @@ struct AdvancedMatchScoringView: View {
                             .multilineTextAlignment(.leading)
                     }.padding()
                     
-                }.background(Color("White").opacity(0.1).cornerRadius(8))
+                }.background(Color(.white).opacity(0.1).cornerRadius(8))
                 .padding()
             }
             VStack{
@@ -120,7 +120,7 @@ struct AdvancedMatchScoringView: View {
                         
                     }.padding()
                     
-                }.background(Color("White").opacity(0.1).cornerRadius(8))
+                }.background(Color(.white).opacity(0.1).cornerRadius(8))
                 .padding(.horizontal)
                 if vm.server == .p1{
                     AdvancedServerView(vm: vm)
@@ -145,7 +145,7 @@ struct AdvancedMatchScoringView: View {
                             .hidden()
                     }
                 }.padding()
-            }.background(Color("White").opacity(0.1).cornerRadius(8))
+            }.background(Color(.white).opacity(0.1).cornerRadius(8))
             .padding(.horizontal)
             if vm.server == .p2{
                 AdvancedServerView(vm: vm)

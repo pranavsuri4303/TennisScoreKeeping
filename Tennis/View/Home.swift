@@ -33,8 +33,6 @@ struct ViewSwitcher : View {
     // for future use...
     
     // to hide view...
-   
-    
     @State var currentSelectedMenuView : SlideMenuView = .profile
     @GestureState var gestureState : CGFloat = 0
     @StateObject var isSliderMenuPresented = SliderMenuPresentationManager.shared
@@ -47,15 +45,14 @@ struct ViewSwitcher : View {
             case .dashboard : DashboardView()
             case .players : PlayersSearchView()
             case .matches : MatchesHistoryView()
+            case .friends: FriendsListView()
             case .none: HomePage()
-            case .friends: Text("Friends")
             }
             
             
             
             Button(action: {
-                // opening menu,...
-               
+                // opening menu,..
                 isSliderMenuPresented.isPresented.toggle()
                 
             }) {
@@ -76,25 +73,25 @@ struct ViewSwitcher : View {
                     .zIndex(1)
                     .offset(x: gestureState)
                     .gesture(
-                    DragGesture()
-                        .updating($gestureState, body: { (value, state, _) in
-                            print(value.translation.width)
-                            if value.translation.width < 1 {
-                                state = value.translation.width
-                            }
-                        })
-                        .onEnded({ (value) in
-                            if value.translation.width < -100 {
-                                isSliderMenuPresented.isPresented.toggle()
-                            }
-                        })
+                        DragGesture()
+                            .updating($gestureState, body: { (value, state, _) in
+                                print(value.translation.width)
+                                if value.translation.width < 1 {
+                                    state = value.translation.width
+                                }
+                            })
+                            .onEnded({ (value) in
+                                if value.translation.width < -100 {
+                                    isSliderMenuPresented.isPresented.toggle()
+                                }
+                            })
                     )
-                    
-                    }
-                    
                 
             }
             
+            
+        }
+        
         
     }
 }
@@ -111,86 +108,78 @@ struct SlideMenu : View {
     var body: some View {
         
         ZStack{
-          
-        HStack(spacing: 0){
             
-            VStack(alignment: .leading){
-                VStack(alignment: .center){
-                    ZStack{
-                        Circle()
-                            .foregroundColor(Color(.white).opacity(0.3))
-                            .frame(width: 80, height: 80, alignment: .center)
-                        
-                        if let profileImage = sliderMenueVM.image {
-                            Image(uiImage: profileImage)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .clipShape(Circle())
-                                .frame(width: 70, height: 70, alignment: .center)
-                        }else {
-                            Image("logo")
-                                .resizable()
-                                .frame(width: 60, height: 60, alignment: .center)
-                        }
-                    }.frame(alignment: .center)
-                }
-                VStack(alignment: .leading, spacing: 12) {
-                    
-                    Text("\(Auth.auth().currentUser?.displayName ?? "User")")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                    
-                    Divider()
-                        .padding(.top,10)
-                        .foregroundColor(Color.green)
-                }
-                Spacer(minLength: 0)
-                
-                
-                
-                // Different Views When up or down buttons pressed....
+            HStack(spacing: 0){
                 
                 VStack(alignment: .leading){
+                    VStack(alignment: .center){
+                        ZStack{
+                            Circle()
+                                .foregroundColor(Color(.white).opacity(0.3))
+                                .frame(width: 80, height: 80, alignment: .center)
+                            
+                            if let profileImage = sliderMenueVM.image {
+                                Image(uiImage: profileImage)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(Circle())
+                                    .frame(width: 70, height: 70, alignment: .center)
+                            }else {
+                                Image("logo")
+                                    .resizable()
+                                    .frame(width: 60, height: 60, alignment: .center)
+                            }
+                        }.frame(alignment: .center)
+                    }
+                    VStack(alignment: .leading, spacing: 12) {
+                        
+                        Text("\(Auth.auth().currentUser?.displayName ?? "User")")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                        
+                        Divider()
+                            .padding(.top,10)
+                            .foregroundColor(Color.green)
+                    }
+                    Spacer(minLength: 0)
                     
-                    // Menu Buttons....
-                    
-                    ForEach(menuButtons , id : \.self){menu in
+                    VStack(alignment: .leading){
                         
+                        // Menu Buttons....
                         
-                        MenuButton( currentSelectedHome: $currentSelectedView, slideMenuItem: menu , title : menu.rawValue)
+                        ForEach(menuButtons , id : \.self){menu in
+                            MenuButton(currentSelectedHome: $currentSelectedView, slideMenuItem: menu , title : menu.rawValue)
+                        }
                         
-                        
+                        Spacer()
+                        Button(action: {
+                            SliderMenuPresentationManager.shared.isPresented.toggle()
+                            try! Auth.auth().signOut()
+                            withAnimation{logged = false}
+                            DownloadedProfileImage.shared.image = nil
+                        }) {
+                            Text("Log out")
+                                .foregroundColor(Color("green"))
+                                .padding(.bottom)
+                        }
+                        .padding(.top,20)
                     }
                     
-                    Spacer()
-                    Button(action: {
-                        SliderMenuPresentationManager.shared.isPresented.toggle()
-                        try! Auth.auth().signOut()
-                        withAnimation{logged = false}
-                        DownloadedProfileImage.shared.image = nil
-                    }) {
-                        Text("Log out")
-                            .foregroundColor(Color("green"))
-                            .padding(.bottom)
-                    }
-                    .padding(.top,20)
+                    
                 }
+                .padding(.horizontal,20)
+                // since vertical edges are ignored....
+                .padding(.top,edges!.top == 0 ? 15 : edges?.top)
+                .padding(.bottom,edges!.bottom == 0 ? 15 : edges?.bottom)
+                // default width...
+                .frame(width: UIScreen.main.bounds.width - 90)
+                .background(Color("bg").ignoresSafeArea(.all, edges: .all))
+                .ignoresSafeArea(.all, edges: .vertical)
                 
-                
+                Spacer(minLength: 0)
             }
-            .padding(.horizontal,20)
-            // since vertical edges are ignored....
-            .padding(.top,edges!.top == 0 ? 15 : edges?.top)
-            .padding(.bottom,edges!.bottom == 0 ? 15 : edges?.bottom)
-            // default width...
-            .frame(width: UIScreen.main.bounds.width - 90)
-            .background(Color("bg").ignoresSafeArea(.all, edges: .all))
-            .ignoresSafeArea(.all, edges: .vertical)
             
-            Spacer(minLength: 0)
-        }
-
             
         }
         
@@ -206,11 +195,12 @@ var menuButtons : [SlideMenuView] {
 
 
 struct MenuButton : View {
-   
-    @Binding  var currentSelectedHome : SlideMenuView
+    
+    @Binding var currentSelectedHome : SlideMenuView
     
     var slideMenuItem : SlideMenuView
     var title : String
+    
     
     
     var body: some View{
@@ -219,23 +209,46 @@ struct MenuButton : View {
             
             // both title and image names are same....
             if title == "String"{
-                Image(systemName: "number")
+                Image(systemName: "number.circle")
                     .resizable()
                     .renderingMode(.template)
-                    .frame(width: 24, height: 24)
+                    .frame(width: 25, height: 25)
                     .foregroundColor(.gray)
             }else if title == "Players"{
-                Image(systemName: "person.2")
+                Image(systemName: "person.2.circle")
                     .resizable()
                     .renderingMode(.template)
-                    .frame(width: 24, height: 22, alignment: .center)
+                    .frame(width: 25, height: 25, alignment: .center)
                     .foregroundColor(.gray)
                     .aspectRatio(contentMode: .fill)
-            }else{
+            }else if title == "Profile"{
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 25, height: 25, alignment: .center)
+                    .foregroundColor(.gray)
+                    .aspectRatio(contentMode: .fill)
+            }else if title == "Dashboard"{
+                Image(systemName: "chart.pie")
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 25, height: 25, alignment: .center)
+                    .foregroundColor(.gray)
+                    .aspectRatio(contentMode: .fill)
+            }else if title == "Friends"{
+                Image(systemName: "heart.circle")
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 25, height: 25, alignment: .center)
+                    .foregroundColor(.gray)
+                    .aspectRatio(contentMode: .fill)
+            }
+            else{
                 Image(title)
                     .resizable()
                     .renderingMode(.template)
-                    .frame(width: 24, height: 24)
+                    .frame(width: 24, height: 24, alignment: .center)
+                    .aspectRatio(1, contentMode: .fit)
                     .foregroundColor(.gray)
             }
             
@@ -250,7 +263,7 @@ struct MenuButton : View {
         .padding(.vertical,12)
         .onTapGesture {
             currentSelectedHome = slideMenuItem
-           
+            
             SliderMenuPresentationManager.shared.isPresented.toggle()
             
         }
@@ -269,7 +282,7 @@ struct SliderMenuTransition : AnimatableModifier {
         set {
             xOffset = newValue.first
             backgroundAlpha = newValue.second
-           
+            
         }
     }
     
@@ -283,10 +296,10 @@ struct SliderMenuTransition : AnimatableModifier {
                         SliderMenuPresentationManager.shared.isPresented.toggle()
                     }
             }
-        content.offset(x: xOffset)
+            content.offset(x: xOffset)
         }
-           
-            
+        
+        
         
     }
 }

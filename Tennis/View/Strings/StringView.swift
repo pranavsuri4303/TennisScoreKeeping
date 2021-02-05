@@ -63,7 +63,7 @@ struct StringView: View {
                                 }
                             }
                             .padding(.all)
-                            .background(Color("White").opacity(0.1))
+                            .background(Color(.white).opacity(0.1))
                             .foregroundColor(.white)
                             .cornerRadius(8)
                         }

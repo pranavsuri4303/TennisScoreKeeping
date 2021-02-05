@@ -43,13 +43,13 @@
 		76AADBA625C64F6A00EB0C43 /* PlayersSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AADBA525C64F6A00EB0C43 /* PlayersSearchView.swift */; };
 		76AADBAC25C64FD500EB0C43 /* CodableFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = 76AADBAB25C64FD500EB0C43 /* CodableFirebase */; };
 		76AADBB425C6514800EB0C43 /* PlayersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AADBB325C6514800EB0C43 /* PlayersVM.swift */; };
-		76B8152B25CD0FE90029EE83 /* FriendsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8152A25CD0FE90029EE83 /* FriendsListVM.swift */; };
 		76B8153025CD3AF10029EE83 /* TextFieldWithInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8152F25CD3AF10029EE83 /* TextFieldWithInputView.swift */; };
 		76C952BA25C8CDEF00E6D432 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */; };
 		76D1B85825BAEE2000FE1B4B /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D1B85725BAEE2000FE1B4B /* Home.swift */; };
 		76D1B86025BAEE4700FE1B4B /* LoadingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */; };
 		76D731A025CA7BB7001D2D64 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D7319F25CA7BB7001D2D64 /* ProfileView.swift */; };
 		76DBB01425C29C8E00F238D9 /* StringsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DBB01325C29C8E00F238D9 /* StringsVM.swift */; };
+		76F5424825CDC81F00557BF9 /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5424725CDC81F00557BF9 /* FriendsListView.swift */; };
 		76FA5EEC25C7E457005DACE9 /* AdvancedMatchScoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5EEB25C7E457005DACE9 /* AdvancedMatchScoringView.swift */; };
 		76FA5EF125C7E495005DACE9 /* ExpertMatchScoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5EF025C7E495005DACE9 /* ExpertMatchScoringView.swift */; };
 		76FA5EF625C7E6E9005DACE9 /* ScoringViewTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5EF525C7E6E9005DACE9 /* ScoringViewTemplates.swift */; };
@@ -108,13 +108,13 @@
 		76AADB9D25C64F3800EB0C43 /* StringsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsListVM.swift; sourceTree = "<group>"; };
 		76AADBA525C64F6A00EB0C43 /* PlayersSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersSearchView.swift; sourceTree = "<group>"; };
 		76AADBB325C6514800EB0C43 /* PlayersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersVM.swift; sourceTree = "<group>"; };
-		76B8152A25CD0FE90029EE83 /* FriendsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListVM.swift; sourceTree = "<group>"; };
 		76B8152F25CD3AF10029EE83 /* TextFieldWithInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithInputView.swift; sourceTree = "<group>"; };
 		76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76D1B85725BAEE2000FE1B4B /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenView.swift; sourceTree = "<group>"; };
 		76D7319F25CA7BB7001D2D64 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		76DBB01325C29C8E00F238D9 /* StringsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsVM.swift; sourceTree = "<group>"; };
+		76F5424725CDC81F00557BF9 /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		76FA5EEB25C7E457005DACE9 /* AdvancedMatchScoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedMatchScoringView.swift; sourceTree = "<group>"; };
 		76FA5EF025C7E495005DACE9 /* ExpertMatchScoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertMatchScoringView.swift; sourceTree = "<group>"; };
 		76FA5EF525C7E6E9005DACE9 /* ScoringViewTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewTemplates.swift; sourceTree = "<group>"; };
@@ -251,6 +251,7 @@
 				7619A62D25CA422000014ADA /* Players */,
 				76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */,
 				768F059925CDA03800E29BA7 /* FriendRequestView.swift */,
+				76F5424725CDC81F00557BF9 /* FriendsListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -266,7 +267,6 @@
 				76AADBB325C6514800EB0C43 /* PlayersVM.swift */,
 				7619A63A25CA68B900014ADA /* SliderMenuVM.swift */,
 				7619A63F25CA699200014ADA /* SearchPlayerVM.swift */,
-				76B8152A25CD0FE90029EE83 /* FriendsListVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -450,7 +450,6 @@
 				76278C1F25B9E8060005EBD4 /* NewUserView.swift in Sources */,
 				7662D3F525C391A1004544BF /* NewMatchView.swift in Sources */,
 				9FCFE65B25C354100011F8C2 /* SlideMenuePreference.swift in Sources */,
-				76B8152B25CD0FE90029EE83 /* FriendsListVM.swift in Sources */,
 				7619A62925CA421800014ADA /* PlayerProfileView.swift in Sources */,
 				7662D3FA25C392BB004544BF /* MatchVM.swift in Sources */,
 				76343B8625C2B2140061ABB5 /* StringView.swift in Sources */,
@@ -469,6 +468,7 @@
 				7619A63B25CA68BA00014ADA /* SliderMenuVM.swift in Sources */,
 				764A60CB25B90E5600789373 /* ContentView.swift in Sources */,
 				762F87DA25CA34FE004B46FD /* ProfileImagePickerView.swift in Sources */,
+				76F5424825CDC81F00557BF9 /* FriendsListView.swift in Sources */,
 				76D731A025CA7BB7001D2D64 /* ProfileView.swift in Sources */,
 				76DBB01425C29C8E00F238D9 /* StringsVM.swift in Sources */,
 				764A60C925B90E5600789373 /* TennisApp.swift in Sources */,

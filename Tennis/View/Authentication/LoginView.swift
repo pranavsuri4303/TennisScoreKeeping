@@ -64,7 +64,7 @@ struct LoginView : View {
                         .autocapitalization(.none)
                 }
                 .padding()
-                .foregroundColor(Color(.white).opacity(vm.email == "" ? 0.02 : 0.12))
+                .background(Color(.white).opacity(vm.email == "" ? 0.02 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 
@@ -79,7 +79,7 @@ struct LoginView : View {
                         .autocapitalization(.none)
                 }
                 .padding()
-                .foregroundColor(Color(.white).opacity(vm.password == "" ? 0.02 : 0.12))
+                .background(Color(.white).opacity(vm.password == "" ? 0.02 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 .padding(.top)

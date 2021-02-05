@@ -41,7 +41,7 @@ struct NewUserView: View {
 
                         }else{
                             Circle()
-                                .fill(Color.white.opacity(1))
+                                .fill(Color.blue.opacity(1))
                                 .overlay(Image("Female")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
@@ -87,7 +87,7 @@ struct NewUserView: View {
                         .autocapitalization(.none)
                 }
                 .padding()
-                .background(Color.white.opacity(vm.name == "" ? 0.02 : 0.12))
+                .background(Color(.white).opacity(vm.name == "" ? 0.02 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 HStack{
@@ -100,7 +100,7 @@ struct NewUserView: View {
                         .keyboardType(.numberPad)
                 }
                 .padding()
-                .background(Color.white.opacity(vm.yob == "" ? 0.02 : 0.12))
+                .background(Color(.white).opacity(vm.yob == "" ? 0.02 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 HStack{
@@ -112,7 +112,7 @@ struct NewUserView: View {
                         .frame(height: 0)
                 }
                 .padding()
-                .background(Color.white.opacity(vm.nationality == nil ? 0.02 : 0.12))
+                .background(Color(.white).opacity(vm.nationality == "" ? 0.02 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 Picker(selection: $vm.gender, label: Text(""), content: {
@@ -179,6 +179,7 @@ struct Register_Preview : PreviewProvider {
 
 struct Nationalities {
     let list = [
+        "",
         "Afghanistan",
         "Albania",
         "Algeria",

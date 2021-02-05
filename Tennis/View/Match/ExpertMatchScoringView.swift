@@ -104,7 +104,7 @@ struct ExpertMatchScoringView
                             .multilineTextAlignment(.leading)
                     }.padding()
                     
-                }.background(Color("White").opacity(0.1).cornerRadius(8))
+                }.background(Color(.white).opacity(0.1).cornerRadius(8))
                 .padding()
             }
             VStack{
@@ -125,7 +125,7 @@ struct ExpertMatchScoringView
                     
                 }.padding()
                 
-            }.background(Color("White").opacity(0.1).cornerRadius(8))
+            }.background(Color(.white).opacity(0.1).cornerRadius(8))
             .padding(.horizontal)
             HStack{
                 VStack(){
@@ -188,7 +188,7 @@ struct ExpertMatchScoringView
                     }
                     
                 }.padding()
-            }.background(Color("White").opacity(0.1).cornerRadius(8))
+            }.background(Color(.white).opacity(0.1).cornerRadius(8))
             .padding(.horizontal)
             HStack{
                 VStack(){

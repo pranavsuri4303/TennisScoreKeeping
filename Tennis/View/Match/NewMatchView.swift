@@ -48,9 +48,10 @@ struct NewMatchView: View {
                             }
                         }
                         .padding(.all)
-                        .foregroundColor(Color(.white).opacity(vm.P1.name == "" ? 0.02 : 0.12))
+                        .background(Color(.white).opacity(vm.P1.name == "" ? 0.02 : 0.12))
                         .cornerRadius(15)
                         .padding(.horizontal)
+                        
                         VStack(alignment: .center){
                             Button(action: {
                                 self.p1Other.toggle()
@@ -81,7 +82,7 @@ struct NewMatchView: View {
                             }
                         }
                         .padding()
-                        .foregroundColor(Color(.white).opacity(vm.P2.name == "" ? 0.02 : 0.12))
+                        .background(Color(.white).opacity(vm.P2.name == "" ? 0.02 : 0.12))
                         .cornerRadius(15)
                         .padding(.horizontal)
                         VStack(alignment: .center){

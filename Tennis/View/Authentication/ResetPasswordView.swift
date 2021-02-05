@@ -49,7 +49,7 @@ struct ResetPasswordView: View {
                             .autocapitalization(.none)
                     }
                     .padding(.all)
-                    .foregroundColor(Color(.white).opacity(vm.resetEmail == "" ? 0.02 : 0.12))
+                    .background(Color(.white).opacity(vm.resetEmail == "" ? 0.02 : 0.12))
                     .cornerRadius(15)
                     .padding(.horizontal)
                     Spacer()

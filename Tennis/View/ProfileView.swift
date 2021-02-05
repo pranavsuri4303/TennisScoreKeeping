@@ -20,7 +20,7 @@ struct ProfileView: View {
                     .padding(.top, 75)
                 Spacer()
             }.padding()
-            .background(Color("White").opacity(0))
+            .background(Color(.white).opacity(0))
             
             ScrollView(.vertical, showsIndicators: false, content: {
                 GeometryReader{reader in
