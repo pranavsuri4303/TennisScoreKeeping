@@ -9,6 +9,8 @@ import SwiftUI
 import LocalAuthentication
 struct ContentView: View {
     @AppStorage("status") var logged = false
+    @ObservedObject var sliderMenueVM = DownloadedProfileImage.shared
+    let sliderVM = SliderMenueVM()
     var body: some View {
         NavigationView{
             
@@ -17,6 +19,11 @@ struct ContentView: View {
                 Home()
                     .preferredColorScheme(.light)
                     .navigationBarHidden(true)
+                    .onAppear(perform: {
+                        print("Shown")
+                        SliderMenueVM.init().loadImageFromStorage()
+                        
+                    })
             }
             else{
                 LoginView()

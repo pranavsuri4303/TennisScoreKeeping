@@ -16,9 +16,10 @@ class DownloadedProfileImage : ObservableObject {
 struct Home: View {
     var body: some View {
         ViewSwitcher()
-            .onAppear(perform: {
-                SliderMenueVM.init().loadImageFromStorage()
-            })
+//            .onAppear(perform: {
+//                print("Shown")
+//                SliderMenueVM.init().loadImageFromStorage()
+//            })
     }
 }
 
@@ -109,7 +110,7 @@ struct SlideMenu : View {
     @Binding var currentSelectedView : SlideMenuView
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
     @ObservedObject var sliderMenueVM = DownloadedProfileImage.shared
-    let sliderVM = SliderMenueVM()
+//    let sliderVM = SliderMenueVM()
     @AppStorage("status") var logged = false
     
     

@@ -9,9 +9,12 @@ import SwiftUI
 import Firebase
 struct ProfileView: View {
     @AppStorage("status") var logged = false
+    @ObservedObject var sliderMenueVM = DownloadedProfileImage.shared
+    @ObservedObject var vm = ProfileVM()
     var body: some View {
         VStack{
             HStack{
+                
                 Text("Welcome")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
@@ -26,21 +29,35 @@ struct ProfileView: View {
                 GeometryReader{reader in
                     // Type 2 Parollax....
                     if reader.frame(in: .global).minY > -480 {
-                        Image("Roger")
-                            .resizable()
-                            .padding(.top,120)
-                            .aspectRatio(contentMode: .fill)
-                            // moving View Up....
-                            .offset(y: -reader.frame(in: .global).minY)
-                            // going to add parallax effect....
-                            .frame(width: UIScreen.main.bounds.width, height:  reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 480 : 480)
-            
+                        if let profileImage = sliderMenueVM.image {
+                            Image(uiImage: profileImage)
+                                .resizable()
+                                .padding(.top,120)
+                                .aspectRatio(contentMode: .fill)
+                                // moving View Up....
+                                .offset(y: -reader.frame(in: .global).minY)
+                                // going to add parallax effect....
+                                .frame(width: UIScreen.main.bounds.width, height:  reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 480 : 480)
+
+                            
+                        }else {
+                            Image("logo")
+                                .resizable()
+                                .padding(.top,120)
+                                .aspectRatio(contentMode: .fill)
+                                // moving View Up....
+                                .offset(y: -reader.frame(in: .global).minY)
+                                // going to add parallax effect....
+                                .frame(width: UIScreen.main.bounds.width, height:  reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 480 : 480)
+
+                            
+                        }
                     }
                 }
                 .frame(height: 480)
                 VStack(alignment: .leading,spacing: 15){
                     HStack{
-                        Text("Roger Federer")
+                        Text("\(Auth.auth().currentUser?.displayName ?? "")")
                             .font(.title)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
@@ -110,6 +127,10 @@ struct ProfileView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .background(Color("bg").edgesIgnoringSafeArea(.all))
+//        .onAppear(perform: {
+//            print("Shown")
+//            SliderMenueVM.init().loadImageFromStorage()
+//        })
     }
     
 }

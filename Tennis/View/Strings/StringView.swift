@@ -38,13 +38,13 @@ struct StringView: View {
                         ForEach(stringListViewModel.strings.reversed(), id: \.self) { (id)  in
                             VStack{
                                 HStack{
-                                    Text("\(id.name)")
+                                    Text("\(id.name ?? "String")")
                                     Spacer()
-                                    Text("\(id.date, style: .date)")
+                                    Text("\(id.date ?? Date(), style: .date)")
                                 }
                                 HStack{
                                     VStack{
-                                        Text("\(id.mains)")
+                                        Text("\(id.mains ?? 00)")
                                             .font(.largeTitle)
                                             .fontWeight(.heavy)
                                             .multilineTextAlignment(.center)
@@ -53,7 +53,7 @@ struct StringView: View {
                                     }
                                     Spacer()
                                     VStack{
-                                        Text("\(id.cross)")
+                                        Text("\(id.cross ?? 00)")
                                             .font(.largeTitle)
                                             .fontWeight(.heavy)
                                             .multilineTextAlignment(.center)

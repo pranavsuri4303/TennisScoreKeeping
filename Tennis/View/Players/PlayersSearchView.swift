@@ -106,7 +106,7 @@ struct SearchPlayerRowView : View {
     
     var body: some View{
         NavigationLink(
-            destination: PlayerProfileView(playerModel: .init(name: player.name, gender: player.gender, imagePath: "", nationality: player.nationality , downloadedImage: searchPlayerVM.downloadedImage)) ,
+            destination: PlayerProfileView(playerModel: .init(uid: player.uid, name: player.name, gender: player.gender, imagePath: "", nationality: player.nationality , downloadedImage: searchPlayerVM.downloadedImage)) ,
             label: {
                 HStack(alignment: .center){
                     if let downloadedImage = searchPlayerVM.downloadedImage {
@@ -123,7 +123,7 @@ struct SearchPlayerRowView : View {
                             .scaledToFit()
                     }
                     
-                    Text("\(player.name)")
+                    Text("\(player.name ?? "User")")
                         .font(.title2)
                         .multilineTextAlignment(.leading)
                         .foregroundColor(.white)

@@ -9,13 +9,7 @@
 import Firebase
 import Combine
 
-struct StringModel : Hashable  {
-    let id = UUID.init()
-    let cross : Int
-    let date : Date
-    let mains : Int
-    let name : String
-}
+
 class StringsListVM: ObservableObject {
     @Published var strings : [StringModel] = []
     private var cancellables: Set<AnyCancellable> = []

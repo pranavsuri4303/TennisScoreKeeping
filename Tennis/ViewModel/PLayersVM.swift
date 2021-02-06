@@ -36,12 +36,13 @@ class PlayersVM : ObservableObject{
                 self.players = []
                 for document in results!.documents{
                     guard
+                        let uid = document["uid"] as? String,
                         let name = document["name"] as? String,
                         let gender = document["gender"] as? String,
                         let imagePath = document["uid"] as? String,
                         let nationality = document["nationality"] as? String
                     else {return}
-                    let player = PlayerModel(name: name ,gender: gender, imagePath: imagePath + "/profileImage.jpeg", nationality: nationality )
+                    let player = PlayerModel(uid: uid, name: name ,gender: gender, imagePath: imagePath + "/profileImage.jpeg", nationality: nationality )
                     
                     
                     self.players.append(player)
@@ -52,14 +53,5 @@ class PlayersVM : ObservableObject{
         }
         
     }
-    
-}
-struct PlayerModel : Hashable  {
-    let id = UUID.init()
-    let name : String
-    let gender: String
-    let imagePath : String
-    let nationality: String
-    var downloadedImage : UIImage? = nil
     
 }

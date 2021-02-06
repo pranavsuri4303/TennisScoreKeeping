@@ -42,12 +42,12 @@ struct PlayerProfileView: View {
                 }
                 .frame(height: 480)
                 VStack(alignment: .leading,spacing: 15){
-                    Text(playerModel.name)
+                    Text(playerModel.name ?? "User")
                         .font(.system(size: 35, weight: .bold))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.leading)
                         .lineLimit(1)
-                    Text(playerModel.gender)
+                    Text(playerModel.gender ?? "")
                         .font(.subheadline)
                         .foregroundColor(.white)
                     HStack{
@@ -77,15 +77,9 @@ struct PlayerProfileView: View {
             .navigationBarHidden(true)
 
         }
-        .navigationTitle(Text("\(playerModel.name)"))
+        .navigationTitle(Text("\(playerModel.name ?? "User")"))
         .foregroundColor(Color("bg"))
         .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-
-struct PlaterprofileView_Preview : PreviewProvider {
-    static var previews: some View {
-        PlayerProfileView(playerModel: .init(name: "Majid ElKpeer", gender: "Male", imagePath: "", nationality: "Indian"))
-    }
-}
