@@ -42,12 +42,12 @@ struct PlayerProfileView: View {
                 }
                 .frame(height: 480)
                 VStack(alignment: .leading,spacing: 15){
-                    Text(playerModel.name ?? "User")
+                    Text(playerModel.name )
                         .font(.system(size: 35, weight: .bold))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.leading)
                         .lineLimit(1)
-                    Text(playerModel.gender ?? "")
+                    Text(playerModel.gender )
                         .font(.subheadline)
                         .foregroundColor(.white)
                     HStack{
@@ -77,7 +77,7 @@ struct PlayerProfileView: View {
             .navigationBarHidden(true)
 
         }
-        .navigationTitle(Text("\(playerModel.name ?? "User")"))
+        .navigationTitle(Text("\(playerModel.name)"))
         .foregroundColor(Color("bg"))
         .navigationBarTitleDisplayMode(.inline)
     }

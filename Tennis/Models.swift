@@ -18,11 +18,11 @@ struct StringModel : Hashable  {
 
 struct PlayerModel : Hashable  {
     let id = UUID.init()
-    let uid : String?
-    let name : String?
-    let gender: String?
-    let imagePath : String?
-    let nationality: String?
+    let uid : String
+    let name : String
+    let gender: String
+    let imagePath : String
+    let nationality: String
     var downloadedImage : UIImage? = nil
     
 }

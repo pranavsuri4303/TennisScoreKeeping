@@ -10,6 +10,7 @@ import Combine
 import Firebase
 import UIKit
 
+var downloadingImagesOperations : [StorageDownloadTask?] = []
 class SearchPlayerVM : ObservableObject{
     let player : PlayerModel
     @Published var downloadedImage : UIImage? = nil{
@@ -23,8 +24,9 @@ class SearchPlayerVM : ObservableObject{
         loadImageFromStorage()
     }
     func loadImageFromStorage(){
-        if downloadedImage == nil {
-            operation =  Storage.storage().reference().child("\(player.imagePath)").getData(maxSize: .max) { (data, error) in
+        if downloadedImage == nil  {
+            
+            operation =  Storage.storage().reference().child(player.imagePath).getData(maxSize: .max) { (data, error) in
                 print(data)
                 data.publisher
                     .compactMap {$0}
@@ -34,6 +36,8 @@ class SearchPlayerVM : ObservableObject{
                     .assign(to: \.downloadedImage, on: self)
                 
             }
+            
+            downloadingImagesOperations.append(operation)
         }
         
     }

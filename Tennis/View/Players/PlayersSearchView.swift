@@ -27,6 +27,7 @@ struct PlayersSearchView: View {
                                     .padding(.horizontal, 50)
                                     .autocapitalization(.none)
                                     .onChange(of: vm.playerName, perform: { value in
+                                       let _ =  downloadingImagesOperations.compactMap({$0}).map{$0.cancel()}
                                         vm.searchPlayer()
                                     })
                                     .foregroundColor(.white)
@@ -103,6 +104,8 @@ struct SearchPlayerRowView : View {
         self.player = player
         self.searchPlayerVM = SearchPlayerVM(player: player)
     }
+   
+       
     
     var body: some View{
         NavigationLink(
@@ -117,13 +120,13 @@ struct SearchPlayerRowView : View {
                             .frame(width: 50, height: 50, alignment: .center)
                     }
                     else {
-                        Image("\(player.gender)")
+                        Image(player.gender)
                             .resizable()
                             .frame(width: 50, height: 50, alignment: .center)
                             .scaledToFit()
                     }
                     
-                    Text("\(player.name ?? "User")")
+                    Text(player.name)
                         .font(.title2)
                         .multilineTextAlignment(.leading)
                         .foregroundColor(.white)
@@ -134,9 +137,7 @@ struct SearchPlayerRowView : View {
                 }.padding(.all)
                 .background(Color(.white).opacity(0.1).cornerRadius(8))
                 .edgesIgnoringSafeArea(.all)
-                .onDisappear {
-                    
-                }
+                
             })
     }
 }

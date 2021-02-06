@@ -13,7 +13,11 @@ import FirebaseFirestore
 /**
  
 Enum friend , notfirend
- 1- get status of freidnship
+ 1- get status of freidnship - when viewing friend  get friendship status from Reciever DB to and check if the SENDERID exsist
+  if not exist able to send friend request
+ if exist check if friends or not
+    if friends unfriend
+    if notfriend remove request 
     
  2-
  get a list of all frineships with status = friend
