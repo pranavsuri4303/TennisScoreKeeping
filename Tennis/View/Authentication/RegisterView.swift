@@ -128,7 +128,6 @@ struct RegisterView: View {
                         
                         Button("Login"){
                             registerViewPresented.toggle()
-                            
                         }
                         .foregroundColor(Color("green"))
                         

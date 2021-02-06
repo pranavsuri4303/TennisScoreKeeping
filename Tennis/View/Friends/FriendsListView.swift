@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FriendsListView: View {
+    @State private var goToRequests = false
     var body: some View {
         VStack{
             
@@ -20,9 +21,12 @@ struct FriendsListView: View {
                         Spacer()
                         Button(action: {
                             // Go to Friend Reuests view
+                            goToRequests.toggle()
                         }, label: {
                             Image(systemName: "plus")
                                 .foregroundColor(Color("green"))
+                        }).fullScreenCover(isPresented: $goToRequests, content: {
+                            FriendRequestView(friendRequestPresented: $goToRequests)
                         })
                     }.padding(.all)
                 }
