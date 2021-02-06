@@ -35,7 +35,7 @@ struct ViewSwitcher : View {
     // to hide view...
     @State var currentSelectedMenuView : SlideMenuView = .profile
     @GestureState var gestureState : CGFloat = 0
-    @StateObject var isSliderMenuPresented = SliderMenuPresentationManager.shared
+    @ObservedObject var isSliderMenuPresented = SliderMenuPresentationManager.shared
     var body: some View{
         
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
@@ -82,12 +82,18 @@ struct ViewSwitcher : View {
             DragGesture()
                 .onEnded({ (value) in
                     if value.translation.width > 100 && isSliderMenuPresented.isPresented == false{
-                        isSliderMenuPresented.isPresented = true
-                        return
+                        withAnimation {
+                            
+                            SliderMenuPresentationManager.shared.isPresented = true
+                        }
+                        
                     }
                     
                     if value.translation.width < 100 && isSliderMenuPresented.isPresented == true{
-                        isSliderMenuPresented.isPresented = false
+                        withAnimation {
+                            
+                            SliderMenuPresentationManager.shared.isPresented = false
+                        }
                     }
                 })
                 
