@@ -27,7 +27,7 @@ struct StringView: View {
                                     .foregroundColor(Color("green"))
                                 
                             }).sheet(isPresented: $vm.showAddString) {
-                                AddNewStringView()
+                                AddNewStringView(addStringIsPresented: $vm.showAddString)
                             }.padding(.all)
                         }
                     }

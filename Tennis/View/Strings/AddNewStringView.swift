@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddNewStringView: View {
     @StateObject var vm = StringsVM()
+    @Binding var addStringIsPresented : Bool
     var body: some View {
         ZStack{
             GeometryReader{ geo in
@@ -100,6 +101,7 @@ struct AddNewStringView: View {
                     Spacer()
                     Button(action: {
                         vm.addString()
+                        addStringIsPresented.toggle()
                     }, label: {
                         Text("Add String")
                             .fontWeight(.heavy)
@@ -126,11 +128,5 @@ struct AddNewStringView: View {
             
         }
         
-    }
-}
-
-struct StringView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddNewStringView()
     }
 }
