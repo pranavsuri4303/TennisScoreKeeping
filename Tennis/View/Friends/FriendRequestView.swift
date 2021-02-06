@@ -1,4 +1,11 @@
 //
+//  FriendRequestView.swift
+//  Tennis
+//
+//  Created by Sameer Suri on 5/2/21.
+//
+
+//
 //  FriendsListView.swift
 //  Tennis
 //
@@ -7,7 +14,7 @@
 
 import SwiftUI
 
-struct FriendsListView: View {
+struct FriendRequestView: View {
     var body: some View {
         VStack{
             
@@ -66,7 +73,7 @@ struct FriendsListView: View {
     
     
 }
-struct FriendsListCell : View {
+struct FriendRequestCell : View {
     
     var body: some View{
         NavigationLink(
@@ -74,33 +81,37 @@ struct FriendsListCell : View {
             label: {
                 HStack(alignment: .center){
                     
-//                    if let downloadedImage = searchPlayerVM.downloadedImage {
-//                        Image(uiImage: downloadedImage)
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fill)
-//                            .clipShape(Circle())
-//                            .frame(width: 50, height: 50, alignment: .center)
-//                    }
-//                    else {
-                        Image("Male")
-                            .resizable()
-                            .frame(width: 50, height: 50, alignment: .center)
-                            .scaledToFit()
-//                    }
-                        Text("Friend Name")
-                            .font(.title2)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.white)
-                            .edgesIgnoringSafeArea(.all)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .foregroundColor(Color("green"))
-                    }.padding(.all)
-                        .background(Color(.white).opacity(0.1).cornerRadius(8))
+                    //                    if let downloadedImage = searchPlayerVM.downloadedImage {
+                    //                        Image(uiImage: downloadedImage)
+                    //                            .resizable()
+                    //                            .aspectRatio(contentMode: .fill)
+                    //                            .clipShape(Circle())
+                    //                            .frame(width: 50, height: 50, alignment: .center)
+                    //                    }
+                    //                    else {
+                    Image("Male")
+                        .resizable()
+                        .frame(width: 50, height: 50, alignment: .center)
+                        .scaledToFit()
+                    //                    }
+                    Text("Friend Name")
+                        .font(.title2)
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(.white)
                         .edgesIgnoringSafeArea(.all)
-                        .onDisappear {
-                            
-                        }
-                })
-            }
-        }
+                    Spacer()
+                    Image(systemName: "checkmark.circle")
+                        .foregroundColor(Color(.green))
+                        .padding()
+                    Image(systemName: "xmark.octagon.fill")
+                        .foregroundColor(Color(.green))
+                        .padding()
+                }.padding(.all)
+                .background(Color(.white).opacity(0.1).cornerRadius(8))
+                .edgesIgnoringSafeArea(.all)
+                .onDisappear {
+                    
+                }
+            })
+    }
+}

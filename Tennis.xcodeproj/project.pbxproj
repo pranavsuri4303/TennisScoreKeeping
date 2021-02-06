@@ -200,8 +200,8 @@
 				764A60FE25B90E8900789373 /* View */,
 				764A60CC25B90E5600789373 /* Assets.xcassets */,
 				764A60D125B90E5600789373 /* Info.plist */,
-				764A60CE25B90E5600789373 /* Preview Content */,
 				764A613C25B9204B00789373 /* Constants.swift */,
+				764A60CE25B90E5600789373 /* Preview Content */,
 			);
 			path = Tennis;
 			sourceTree = "<group>";
@@ -235,18 +235,17 @@
 		764A60FE25B90E8900789373 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				76AADBC325C6718E00EB0C43 /* Authentication */,
 				76D1B85725BAEE2000FE1B4B /* Home.swift */,
 				76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */,
+				9FCFE65A25C354100011F8C2 /* SlideMenuePreference.swift */,
+				76D7319F25CA7BB7001D2D64 /* ProfileView.swift */,
+				76AADBC325C6718E00EB0C43 /* Authentication */,
 				762F87C725C9C0C9004B46FD /* Match */,
 				76AADBBF25C6717900EB0C43 /* Dashboard */,
 				76AADBBB25C6716D00EB0C43 /* Strings */,
-				9FCFE65A25C354100011F8C2 /* SlideMenuePreference.swift */,
-				76D7319F25CA7BB7001D2D64 /* ProfileView.swift */,
 				7619A62D25CA422000014ADA /* Players */,
+				B58917DA25CF26E1001BFA0E /* Friends */,
 				76C952B925C8CDEF00E6D432 /* GoogleService-Info.plist */,
-				768F059925CDA03800E29BA7 /* FriendRequestView.swift */,
-				76F5424725CDC81F00557BF9 /* FriendsListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,6 +294,15 @@
 				76B8152F25CD3AF10029EE83 /* TextFieldWithInputView.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		B58917DA25CF26E1001BFA0E /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				768F059925CDA03800E29BA7 /* FriendRequestView.swift */,
+				76F5424725CDC81F00557BF9 /* FriendsListView.swift */,
+			);
+			path = Friends;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
