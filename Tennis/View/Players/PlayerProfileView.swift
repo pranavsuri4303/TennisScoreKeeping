@@ -21,6 +21,7 @@ struct PlayerProfileView: View {
                         if let playerImage = playerModel.downloadedImage {
                             Image(uiImage: playerImage)
                                 .resizable()
+                                .background(Color.blue)
                                 .padding(.top,75)
                                 .aspectRatio(contentMode: .fill)
                                 // moving View Up....

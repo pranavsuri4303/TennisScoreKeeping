@@ -75,7 +75,7 @@ struct ViewSwitcher : View {
                     .gesture(
                         DragGesture()
                             .updating($gestureState, body: { (value, state, _) in
-                                print(value.translation.width)
+                                
                                 if value.translation.width < 1 {
                                     state = value.translation.width
                                 }
@@ -91,6 +91,17 @@ struct ViewSwitcher : View {
             
             
         }
+        .gesture(
+            DragGesture()
+                .onChanged({ (value) in
+                    if value.translation.width > 100 && isSliderMenuPresented.isPresented == false{
+                        isSliderMenuPresented.isPresented.toggle()
+                    }
+                })
+                
+               
+                
+        )
         
         
     }
