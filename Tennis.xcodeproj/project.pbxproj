@@ -51,6 +51,7 @@
 		9F73852B25CE4DA800CF79D1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9F73852A25CE4DA800CF79D1 /* FirebaseFirestore */; };
 		9F73852D25CE4DA800CF79D1 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9F73852C25CE4DA800CF79D1 /* FirebaseStorage */; };
 		9FCFE65B25C354100011F8C2 /* SlideMenuePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCFE65A25C354100011F8C2 /* SlideMenuePreference.swift */; };
+		9FFCF2E425CF2C7E00C6C94E /* SendFriendRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCF2E325CF2C7E00C6C94E /* SendFriendRequestVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		76FA5EF025C7E495005DACE9 /* ExpertMatchScoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertMatchScoringView.swift; sourceTree = "<group>"; };
 		76FA5EF525C7E6E9005DACE9 /* ScoringViewTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewTemplates.swift; sourceTree = "<group>"; };
 		9FCFE65A25C354100011F8C2 /* SlideMenuePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuePreference.swift; sourceTree = "<group>"; };
+		9FFCF2E325CF2C7E00C6C94E /* SendFriendRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFriendRequestVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +264,7 @@
 				7619A63A25CA68B900014ADA /* SliderMenuVM.swift */,
 				7619A63F25CA699200014ADA /* SearchPlayerVM.swift */,
 				76DB132325CEDA41003EDA38 /* ProfileVM.swift */,
+				9FFCF2E325CF2C7E00C6C94E /* SendFriendRequestVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				760719B925BB52F000F09A1A /* DashboardView.swift in Sources */,
 				76B8153025CD3AF10029EE83 /* TextFieldWithInputView.swift in Sources */,
 				764A618325B9493F00789373 /* RegisterVM.swift in Sources */,
+				9FFCF2E425CF2C7E00C6C94E /* SendFriendRequestVM.swift in Sources */,
 				76FA5EF125C7E495005DACE9 /* ExpertMatchScoringView.swift in Sources */,
 				764A612825B91C8E00789373 /* LoginView.swift in Sources */,
 				76DB132925CEDAD9003EDA38 /* Models.swift in Sources */,
