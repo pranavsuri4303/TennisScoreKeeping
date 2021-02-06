@@ -72,20 +72,7 @@ struct ViewSwitcher : View {
                     .animation(.easeIn)
                     .zIndex(1)
                     .offset(x: gestureState)
-                    .gesture(
-                        DragGesture()
-                            .updating($gestureState, body: { (value, state, _) in
-                                
-                                if value.translation.width < 1 {
-                                    state = value.translation.width
-                                }
-                            })
-                            .onEnded({ (value) in
-                                if value.translation.width < -100 {
-                                    isSliderMenuPresented.isPresented.toggle()
-                                }
-                            })
-                    )
+    
                 
             }
             
@@ -93,9 +80,14 @@ struct ViewSwitcher : View {
         }
         .gesture(
             DragGesture()
-                .onChanged({ (value) in
+                .onEnded({ (value) in
                     if value.translation.width > 100 && isSliderMenuPresented.isPresented == false{
-                        isSliderMenuPresented.isPresented.toggle()
+                        isSliderMenuPresented.isPresented = true
+                        return
+                    }
+                    
+                    if value.translation.width < 100 && isSliderMenuPresented.isPresented == true{
+                        isSliderMenuPresented.isPresented = false
                     }
                 })
                 
