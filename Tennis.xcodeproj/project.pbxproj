@@ -49,6 +49,7 @@
 		9F73852925CE4DA800CF79D1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9F73852825CE4DA800CF79D1 /* FirebaseAuth */; };
 		9F73852B25CE4DA800CF79D1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9F73852A25CE4DA800CF79D1 /* FirebaseFirestore */; };
 		9F73852D25CE4DA800CF79D1 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9F73852C25CE4DA800CF79D1 /* FirebaseStorage */; };
+		9FA0978625CFAF320039A73E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0978525CFAF320039A73E /* Helpers.swift */; };
 		9FCFE65B25C354100011F8C2 /* SlideMenuePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCFE65A25C354100011F8C2 /* SlideMenuePreference.swift */; };
 		9FFCF2E425CF2C7E00C6C94E /* SendFriendRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCF2E325CF2C7E00C6C94E /* SendFriendRequestVM.swift */; };
 		B53309F325CFA66B00A98800 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B53309F225CFA66B00A98800 /* GoogleService-Info.plist */; };
@@ -117,6 +118,7 @@
 		76FA5EEB25C7E457005DACE9 /* AdvancedMatchScoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedMatchScoringView.swift; sourceTree = "<group>"; };
 		76FA5EF025C7E495005DACE9 /* ExpertMatchScoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertMatchScoringView.swift; sourceTree = "<group>"; };
 		76FA5EF525C7E6E9005DACE9 /* ScoringViewTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewTemplates.swift; sourceTree = "<group>"; };
+		9FA0978525CFAF320039A73E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		9FCFE65A25C354100011F8C2 /* SlideMenuePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuePreference.swift; sourceTree = "<group>"; };
 		9FFCF2E325CF2C7E00C6C94E /* SendFriendRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFriendRequestVM.swift; sourceTree = "<group>"; };
 		B53309F225CFA66B00A98800 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				764A60C825B90E5600789373 /* TennisApp.swift */,
 				76DB132825CEDAD9003EDA38 /* Models.swift */,
+				9FA0978525CFAF320039A73E /* Helpers.swift */,
 				764A611925B91C6300789373 /* ViewModel */,
 				764A60CA25B90E5600789373 /* ContentView.swift */,
 				764A60FE25B90E8900789373 /* View */,
@@ -447,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76AADBA625C64F6A00EB0C43 /* PlayersSearchView.swift in Sources */,
+				9FA0978625CFAF320039A73E /* Helpers.swift in Sources */,
 				7662D40225C39DBE004544BF /* BasicMatchScoringView.swift in Sources */,
 				76278C1F25B9E8060005EBD4 /* NewUserView.swift in Sources */,
 				7662D3F525C391A1004544BF /* NewMatchView.swift in Sources */,

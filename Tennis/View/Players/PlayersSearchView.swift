@@ -78,6 +78,7 @@ struct PlayersSearchView: View {
                     }else{
                         ScrollView{
                             ForEach(vm.players, id: \.self) { player in
+                               
                                 SearchPlayerRowView(player: player)
                                 
                             }.padding()
@@ -91,13 +92,11 @@ struct PlayersSearchView: View {
                 }.background(Color("bg").ignoresSafeArea(.all, edges: .all))
             }
         }
-    }
+    
 }
-
-
+}
 struct SearchPlayerRowView : View {
     let player : PlayerModel
-    @State var isNavigationLinkState : Bool = false
     @ObservedObject var searchPlayerVM : SearchPlayerVM
     
     init(player : PlayerModel) {
@@ -109,7 +108,7 @@ struct SearchPlayerRowView : View {
     
     var body: some View{
         NavigationLink(
-            destination: PlayerProfileView(playerModel: .init(uid: player.uid, name: player.name, gender: player.gender, imagePath: "", nationality: player.nationality , downloadedImage: searchPlayerVM.downloadedImage)) ,
+            destination: PlayerProfileView(playerModel: .init(uid: player.uid, name: player.name, gender: player.gender, imagePath: "", nationality: player.nationality , downloadedImage: searchPlayerVM.downloadedImage), searchVM: searchPlayerVM) ,
             label: {
                 HStack(alignment: .center){
                     if let downloadedImage = searchPlayerVM.downloadedImage {

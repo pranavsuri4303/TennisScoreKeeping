@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import Combine
 
 class DownloadedProfileImage : ObservableObject {
     @Published  var image  : UIImage? = nil
@@ -37,6 +38,7 @@ struct ViewSwitcher : View {
     @State var currentSelectedMenuView : SlideMenuView = .profile
     @GestureState var gestureState : CGFloat = 0
     @ObservedObject var isSliderMenuPresented = SliderMenuPresentationManager.shared
+    
     var body: some View{
         
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
@@ -54,7 +56,8 @@ struct ViewSwitcher : View {
             
             Button(action: {
                 // opening menu,..
-                isSliderMenuPresented.isPresented.toggle()
+              
+                 isSliderMenuPresented.isPresented = true
                 
             }) {
                 Image(systemName: "line.horizontal.3")
@@ -73,37 +76,31 @@ struct ViewSwitcher : View {
                     .animation(.easeIn)
                     .zIndex(1)
                     .offset(x: gestureState)
+                    .gesture(
+                        DragGesture()
+                            .updating($gestureState, body: { (value, state, _) in
+                                print(value.translation.width)
+                                if value.translation.width < 1 {
+                                    state = value.translation.width
+                                }
+                            })
+                            .onEnded({ (value) in
+                                if value.translation.width < -100 {
+                                    isSliderMenuPresented.isPresented = false
+                                }
+                            })
+                    )
     
                 
             }
             
             
         }
-        .gesture(
-            DragGesture()
-                .onEnded({ (value) in
-                    if value.translation.width > 100 && isSliderMenuPresented.isPresented == false{
-                        withAnimation {
-                            
-                            SliderMenuPresentationManager.shared.isPresented = true
-                        }
-                        
-                    }
-                    
-                    if value.translation.width < 100 && isSliderMenuPresented.isPresented == true{
-                        withAnimation {
-                            
-                            SliderMenuPresentationManager.shared.isPresented = false
-                        }
-                    }
-                })
-                
-               
-                
-        )
+        
         
         
     }
+    
 }
 
 struct SlideMenu : View {
@@ -164,7 +161,7 @@ struct SlideMenu : View {
                         
                         Spacer()
                         Button(action: {
-                            SliderMenuPresentationManager.shared.isPresented.toggle()
+                            SliderMenuPresentationManager.shared.isPresented = false
                             try! Auth.auth().signOut()
                             withAnimation{logged = false}
                             DownloadedProfileImage.shared.image = nil
@@ -274,7 +271,7 @@ struct MenuButton : View {
         .onTapGesture {
             currentSelectedHome = slideMenuItem
             
-            SliderMenuPresentationManager.shared.isPresented.toggle()
+            SliderMenuPresentationManager.shared.isPresented = false
             
         }
         
@@ -303,7 +300,11 @@ struct SliderMenuTransition : AnimatableModifier {
                 Color.gray.opacity(backgroundAlpha)
                     .ignoresSafeArea()
                     .onTapGesture {
-                        SliderMenuPresentationManager.shared.isPresented.toggle()
+                        Just(false)
+                            
+                            .sink { (bool) in
+                            SliderMenuPresentationManager.shared.isPresented = bool
+                        }
                     }
             }
             content.offset(x: xOffset)

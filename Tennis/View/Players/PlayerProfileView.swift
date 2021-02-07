@@ -10,6 +10,7 @@ import SwiftUI
 struct PlayerProfileView: View {
     let playerModel : PlayerModel
     @StateObject var sendFriendRequestVM = SendFriendRequestVM.init()
+    let searchVM : SearchPlayerVM
     var body: some View {
         NavigationView{
             ScrollView(.vertical, showsIndicators: false, content: {
@@ -87,6 +88,7 @@ struct PlayerProfileView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {
             sendFriendRequestVM.setFriendshipStatus(recieverUserID: playerModel.uid)
+            searchVM.loadImageFromStorageWithBiggerSize()
         })
     }
 }

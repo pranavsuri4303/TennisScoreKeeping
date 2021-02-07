@@ -16,7 +16,7 @@ class RegisterVM : ObservableObject{
     @Published var yob = ""
     @Published var nationality = ""
     @Published var gender = "Male"
-    var imageData : Data?
+    var imageData : (Data? , Data?)
     // User Data....
     
     @AppStorage("status") var logged = false
@@ -97,25 +97,38 @@ class RegisterVM : ObservableObject{
     }
     
     func configProfileImageDataFrom(UIImage image : UIImage?){
-        if let image = image , let data = image.jpegData(compressionQuality: 1){
-            self.imageData = data
+        
+        if let image = image , let dataImageSizeSmall = image.resizeImage(targetSize: .init(width: 100, height: 100)).pngData() , let dataImageSizeBig = image.resizeImage(targetSize: .init(width: 400, height: 400)).pngData(){
+            self.imageData = (dataImageSizeSmall , dataImageSizeBig)
         }
     }
     
     func uploadImageToDatabase( userID : String, completion : @escaping (Result<String?, Error>)->Void){
         
         struct FaildToUploadImage : Error {}
-        if let data = imageData {
-            Firebase.Storage.storage().reference().child(userID).child("profileImage.jpeg").putData(data, metadata: nil) { (metaData, error) in
+        if let smallData = imageData.0  , let bigData = imageData.1{
+            Firebase.Storage.storage().reference().child(userID).child("1x").child("profileImage.png").putData(smallData, metadata: nil) { (metaData, error) in
                 if let error = error {
                     completion(Result.failure(error))
                     return
                 }
-                if let metaData = metaData , let path = metaData.path {
-                    completion(Result.success(path))
-                    return
-                }                
+        
+                Firebase.Storage.storage().reference().child(userID).child("2x").child("profileImage.png").putData(bigData, metadata: nil) { (metaData, error) in
+                    if let error = error {
+                        completion(Result.failure(error))
+                        return
+                    }
+                    let path = userID.description
+                        completion(Result.success(path))
+                        return
+                    
+                    
+                    
+                }
+                
             }
+            
+           
             
         }
         else{
