@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FriendsListView: View {
+    @StateObject var friendRequestVM = SendFriendRequestVM()
     @State private var goToRequests = false
     var body: some View {
         VStack{
@@ -55,43 +56,49 @@ struct FriendsListView: View {
             ///     Else display below ScrollView
             ScrollView(){
                 // Insert list of friends here with navigation link to their profile similar to players search
-                FriendsListCell()
-                FriendsListCell()
-                FriendsListCell()
-                FriendsListCell()
-                FriendsListCell()
-                FriendsListCell()
-                FriendsListCell()
+                
+                ForEach(friendRequestVM.friendsList , id : \.self) { (player) in
+                    FriendsListCell(player: player)
+                }
             }.padding(.horizontal)
             Spacer()
-        }.background(Color("bg").ignoresSafeArea(.all, edges: .all))
+        }
+        .background(Color("bg").ignoresSafeArea(.all, edges: .all))
+        .onAppear(perform: {
+            friendRequestVM.getFriendsList()
+        })
         
     }
     
     
 }
 struct FriendsListCell : View {
-    
+    @ObservedObject var searchPlayerVM : SearchPlayerVM
+    let player : PlayerModel
+    init(player : PlayerModel) {
+        self.searchPlayerVM = SearchPlayerVM(player: player)
+        self.player = player
+    }
     var body: some View{
         NavigationLink(
             destination: Text("Friend Profile View"),
             label: {
                 HStack(alignment: .center){
                     
-                    //                    if let downloadedImage = searchPlayerVM.downloadedImage {
-                    //                        Image(uiImage: downloadedImage)
-                    //                            .resizable()
-                    //                            .aspectRatio(contentMode: .fill)
-                    //                            .clipShape(Circle())
-                    //                            .frame(width: 50, height: 50, alignment: .center)
-                    //                    }
-                    //                    else {
+                                        if let downloadedImage = searchPlayerVM.downloadedImage {
+                                            Image(uiImage: downloadedImage)
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .clipShape(Circle())
+                                                .frame(width: 50, height: 50, alignment: .center)
+                                        }
+                                        else {
                     Image("Male")
                         .resizable()
                         .frame(width: 50, height: 50, alignment: .center)
                         .scaledToFit()
-                    //                    }
-                    Text("Friend Name")
+                                        }
+                    Text(player.name)
                         .font(.title2)
                         .multilineTextAlignment(.leading)
                         .foregroundColor(.white)

@@ -23,9 +23,8 @@ struct TennisApp: App {
 class Delegate : NSObject, UIApplicationDelegate{
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-
         FirebaseApp.configure()
-
+        print(Auth.auth().currentUser?.uid)
         return true
     }
     

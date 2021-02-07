@@ -12,7 +12,7 @@ import Firebase
 class ProfileVM : ObservableObject{
     // Firebase Stuff
     let db = Firestore.firestore()
-    let uidStr = (Auth.auth().currentUser?.uid)!
+    let uidStr = (Auth.auth().currentUser?.uid)
     @Published var gender = ""
     @Published var latestString : StringModel?
     @Published var alert = false
@@ -28,6 +28,7 @@ class ProfileVM : ObservableObject{
     
     // Fetch User Data
     func fetchUserData() {
+        if let uidStr = uidStr {
         isLoading = true
         Firestore.firestore().collection("users").document("\(uidStr)").addSnapshotListener { (results, err) in
             if let err = err{
@@ -43,7 +44,7 @@ class ProfileVM : ObservableObject{
         
 
     }
-    
+    }
     
 }
 

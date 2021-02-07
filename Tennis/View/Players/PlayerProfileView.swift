@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlayerProfileView: View {
     let playerModel : PlayerModel
+    @StateObject var sendFriendRequestVM = SendFriendRequestVM.init()
     var body: some View {
         NavigationView{
             ScrollView(.vertical, showsIndicators: false, content: {
@@ -53,8 +54,10 @@ struct PlayerProfileView: View {
                     HStack{
                         Spacer()
                         Button(action: {
+                            sendFriendRequestVM.sendFriendRequest(recieverUserID: playerModel.uid)
+                            
                         }, label: {
-                            Text("Add Friend")
+                            Text(sendFriendRequestVM.buttonTitle)
                                 .fontWeight(.heavy)
                                 .foregroundColor(.black)
                                 .padding(.vertical)
@@ -62,6 +65,7 @@ struct PlayerProfileView: View {
                                 .background(Color("green"))
                                 .clipShape(Capsule())
                         }).padding()
+                        .disabled(sendFriendRequestVM.currentStatus == .friend)
                         Spacer() 
                     }
                 }
@@ -80,6 +84,9 @@ struct PlayerProfileView: View {
         .navigationTitle(Text("\(playerModel.name)"))
         .foregroundColor(Color("bg"))
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear(perform: {
+            sendFriendRequestVM.setFriendshipStatus(recieverUserID: playerModel.uid)
+        })
     }
 }
 

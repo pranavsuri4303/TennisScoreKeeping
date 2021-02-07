@@ -28,7 +28,9 @@ class PlayersVM : ObservableObject{
             .whereField("email", isLessThanOrEqualTo: "\(playerName)z")
             .order(by: "email", descending: false)
 
-        query.getDocuments { (results, err) in
+        query.getDocuments { [weak self] (results, err) in
+            guard let self = self else {return}
+            
             if let err = err{
                 self.alert.toggle()
                 self.alertMsg = err.localizedDescription
@@ -47,6 +49,7 @@ class PlayersVM : ObservableObject{
                     
                     self.players.append(player)
                 }
+                print(self.players.count)
                 
                 
             }

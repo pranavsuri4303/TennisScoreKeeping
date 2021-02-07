@@ -16,6 +16,7 @@ import SwiftUI
 
 struct FriendRequestView: View {
     @Binding var friendRequestPresented : Bool
+    @StateObject var friendRequestVM = SendFriendRequestVM()
     var body: some View {
         VStack{
             VStack{
@@ -63,53 +64,66 @@ struct FriendRequestView: View {
             ///     Else display below ScrollView
             ScrollView(){
                 // Insert list of friends here with navigation link to their profile similar to players search
-                FriendRequestCell()
-                FriendRequestCell()
-                FriendRequestCell()
-                FriendRequestCell()
-                FriendRequestCell()
-                FriendRequestCell()
-                FriendRequestCell()
+                ForEach(friendRequestVM.requestsUsers , id : \.self) { player in
+                    FriendRequestCell(player: player, sendFriendRequestVM: self.friendRequestVM)
+                }
             }.padding(.horizontal)
             Spacer()
         }.background(Color("bg").ignoresSafeArea(.all, edges: .all))
+        .onAppear{
+            self.friendRequestVM.getPendingRequests()
+        }
         
     }
     
     
 }
 struct FriendRequestCell : View {
+    let playerModel : PlayerModel
+    @ObservedObject var sendFriendRequestVM : SendFriendRequestVM
     
+    
+    @ObservedObject var searchPlayerVM : SearchPlayerVM
+    init(player : PlayerModel , sendFriendRequestVM : SendFriendRequestVM) {
+        self.searchPlayerVM = SearchPlayerVM(player: player)
+        self.sendFriendRequestVM = sendFriendRequestVM
+        playerModel = player
+    }
     var body: some View{
         
         HStack(alignment: .center){
             
-            //                    if let downloadedImage = searchPlayerVM.downloadedImage {
-            //                        Image(uiImage: downloadedImage)
-            //                            .resizable()
-            //                            .aspectRatio(contentMode: .fill)
-            //                            .clipShape(Circle())
-            //                            .frame(width: 50, height: 50, alignment: .center)
-            //                    }
-            //                    else {
+                                if let downloadedImage = searchPlayerVM.downloadedImage {
+                                    Image(uiImage: downloadedImage)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .clipShape(Circle())
+                                        .frame(width: 50, height: 50, alignment: .center)
+                                }
+                                else {
             Image("Male")
                 .resizable()
                 .frame(width: 50, height: 50, alignment: .center)
                 .scaledToFit()
-            //                    }
-            Text("Friend Name")
+                                }
+            Text(playerModel.name)
                 .font(.title2)
                 .multilineTextAlignment(.leading)
                 .foregroundColor(.white)
                 .edgesIgnoringSafeArea(.all)
             Spacer()
             HStack(spacing: 10){
-                Button(action: {}, label: {
+                Button(action: {
+                    sendFriendRequestVM.acceptFriendRequest(senderUserID: playerModel.uid)
+                    
+                }, label: {
                     Image(systemName: "checkmark.circle")
                         .foregroundColor(Color(.green))
                         .padding()
                 })
-                Button(action: {}, label: {
+                Button(action: {
+                    sendFriendRequestVM.declintFriendRequest(senderUserID: playerModel.uid)
+                }, label: {
                     Image(systemName: "xmark.octagon.fill")
                         .foregroundColor(Color(.red))
                         .padding()
