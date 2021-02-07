@@ -38,6 +38,7 @@ struct PlayerProfileView: View {
                                 .offset(y: -reader.frame(in: .global).minY)
                                 // going to add parallax effect....
                                 .frame(width: UIScreen.main.bounds.width, height:  reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 480 : 480)
+                            
                         }
                     }
                 }
@@ -65,7 +66,7 @@ struct PlayerProfileView: View {
                                 .background(Color("green"))
                                 .clipShape(Capsule())
                         }).padding()
-                        .disabled(sendFriendRequestVM.currentStatus == .friend)
+                        .disabled(sendFriendRequestVM.currentStatus == .friend || sendFriendRequestVM.currentStatus == .pending)
                         Spacer() 
                     }
                 }
