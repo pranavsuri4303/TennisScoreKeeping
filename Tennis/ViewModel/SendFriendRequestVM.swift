@@ -114,7 +114,7 @@ class SendFriendRequestVM : ObservableObject {
     }
     }
     
-    func declintFriendRequest(senderUserID : String){
+    func declineFriendRequest(senderUserID : String){
         Firestore.firestore().collection("users").document(currentUserID).getDocument { (snapshot, error) in
             if let error = error {
                 print(error)
@@ -201,7 +201,7 @@ class SendFriendRequestVM : ObservableObject {
                             if let data = userSnapshot?.data() {
                     
                                 if let name = data["name"] as? String ,
-                                   let uid = data["uid"] as? String
+                                    let uid = data["uid"] as? String
                                     {
                                     let playerModel = PlayerModel(uid: uid, name: name, gender: "", imagePath: (data["imageProfilePath"] as? String) ?? "", nationality: "")
                                     self.friendsList.append(playerModel)

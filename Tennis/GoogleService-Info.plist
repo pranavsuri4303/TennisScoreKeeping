@@ -3,32 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1094198435782-7oelse28j879mplra099eoad2garinev.apps.googleusercontent.com</string>
+	<string>518869896340-sospuhig0ais949qnjmttquqdjolp59o.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1094198435782-7oelse28j879mplra099eoad2garinev</string>
+	<string>com.googleusercontent.apps.518869896340-sospuhig0ais949qnjmttquqdjolp59o</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCkjtQ6ypLD6yIPjRjQ971AgTufM6n8K-M</string>
+	<string>AIzaSyDr6bjHlWKTzJ-EsvLUIldncGsX_BZfx98</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1094198435782</string>
+	<string>518869896340</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>rocketdestroyer.com.Tennis</string>
 	<key>PROJECT_ID</key>
-	<string>rocketdestroyer-df5bf</string>
+	<string>rocket-tennis-score-tracker</string>
 	<key>STORAGE_BUCKET</key>
-	<string>rocketdestroyer-df5bf.appspot.com</string>
+	<string>rocket-tennis-score-tracker.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1094198435782:ios:70d745ffddb5dbaedddcc7</string>
+	<string>1:518869896340:ios:2e89cdef39b4e9ae49f881</string>
 </dict>
 </plist>

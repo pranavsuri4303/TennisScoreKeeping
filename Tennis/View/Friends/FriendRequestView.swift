@@ -122,7 +122,7 @@ struct FriendRequestCell : View {
                         .padding()
                 })
                 Button(action: {
-                    sendFriendRequestVM.declintFriendRequest(senderUserID: playerModel.uid)
+                    sendFriendRequestVM.declineFriendRequest(senderUserID: playerModel.uid)
                 }, label: {
                     Image(systemName: "xmark.octagon.fill")
                         .foregroundColor(Color(.red))
