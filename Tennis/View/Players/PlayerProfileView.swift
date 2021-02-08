@@ -67,7 +67,7 @@ struct PlayerProfileView: View {
                                 .background(Color("green"))
                                 .clipShape(Capsule())
                         }).padding()
-                        .disabled(sendFriendRequestVM.currentStatus == .friend || sendFriendRequestVM.currentStatus == .pending)
+                        .disabled(sendFriendRequestVM.currentStatus == .friend || sendFriendRequestVM.currentStatus == .pending || sendFriendRequestVM.currentStatus == .me)
                         Spacer() 
                     }
                 }
