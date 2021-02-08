@@ -187,6 +187,7 @@ struct SlideMenu : View {
                             try! Auth.auth().signOut()
                             withAnimation{logged = false}
                             DownloadedProfileImage.shared.image = nil
+                            DownloadedProfileImage.shared.profileImage = nil
                         }) {
                             Text("Log out")
                                 .foregroundColor(Color("green"))
