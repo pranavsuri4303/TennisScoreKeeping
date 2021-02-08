@@ -35,6 +35,7 @@ enum FriendshipStatus : String {
     case friend
     case pending
     case notFriend
+    case me
     
 }
 class SendFriendRequestVM : ObservableObject {
@@ -49,12 +50,18 @@ class SendFriendRequestVM : ObservableObject {
         case .friend: buttonTitle =  "Friend"
         case .notFriend: buttonTitle = "Send Friend Request"
         case .pending :  buttonTitle = "Pending Request"
+            case .me : buttonTitle = "Your Profile"
         }}
     }
 
      func setFriendshipStatus(recieverUserID : String){
         print(currentUserID)
         var currentStatus = FriendshipStatus.notFriend
+        
+        if recieverUserID == currentUserID {
+            self.currentStatus = .me
+            return
+        }
         Firestore.firestore().collection("users").document(recieverUserID).addSnapshotListener { (snapshot, error) in
             
             if let error = error {

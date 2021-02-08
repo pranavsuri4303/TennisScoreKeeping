@@ -98,6 +98,7 @@ struct PlayersSearchView: View {
 struct SearchPlayerRowView : View {
     let player : PlayerModel
     @ObservedObject var searchPlayerVM : SearchPlayerVM
+    @State var isProfilePresented : Bool = false
     
     init(player : PlayerModel) {
         self.player = player
@@ -107,9 +108,7 @@ struct SearchPlayerRowView : View {
        
     
     var body: some View{
-        NavigationLink(
-            destination: PlayerProfileView(playerModel: .init(uid: player.uid, name: player.name, gender: player.gender, imagePath: "", nationality: player.nationality , downloadedImage: searchPlayerVM.downloadedImage), searchVM: searchPlayerVM) ,
-            label: {
+     
                 HStack(alignment: .center){
                     if let downloadedImage = searchPlayerVM.downloadedImage {
                         Image(uiImage: downloadedImage)
@@ -136,7 +135,13 @@ struct SearchPlayerRowView : View {
                 }.padding(.all)
                 .background(Color(.white).opacity(0.1).cornerRadius(8))
                 .edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    isProfilePresented.toggle()
+                }
+                .sheet(isPresented: $isProfilePresented, content: {
+                    PlayerProfileView(playerModel: .init(uid: player.uid, name: player.name, gender: player.gender, imagePath: "", nationality: player.nationality , downloadedImage: searchPlayerVM.downloadedImage), searchVM: searchPlayerVM)
+                })
                 
-            })
+            
     }
 }

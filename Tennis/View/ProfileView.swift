@@ -131,6 +131,10 @@ struct ProfileView: View {
 //            print("Shown")
 //            SliderMenueVM.init().loadImageFromStorage()
 //        })
+        
+        .onAppear(perform: {
+            sliderMenueVM.loadImageFromStorageWithBiggerSize()
+        })
     }
     
 }
