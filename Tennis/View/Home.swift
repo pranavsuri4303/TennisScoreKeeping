@@ -11,12 +11,14 @@ import Combine
 
 class DownloadedProfileImage : ObservableObject {
     @Published  var image  : UIImage? = nil
+    @Published var profileImage : UIImage? = nil
     static let shared = DownloadedProfileImage()
     
     func loadImageFromStorageWithBiggerSize(){
         
            
-        if let userID = Auth.auth().currentUser?.uid{
+    
+        if let userID = Auth.auth().currentUser?.uid , profileImage == nil{
                 let imagePath = userID + "/2x/profileImage.png"
                 Storage.storage().reference().child(imagePath).getData(maxSize: .max) { (data, error) in
                    
@@ -25,7 +27,7 @@ class DownloadedProfileImage : ObservableObject {
                         .map { data in
                             UIImage(data: data)
                         }
-                        .assign(to: \.image, on: self)
+                        .assign(to: \.profileImage, on: self)
                     
                 }
                 

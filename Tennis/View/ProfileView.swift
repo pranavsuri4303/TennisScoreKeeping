@@ -29,7 +29,7 @@ struct ProfileView: View {
                 GeometryReader{reader in
                     // Type 2 Parollax....
                     if reader.frame(in: .global).minY > -480 {
-                        if let profileImage = sliderMenueVM.image {
+                        if let profileImage = sliderMenueVM.profileImage {
                             Image(uiImage: profileImage)
                                 .resizable()
                                 .padding(.top,120)
