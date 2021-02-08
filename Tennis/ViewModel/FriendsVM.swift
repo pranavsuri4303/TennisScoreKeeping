@@ -12,23 +12,23 @@ import Firebase
 
 /**
  
-Enum friend , notfirend
+ Enum friend , notfirend
  1- get status of freidnship - when viewing friend  get friendship status from Reciever DB to and check if the SENDERID exsist
-  if not exist able to send friend request
+ if not exist able to send friend request
  if exist check if friends or not
-    if friends unfriend
-    if notfriend remove request 
-    
+ if friends unfriend
+ if notfriend remove request
+ 
  2-
  get a list of all frineships with status = friend
  
  3- send friend request
-    1- to send friend request you will go to the Receiver user UID and update its child with , Sender ID ,  friend status notfriends
-      2- this will be presented in freidrequestScreens wit accept or decline
-       3- if accepted : 1- changes in RECIEVER  UId  and :- Friends  SENDUID status friend
-                        2- add RECEIVERUID to SENDER FriendsList  with status friend
-       4- if declient :- 1- remove SenderUID from ReceiverFriendsDIC
-
+ 1- to send friend request you will go to the Receiver user UID and update its child with , Sender ID ,  friend status notfriends
+ 2- this will be presented in freidrequestScreens wit accept or decline
+ 3- if accepted : 1- changes in RECIEVER  UId  and :- Friends  SENDUID status friend
+ 2- add RECEIVERUID to SENDER FriendsList  with status friend
+ 4- if declient :- 1- remove SenderUID from ReceiverFriendsDIC
+ 
  
  */
 enum FriendshipStatus : String {
@@ -39,22 +39,26 @@ enum FriendshipStatus : String {
     
 }
 class FriendsVM : ObservableObject {
-   private var subscribtions : Set<AnyCancellable> = []
+    private var subscribtions : Set<AnyCancellable> = []
     let currentUserID : String = Auth.auth().currentUser!.uid
     @Published var buttonTitle : String = FriendshipStatus.notFriend.rawValue
     @Published var requestsUsers : [PlayerModel] = []
     @Published var friendsList : [PlayerModel] = []
+    @Published var friendsListP1 : [String] = ["\((Auth.auth().currentUser?.displayName)!)(You)"]
+    @Published var friendsListP2 : [String] = [""]
+    
+    
     var currentStatus = FriendshipStatus.notFriend{
         didSet{
             switch currentStatus {
-        case .friend: buttonTitle =  "Friend"
-        case .notFriend: buttonTitle = "Send Friend Request"
-        case .pending :  buttonTitle = "Pending Request"
+            case .friend: buttonTitle =  "Friend"
+            case .notFriend: buttonTitle = "Send Friend Request"
+            case .pending :  buttonTitle = "Pending Request"
             case .me : buttonTitle = "Your Profile"
-        }}
+            }}
     }
-
-     func setFriendshipStatus(recieverUserID : String){
+    
+    func setFriendshipStatus(recieverUserID : String){
         print(currentUserID)
         var currentStatus = FriendshipStatus.notFriend
         
@@ -83,7 +87,7 @@ class FriendsVM : ObservableObject {
             }
         }
         
-       
+        
         
     }
     
@@ -115,10 +119,10 @@ class FriendsVM : ObservableObject {
                     return
                 }
                 self.requestsUsers.removeAll(where: {$0.uid == senderUserID})
-            
                 
+                
+            }
         }
-    }
     }
     
     func declineFriendRequest(senderUserID : String){
@@ -163,13 +167,13 @@ class FriendsVM : ObservableObject {
                                 print(error)
                                 
                             }
-                           
+                            
                             
                             if let data = userSnapshot?.data() {
-                    
+                                
                                 if let name = data["name"] as? String ,
                                    let uid = data["uid"] as? String
-                                    {
+                                {
                                     let playerModel = PlayerModel(uid: uid, name: name, gender: "", imagePath: (data["imageProfilePath"] as? String) ?? "", nationality: "")
                                     self.requestsUsers.append(playerModel)
                                     
@@ -177,7 +181,7 @@ class FriendsVM : ObservableObject {
                             }
                         }
                     }
-
+                    
                 }
             }
         }
@@ -203,22 +207,24 @@ class FriendsVM : ObservableObject {
                                 print(error)
                                 
                             }
-                           
+                            
                             
                             if let data = userSnapshot?.data() {
-                    
+                                
                                 if let name = data["name"] as? String ,
-                                    let uid = data["uid"] as? String
-                                    {
+                                   let uid = data["uid"] as? String
+                                {
                                     let playerModel = PlayerModel(uid: uid, name: name, gender: "", imagePath: (data["imageProfilePath"] as? String) ?? "", nationality: "")
                                     self.friendsList.append(playerModel)
-                                    print(self.friendsList)
+                                    self.friendsListP1.append(playerModel.name)
+                                    self.friendsListP2.append(playerModel.name)
+                                    
                                     
                                 }
                             }
                         }
                     }
-
+                    
                 }
             }
         }

@@ -139,7 +139,7 @@ struct SearchPlayerRowView : View {
                     isProfilePresented.toggle()
                 }
                 .sheet(isPresented: $isProfilePresented, content: {
-                    PlayerProfileView(playerModel: .init(uid: player.uid, name: player.name, gender: player.gender, imagePath: "", nationality: player.nationality , downloadedImage: searchPlayerVM.downloadedImage), searchVM: searchPlayerVM)
+                    PlayerProfileView(playerModel: .init(uid: player.uid, name: player.name, gender: player.gender, imagePath: "", nationality: player.nationality , downloadedImage: searchPlayerVM.downloadedImage), searchVM: searchPlayerVM, profileIsPresented: $isProfilePresented)
                 })
                 
             

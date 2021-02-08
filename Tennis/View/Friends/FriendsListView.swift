@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FriendsListView: View {
-    @StateObject var friendRequestVM = SendFriendRequestVM()
+    @StateObject var friendRequestVM = FriendsVM()
     @State private var goToRequests = false
     var body: some View {
         VStack{
@@ -21,51 +21,58 @@ struct FriendsListView: View {
                     HStack{
                         Spacer()
                         Button(action: {
-                            // Go to Friend Reuests view
                             goToRequests.toggle()
                         }, label: {
-                            Image(systemName: "plus")
-                                .foregroundColor(Color("green"))
+                            if self.friendRequestVM.requestsUsers.count == 0{
+                                Image(systemName: "bell")
+                                    .foregroundColor(Color("green"))
+                            }else{
+                                Image(systemName: "bell.badge")
+                                    .foregroundColor(Color("green"))
+                            }
+                            
                         }).fullScreenCover(isPresented: $goToRequests, content: {
                             FriendRequestView(friendRequestPresented: $goToRequests)
                         })
                     }.padding(.all)
                 }
             }
-            ////             If list of friends is empty then display this
-            //            VStack(alignment: .center, spacing: 20){
-            //                Spacer()
-            //                Image(systemName: "magnifyingglass.circle")
-            //                    .resizable()
-            //                    .foregroundColor(Color("green"))
-            //                    .frame(width: 100, height: 100, alignment: .center)
-            //                Text("What are you waiting for?!")
-            //                    .font(.headline)
-            //                    .foregroundColor(.white)
-            //                    .multilineTextAlignment(.center)
-            //                    .lineLimit(1)
-            //                    .padding(.horizontal)
-            //                Text("Go to the Players tab now to search for users and add them as friends...")
-            //                    .font(.headline)
-            //                    .foregroundColor(.white)
-            //                    .multilineTextAlignment(.center)
-            //                    .lineLimit(2)
-            //                    .padding()
-            //                Spacer()
-            //            }
-            ///     Else display below ScrollView
-            ScrollView(){
-                // Insert list of friends here with navigation link to their profile similar to players search
-                
-                ForEach(friendRequestVM.friendsList , id : \.self) { (player) in
-                    FriendsListCell(player: player)
+
+            if friendRequestVM.friendsList.count == 0{
+                VStack(alignment: .center, spacing: 20){
+                    Spacer()
+                    Image(systemName: "magnifyingglass.circle")
+                        .resizable()
+                        .foregroundColor(Color("green"))
+                        .frame(width: 100, height: 100, alignment: .center)
+                    Text("What are you waiting for?!")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(1)
+                        .padding(.horizontal)
+                    Text("Go to the Players tab now to search for users and add them as friends...")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                        .padding()
+                    Spacer()
                 }
-            }.padding(.horizontal)
-            Spacer()
+            }else{
+                ScrollView(){
+                    ForEach(friendRequestVM.friendsList , id : \.self) { (player) in
+                        FriendsListCell(player: player)
+                    }
+                }.padding(.horizontal)
+                Spacer()
+            }
+
         }
         .background(Color("bg").ignoresSafeArea(.all, edges: .all))
         .onAppear(perform: {
             friendRequestVM.getFriendsList()
+            friendRequestVM.getPendingRequests()
         })
         
     }
@@ -75,6 +82,7 @@ struct FriendsListView: View {
 struct FriendsListCell : View {
     @ObservedObject var searchPlayerVM : SearchPlayerVM
     let player : PlayerModel
+    
     init(player : PlayerModel) {
         self.searchPlayerVM = SearchPlayerVM(player: player)
         self.player = player
@@ -85,19 +93,19 @@ struct FriendsListCell : View {
             label: {
                 HStack(alignment: .center){
                     
-                                        if let downloadedImage = searchPlayerVM.downloadedImage {
-                                            Image(uiImage: downloadedImage)
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fill)
-                                                .clipShape(Circle())
-                                                .frame(width: 50, height: 50, alignment: .center)
-                                        }
-                                        else {
-                    Image("Male")
-                        .resizable()
-                        .frame(width: 50, height: 50, alignment: .center)
-                        .scaledToFit()
-                                        }
+                    if let downloadedImage = searchPlayerVM.downloadedImage {
+                        Image(uiImage: downloadedImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(Circle())
+                            .frame(width: 50, height: 50, alignment: .center)
+                    }
+                    else {
+                        Image("Male")
+                            .resizable()
+                            .frame(width: 50, height: 50, alignment: .center)
+                            .scaledToFit()
+                    }
                     Text(player.name)
                         .font(.title2)
                         .multilineTextAlignment(.leading)

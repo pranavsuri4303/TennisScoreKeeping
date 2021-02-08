@@ -15,10 +15,12 @@ class SearchPlayerVM : ObservableObject{
     let player : PlayerModel
     @Published var downloadedImage : UIImage? = nil
     var operation : StorageDownloadTask? = nil
+    
     init(player : PlayerModel){
         self.player = player
         loadImageFromStorage()
     }
+    
     func loadImageFromStorage(){
         if downloadedImage == nil  {
             
@@ -42,25 +44,25 @@ class SearchPlayerVM : ObservableObject{
     
     func loadImageFromStorageWithBiggerSize(){
         
-           
-                
-                let imagePath = player.uid + "/2x/profileImage.png"
-                print(imagePath)
-                operation =  Storage.storage().reference().child(imagePath).getData(maxSize: .max) { (data, error) in
-                   
-                    data.publisher
-                        .compactMap {$0}
-                        .map { data in
-                            UIImage(data: data)
-                        }
-                        .assign(to: \.downloadedImage, on: self)
-                    
-                }
-                
-                downloadingImagesOperations.append(operation)
-            }
-            
         
+        
+        let imagePath = player.uid + "/2x/profileImage.png"
+        print(imagePath)
+        operation =  Storage.storage().reference().child(imagePath).getData(maxSize: .max) { (data, error) in
+            
+            data.publisher
+                .compactMap {$0}
+                .map { data in
+                    UIImage(data: data)
+                }
+                .assign(to: \.downloadedImage, on: self)
+            
+        }
+        
+        downloadingImagesOperations.append(operation)
+    }
+    
+    
     
     
     
