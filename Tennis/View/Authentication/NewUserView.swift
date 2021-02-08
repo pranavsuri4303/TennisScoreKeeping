@@ -16,6 +16,7 @@ struct NewUserView: View {
     @State var country : String? = nil
     @State var arrCountry = ["India","USA","France"] //Here Add Your data
     @State var selectionIndex = 0
+    @State var nations = Nationalities().list
     var body: some View {
         ZStack{
             VStack{
@@ -108,7 +109,7 @@ struct NewUserView: View {
                         .font(.title2)
                         .foregroundColor(.white)
                         .frame(width: 35)
-                    TextFieldWithInputView(data: Nationalities().list, placeholder: "Select your country", selectionIndex: self.$selectionIndex, selectedText: $vm.nationality)
+                    TextFieldWithInputView(data: $nations, placeholder: "Select your country", selectionIndex: self.$selectionIndex, selectedText: $vm.nationality)
                         .frame(height: 0)
                 }
                 .padding()

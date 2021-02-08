@@ -29,21 +29,21 @@ class ProfileVM : ObservableObject{
     // Fetch User Data
     func fetchUserData() {
         if let uidStr = uidStr {
-        isLoading = true
-        Firestore.firestore().collection("users").document("\(uidStr)").addSnapshotListener { (results, err) in
-            if let err = err{
-                self.alert.toggle()
-                self.alertMsg = err.localizedDescription
-            }else{
-                if let data = results{
-                    self.isLoading = false
-                    print(data)
+            isLoading = true
+            Firestore.firestore().collection("users").document("\(uidStr)").addSnapshotListener { (results, err) in
+                if let err = err{
+                    self.alert.toggle()
+                    self.alertMsg = err.localizedDescription
+                }else{
+                    if let data = results{
+                        self.isLoading = false
+                        print(data)
+                    }
                 }
             }
+            
+            
         }
-        
-
-    }
     }
     
 }

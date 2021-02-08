@@ -7,7 +7,7 @@
 import SwiftUI
 struct TextFieldWithInputView : UIViewRepresentable {
     
-    var data : [String]
+    @Binding var data : [String]
     var placeholder : String
     
     @Binding var selectionIndex : Int

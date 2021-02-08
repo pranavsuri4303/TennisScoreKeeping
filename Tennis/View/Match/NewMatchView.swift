@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct NewMatchView: View {
-    @StateObject var vm = MatchVM()
+
+    @State var friendsVM = FriendsVM()
+    init() {
+        friendsVM.getFriendsList()
+    }
+    @ObservedObject var vm = MatchVM()
     @State var matchScorerIsPresented = false
     @State var selectionP1 = 0
     @State var selectionP2 = 0
@@ -43,8 +48,9 @@ struct NewMatchView: View {
                                 TextField("Player 1 Name", text: $vm.P1.name)
                                     .autocapitalization(.words)
                             }else{
-                                TextFieldWithInputView(data: Friends().list2, placeholder: "Select Player 1", selectionIndex: self.$selectionP1, selectedText: $vm.P1.name)
+                                TextFieldWithInputView(data: $friendsVM.friendsListP1, placeholder: "Select Player 1", selectionIndex: self.$selectionP1, selectedText: $vm.P1.name)
                                     .frame(height: 0)
+
                             }
                         }
                         .padding(.all)
@@ -77,8 +83,9 @@ struct NewMatchView: View {
                                 TextField("Player 2 Name", text: $vm.P2.name)
                                     .autocapitalization(.words)
                             }else{
-                                TextFieldWithInputView(data: Friends().list, placeholder: "Select Player 2", selectionIndex: self.$selectionP2, selectedText: $vm.P2.name)
+                                TextFieldWithInputView(data: $friendsVM.friendsListP2, placeholder: "Select Player 2", selectionIndex: self.$selectionP2, selectedText: $vm.P2.name)
                                     .frame(height: 0)
+
                             }
                         }
                         .padding()
