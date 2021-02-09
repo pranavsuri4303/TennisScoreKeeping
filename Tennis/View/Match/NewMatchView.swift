@@ -184,8 +184,8 @@ struct NewMatchView: View {
                         }
                         
                     })
-                    .opacity(vm.P2.name != "" ? 1 : 0.5)
-                    .disabled(vm.P2.name != "" ? false : true)
+                    .opacity(vm.P2.name == "" || vm.P1.name == "" || vm.P1.name == vm.P2.name ? 0.5 : 1)
+                    .disabled(vm.P2.name == "" || vm.P1.name == "" || vm.P1.name == vm.P2.name ? true : false)
                     .alert(isPresented: $vm.alert, content: {
                         Alert(title: Text("Error"), message: Text(vm.alertMsg), dismissButton: .destructive(Text("Ok")))
                     })

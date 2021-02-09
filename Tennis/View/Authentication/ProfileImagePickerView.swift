@@ -51,7 +51,6 @@ struct ImagePicker: UIViewControllerRepresentable {
                     self?.parent.selectedImage = image
                 }
             }
-            
             parent.presentationMode.wrappedValue.dismiss()
         }
     }

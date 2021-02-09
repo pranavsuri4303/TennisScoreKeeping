@@ -198,6 +198,8 @@ class FriendsVM : ObservableObject {
             }
             
             if let data = snapshot?.data(){
+                self.friendsList = []
+
                 if let friends = data["friends"] as? [String: String]  {
                     friends.filter { $0.value == FriendshipStatus.friend.rawValue }.map(\.key).forEach { (userID) in
                         
@@ -224,11 +226,8 @@ class FriendsVM : ObservableObject {
                             }
                         }
                     }
-                    
                 }
             }
         }
     }
-    
-    
 }

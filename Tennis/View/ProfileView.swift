@@ -41,7 +41,7 @@ struct ProfileView: View {
 
                             
                         }else {
-                            Image("logo")
+                            Image("\(vm.gender)")
                                 .resizable()
                                 .padding(.top,120)
                                 .aspectRatio(contentMode: .fill)

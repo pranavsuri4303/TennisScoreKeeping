@@ -15,6 +15,8 @@ final class MatchVM : ObservableObject{
     @Published var noOfSets = 1
     @Published var deuceType = DeuceType.deuce
     @Published var trackingStyle = TrackingType.basic
+    @Published var matchIsOver = false
+    @Published var winner = PlayerType.p1
 
     // Serve
     @Published var serve = Serve.firstServe
@@ -25,7 +27,6 @@ final class MatchVM : ObservableObject{
     @Published var alertMsg = ""
     // Loading Screen...
     @Published var isLoading = false
-    
     // Stats
     @Published var P1 = Player()
     @Published var P2 = Player()
@@ -43,7 +44,6 @@ final class MatchVM : ObservableObject{
         case .p2:
             self.P2.pts += 1
             checkIfGameIsOver(p1: P1.pts, p2: P2.pts, deuce: deuce, servingPlayer: servingPlayer)
-            
         }
     }
     func resetPts() {
@@ -100,11 +100,15 @@ final class MatchVM : ObservableObject{
             if p1>p2 {
                 resetPts()
                 resetGames()
+                winner = .p1
+                self.matchIsOver.toggle()
                 print("Player 1 wins")
             }else if p1<p2 {
-                print("Player 2 wins")
                 resetPts()
                 resetGames()
+                winner = .p2
+                self.matchIsOver.toggle()
+
             }
         }
     }
@@ -188,6 +192,5 @@ struct Player {
     var firstServesIn = 0
     var totalSecondServes = 0
     var secondServesIn = 0
-    
 }
 

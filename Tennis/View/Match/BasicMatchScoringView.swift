@@ -30,7 +30,7 @@ struct BasicMatchScoringView: View {
                             .foregroundColor(Color("green"))
                             .multilineTextAlignment(.trailing)
                     }).fullScreenCover(isPresented: $dashboardIsPresented, content: {
-                        Home()
+                        DashboardView()
                     }).padding(.all)
                     
                 }

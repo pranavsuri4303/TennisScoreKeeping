@@ -28,6 +28,7 @@
 		764A617625B9475000789373 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A617525B9475000789373 /* RegisterView.swift */; };
 		764A617E25B9479700789373 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A617D25B9479700789373 /* ResetPasswordView.swift */; };
 		764A618325B9493F00789373 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A618225B9493F00789373 /* RegisterVM.swift */; };
+		764B745E25D2552E0035B02C /* CurrentMatchStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B745D25D2552E0035B02C /* CurrentMatchStatistics.swift */; };
 		7662D3F525C391A1004544BF /* NewMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7662D3F425C391A1004544BF /* NewMatchView.swift */; };
 		7662D3FA25C392BB004544BF /* MatchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7662D3F925C392BB004544BF /* MatchVM.swift */; };
 		7662D40225C39DBE004544BF /* BasicMatchScoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7662D40125C39DBE004544BF /* BasicMatchScoringView.swift */; };
@@ -100,6 +101,7 @@
 		764A617525B9475000789373 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		764A617D25B9479700789373 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		764A618225B9493F00789373 /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
+		764B745D25D2552E0035B02C /* CurrentMatchStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMatchStatistics.swift; sourceTree = "<group>"; };
 		7662D3F425C391A1004544BF /* NewMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMatchView.swift; sourceTree = "<group>"; };
 		7662D3F925C392BB004544BF /* MatchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVM.swift; sourceTree = "<group>"; };
 		7662D40125C39DBE004544BF /* BasicMatchScoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicMatchScoringView.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 		764A60FE25B90E8900789373 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				764B745C25D2551A0035B02C /* Statistics */,
 				76D1B85725BAEE2000FE1B4B /* Home.swift */,
 				76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */,
 				9FCFE65A25C354100011F8C2 /* SlideMenuePreference.swift */,
@@ -270,6 +273,14 @@
 				9FFCF2E325CF2C7E00C6C94E /* FriendsVM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		764B745C25D2551A0035B02C /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				764B745D25D2552E0035B02C /* CurrentMatchStatistics.swift */,
+			);
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 		76AADBBB25C6716D00EB0C43 /* Strings */ = {
@@ -457,6 +468,7 @@
 				9FCFE65B25C354100011F8C2 /* SlideMenuePreference.swift in Sources */,
 				76DB132425CEDA41003EDA38 /* ProfileVM.swift in Sources */,
 				7619A62925CA421800014ADA /* PlayerProfileView.swift in Sources */,
+				764B745E25D2552E0035B02C /* CurrentMatchStatistics.swift in Sources */,
 				7662D3FA25C392BB004544BF /* MatchVM.swift in Sources */,
 				76343B8625C2B2140061ABB5 /* StringView.swift in Sources */,
 				762F87CF25C9C0EC004B46FD /* MatchesListView.swift in Sources */,
@@ -573,7 +585,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -628,7 +640,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -648,7 +660,7 @@
 				DEVELOPMENT_TEAM = 3B5M536V2W;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Tennis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -670,7 +682,7 @@
 				DEVELOPMENT_TEAM = 3B5M536V2W;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Tennis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
