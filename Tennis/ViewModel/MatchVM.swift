@@ -98,14 +98,14 @@ final class MatchVM : ObservableObject{
     func checkIfMatchIsOver(p1: Int, p2: Int) {
         if p1 == 6 || p2 == 6 {
             if p1>p2 {
-                resetPts()
-                resetGames()
+//                resetPts()
+//                resetGames()
                 winner = .p1
                 self.matchIsOver.toggle()
                 print("Player 1 wins")
             }else if p1<p2 {
-                resetPts()
-                resetGames()
+//                resetPts()
+//                resetGames()
                 winner = .p2
                 self.matchIsOver.toggle()
 
