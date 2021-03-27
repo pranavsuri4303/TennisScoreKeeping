@@ -13,3 +13,10 @@ enum AuthState: String {
     case authenticating = "Authenticating"
     case initial = "Initial"
 }
+
+enum ViewState: String {
+    case loading = "Loading"
+    case success = "Success"
+    case initial = "Initial"
+    case error = "Error"
+}

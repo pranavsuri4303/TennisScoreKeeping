@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ResetPasswordView: View {
-    @StateObject var vm = LoginViewModel()
-    @AppStorage("status") var logged = false
+    @StateObject var vm = ResetPasswordVM()
 
     var body: some View{
         ZStack{
@@ -39,21 +38,20 @@ struct ResetPasswordView: View {
                     .padding()
                     .padding(.leading,15)
                     HStack{
-                        
                         Image(systemName: "envelope")
                             .font(.title2)
                             .foregroundColor(.white)
                             .frame(width: 35)
-                        
-                        TextField("EMAIL", text: $vm.resetEmail)
+                        TextField("EMAIL", text: $vm.email)
                             .autocapitalization(.none)
                     }
-                    .padding(.all)
-                    .background(Color(.white).opacity(vm.resetEmail == "" ? 0.02 : 0.12))
+                    .padding()
+                    .background(Color(.white).opacity(vm.email == "" ? 0.02 : 0.12))
                     .cornerRadius(15)
                     .padding(.horizontal)
-                    Spacer()
 
+                    Spacer()
+                    
                     Button(action: vm.resetPassword, label: {
                         Text("Reset Password")
                             .fontWeight(.heavy)
@@ -63,16 +61,18 @@ struct ResetPasswordView: View {
                             .background(Color("green"))
                             .clipShape(Capsule())
                     })
-                    .opacity(vm.resetEmail != "" ? 1 : 0.5)
-                    .disabled(vm.resetEmail != "" ? false : true)
+                    .opacity(vm.email != "" ? 1 : 0.5)
+                    .disabled(vm.email != "" ? false : true)
                     .alert(isPresented: $vm.alert, content: {
                         Alert(title: Text(""), message: Text(vm.alertMsg), dismissButton: .destructive(Text("Ok")))
                     })
                 }
                 .background(Color("bg").ignoresSafeArea(.all, edges: .all))
-
             }
             
+            if vm.isLoading{
+                LoadingScreenView()
+            }
         }
     }
 }

@@ -23,7 +23,7 @@ struct LoginView : View {
     var body: some View{
         
         ZStack{
-            
+
             VStack{
                 
                 Spacer(minLength: 0)
@@ -62,6 +62,7 @@ struct LoginView : View {
                     
                     TextField("EMAIL", text: $vm.email)
                         .autocapitalization(.none)
+                        .disableAutocorrection(true)
                 }
                 .padding()
                 .background(Color(.white).opacity(vm.email == "" ? 0.02 : 0.12))
@@ -69,14 +70,13 @@ struct LoginView : View {
                 .padding(.horizontal)
                 
                 HStack{
-                    
                     Image(systemName: "lock")
                         .font(.title2)
                         .foregroundColor(.white)
                         .frame(width: 35)
-                    
                     SecureField("PASSWORD", text: $vm.password)
                         .autocapitalization(.none)
+                        .disableAutocorrection(true)
                 }
                 .padding()
                 .background(Color(.white).opacity(vm.password == "" ? 0.02 : 0.12))
@@ -102,9 +102,7 @@ struct LoginView : View {
                     })
                     
                     if vm.getBioMetricStatus(){
-                        
                         Button(action: vm.authenticateUser, label: {
-                            
                             // getting biometrictype...
                             Image(systemName: LAContext().biometryType == .faceID ? "faceid" : "touchid")
                                 .font(.title)
@@ -129,30 +127,18 @@ struct LoginView : View {
                 }
                 .padding(.top,8)
                 .alert(isPresented: $vm.store_Info, content: {
-                    Alert(title: Text("Message"), message: Text("Store Information For Future Login Using BioMetric Authentication ???"), primaryButton: .default(Text("Accept"), action: {
+                    Alert(title: Text("Message"), message: Text("Store Information For Future Login Using BioMetric Authentication?"), primaryButton: .default(Text("Accept"), action: {
                         
                         // storing Info For BioMetric...
                         Stored_User = vm.email
                         Stored_Password = vm.password
-                        
                         withAnimation{self.logged = true}
-                        
                     }), secondaryButton: .cancel({
                         // redirecting to Home
                         withAnimation{self.logged = true}
                     }))
                 })
-                Button(action: {}, label: {
-                    Image("googleLogo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 40, height: 40, alignment: .center)
-                    
-                })
-                .padding(.all)
-                
-                // SignUp...
-                
+                Spacer()
                 
                 HStack(spacing: 5){
                     
@@ -165,8 +151,7 @@ struct LoginView : View {
                     .fullScreenCover(isPresented: $goToSignup) {
                         RegisterView( registerViewPresented: $goToSignup)
                     }
-                    
-                    
+
                 }
                 .padding(.vertical)
             }

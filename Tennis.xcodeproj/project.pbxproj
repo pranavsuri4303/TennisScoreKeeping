@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		760719B925BB52F000F09A1A /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760719B825BB52F000F09A1A /* DashboardView.swift */; };
 		760719C325BB530600F09A1A /* AddNewStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760719C225BB530600F09A1A /* AddNewStringView.swift */; };
+		76183EE2260ED38D00189619 /* ResetPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76183EE1260ED38D00189619 /* ResetPasswordVM.swift */; };
 		7619A62925CA421800014ADA /* PlayerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7619A62825CA421700014ADA /* PlayerProfileView.swift */; };
 		7619A63B25CA68BA00014ADA /* SliderMenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7619A63A25CA68B900014ADA /* SliderMenuVM.swift */; };
 		7619A64025CA699200014ADA /* SearchPlayerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7619A63F25CA699200014ADA /* SearchPlayerVM.swift */; };
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		760719B825BB52F000F09A1A /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		760719C225BB530600F09A1A /* AddNewStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStringView.swift; sourceTree = "<group>"; };
+		76183EE1260ED38D00189619 /* ResetPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVM.swift; sourceTree = "<group>"; };
 		7619A62825CA421700014ADA /* PlayerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProfileView.swift; sourceTree = "<group>"; };
 		7619A63A25CA68B900014ADA /* SliderMenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderMenuVM.swift; sourceTree = "<group>"; };
 		7619A63F25CA699200014ADA /* SearchPlayerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlayerVM.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				7619A63F25CA699200014ADA /* SearchPlayerVM.swift */,
 				76DB132325CEDA41003EDA38 /* ProfileVM.swift */,
 				9FFCF2E325CF2C7E00C6C94E /* FriendsVM.swift */,
+				76183EE1260ED38D00189619 /* ResetPasswordVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76AADBA625C64F6A00EB0C43 /* PlayersSearchView.swift in Sources */,
+				76183EE2260ED38D00189619 /* ResetPasswordVM.swift in Sources */,
 				9FA0978625CFAF320039A73E /* Helpers.swift in Sources */,
 				7662D40225C39DBE004544BF /* BasicMatchScoringView.swift in Sources */,
 				76278C1F25B9E8060005EBD4 /* NewUserView.swift in Sources */,
@@ -668,7 +672,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rocketdestroyer.com.Tennis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -690,7 +694,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rocketdestroyer.com.Tennis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

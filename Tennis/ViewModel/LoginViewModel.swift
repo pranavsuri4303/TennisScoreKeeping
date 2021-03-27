@@ -11,7 +11,6 @@ import Firebase
 class LoginViewModel : ObservableObject{
     
     @Published var email = ""
-    @Published var resetEmail = ""
     @Published var password = ""
     
     // For Alerts..
@@ -19,20 +18,15 @@ class LoginViewModel : ObservableObject{
     @Published var alertMsg = ""
     
     // User Data....
-    
     @AppStorage("stored_User") var Stored_User = ""
-    
     @AppStorage("stored_Password") var Stored_Password = ""
-    
     @AppStorage("status") var logged = false
-    
     @Published var store_Info = false
     
     // Loading Screen...
     @Published var isLoading = false
     
     // Getting BioMetricType....
-    
     func getBioMetricStatus()->Bool{
         
         let scanner = LAContext()
@@ -97,22 +91,6 @@ class LoginViewModel : ObservableObject{
             withAnimation{self.logged = true}
         }
     }
-    
-    func resetPassword(){
-        isLoading = true
-        Auth.auth().sendPasswordReset(withEmail: resetEmail) { err in
-            self.isLoading = false
-            if let error = err{
-                self.alertMsg = error.localizedDescription
-                self.alert.toggle()
-                return
-            }else{
-                self.alertMsg = "A password reset email has been sent to the email address provided."
-                self.alert.toggle()
-            }
-            
-          // ...
-        }
-    }
+
 }
 
