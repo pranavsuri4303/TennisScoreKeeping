@@ -10,7 +10,7 @@ import LocalAuthentication
 
 struct LoginView : View {
     
-    @StateObject var vm = LoginViewModel()
+    @StateObject var vm = LoginVM()
     // when first time user logged in via email store this for future biometric login....
     @AppStorage("stored_User") var Stored_User = ""
     @AppStorage("stored_Password") var Stored_Password = ""

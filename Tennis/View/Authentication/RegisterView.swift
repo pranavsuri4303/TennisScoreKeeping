@@ -148,7 +148,7 @@ struct RegisterView: View {
                     self.startAnimate.toggle()
                 }
             })
-            .sheet(isPresented: $newUserViewPresented, content: {
+            .fullScreenCover(isPresented: $newUserViewPresented, content: {
                 NewUserView(isPresented : $newUserViewPresented, vm: vm)
             })
          

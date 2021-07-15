@@ -41,7 +41,7 @@ class RegisterVM : ObservableObject{
                 self.alert.toggle()
                 self.alertMsg = err.localizedDescription
                 self.isLoading = false
-
+                
             }else{
                 if let userID = res?.user.uid {
                     self.uploadImageToDatabase(userID: userID) { (result) in
@@ -112,15 +112,15 @@ class RegisterVM : ObservableObject{
                     completion(Result.failure(error))
                     return
                 }
-        
+                
                 Firebase.Storage.storage().reference().child(userID).child("2x").child("profileImage.png").putData(bigData, metadata: nil) { (metaData, error) in
                     if let error = error {
                         completion(Result.failure(error))
                         return
                     }
                     let path = userID.description
-                        completion(Result.success(path))
-                        return
+                    completion(Result.success(path))
+                    return
                     
                     
                     
@@ -128,7 +128,7 @@ class RegisterVM : ObservableObject{
                 
             }
             
-           
+            
             
         }
         else{

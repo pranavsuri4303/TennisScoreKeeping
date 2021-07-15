@@ -8,7 +8,7 @@ import SwiftUI
 import LocalAuthentication
 import Firebase
 
-class LoginViewModel : ObservableObject{
+class LoginVM : ObservableObject{
     
     @Published var email = ""
     @Published var password = ""

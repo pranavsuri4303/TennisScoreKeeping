@@ -6,63 +6,66 @@
 //
 
 import SwiftUI
+import ImagePickerView
 
 struct NewUserView: View {
     @Binding var isPresented : Bool
     @StateObject var vm : RegisterVM
     @State var startAnimate = false
-    @State var isPickerPresented : Bool  = false
-    @State var pickedUIImage : UIImage? = nil
-    @State var country : String? = nil
-    @State var arrCountry = ["India","USA","France"] //Here Add Your data
+
     @State var selectionIndex = 0
     @State var nations = Nationalities().list
+    
+    // Image
+    @State var isImagePickerViewPresented = false
+    @State var pickedImage: UIImage? = nil
+    
+    // Creating an array of YOBs with range 100 yrs
+    @State var years = Array(Calendar.current.component(.year, from: Date())-100...Calendar.current.component(.year, from: Date())).map { String($0) }
+    
     var body: some View {
         ZStack{
             VStack{
-                Spacer()
-                Group{
-                    if let pickedUIImage = pickedUIImage {
-                        
-                        Image(uiImage: pickedUIImage)
-                            .resizable()
-                            .clipShape(Circle())
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    else {
-                        
-                        if vm.gender == "Male"{
+                Button{
+                    isImagePickerViewPresented = true
+                }label: {
+                    VStack {
+                        if pickedImage == nil {
                             Circle()
-                                .fill(Color.blue.opacity(1))
-                                .overlay(Image("Male")
+                                .accentColor(.blue)
+                                .frame(width: 210, height: 210, alignment: .center)
+                                .overlay(Image("\(vm.gender)")
                                             .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            //Dynamic Frame...
-                                            .padding([.all],5))
-
-                        }else{
+                                            .frame(width: 200, height: 200)
+                                            .cornerRadius(100)
+                                            .padding())
+                            
+                        } else {
                             Circle()
-                                .fill(Color.blue.opacity(1))
-                                .overlay(Image("Female")
+                                .accentColor(.blue)
+                                .frame(width: 210, height: 210, alignment: .center)
+                                .overlay(Image(uiImage: pickedImage!)
                                             .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            //Dynamic Frame...
-                                            .padding([.all],5))
+                                            .frame(width: 200, height: 200)
+                                            .cornerRadius(100)
+                                            .padding())
+                            
                         }
-                        
-                        
-                        
                     }
                 }
-                .onTapGesture {
-                    isPickerPresented.toggle()
+                .sheet(isPresented: $isImagePickerViewPresented) {
+                    UIImagePickerView(allowsEditing: true, delegate: UIImagePickerView.Delegate(isPresented: $isImagePickerViewPresented, didCancel: { (uiImagePickerController) in
+                        print("Did Cancel: \(uiImagePickerController)")
+                    }, didSelect: { (result) in
+                        let uiImagePickerController = result.picker
+                        let image = result.image
+                        print("Did Select image: \(image) from \(uiImagePickerController)")
+                        pickedImage = image
+                    }))
                 }
-                .sheet(isPresented: $isPickerPresented, content: {
-                    ImagePicker(selectedImage: $pickedUIImage)
-                })
                 HStack{
                     
-                    VStack(alignment: .leading, spacing: 12, content: {
+                    VStack(alignment: .leading, spacing: 10, content: {
                         
                         Text("New user details")
                             .font(.title)
@@ -74,10 +77,8 @@ struct NewUserView: View {
                     })
                     .padding(.bottom)
                     
-                    Spacer(minLength: 0)
                 }
                 .padding()
-                .padding(.leading,15)
                 HStack{
                     Image(systemName: "person")
                         .font(.title2)
@@ -96,9 +97,8 @@ struct NewUserView: View {
                         .font(.title2)
                         .foregroundColor(.white)
                         .frame(width: 35)
-                    TextField("Year of Birth", text: $vm.yob)
-                        .autocapitalization(.none)
-                        .keyboardType(.numberPad)
+                    TextFieldWithInputView(data: $years, placeholder: "Year of Birth", selectionIndex: self.$selectionIndex, selectedText: $vm.yob)
+                        .frame(height: 0)
                 }
                 .padding()
                 .background(Color(.white).opacity(vm.yob == "" ? 0.02 : 0.12))
@@ -123,7 +123,7 @@ struct NewUserView: View {
                 })
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.all)
-                
+                Spacer()
                 HStack(spacing: 15){
                     
                     Button(action: {
@@ -131,7 +131,7 @@ struct NewUserView: View {
                         isPresented.toggle()
                         DispatchQueue.main.async {
                             
-                            vm.configProfileImageDataFrom(UIImage: pickedUIImage)
+                            vm.configProfileImageDataFrom(UIImage: pickedImage)
                             vm.createUser()
                         }
                         
@@ -152,7 +152,7 @@ struct NewUserView: View {
                     
                 }
                 .padding(.vertical)
-                Spacer()
+                
             }.background(Color("bg").ignoresSafeArea(.all, edges: .all))
             .animation(startAnimate ? .easeOut : .none)
             
@@ -174,261 +174,7 @@ struct Register_Preview : PreviewProvider {
     static var previews: some View {
         NewUserView(isPresented: .constant(false), vm: RegisterVM.init())
     }
-    
-    
 }
 
-struct Nationalities {
-    let list = [
-        "",
-        "Afghanistan",
-        "Albania",
-        "Algeria",
-        "American Samoa",
-        "Andorra",
-        "Angola",
-        "Anguilla",
-        "Antarctica",
-        "Antigua and Barbuda",
-        "Argentina",
-        "Armenia",
-        "Aruba",
-        "Australia",
-        "Austria",
-        "Azerbaijan",
-        "Bahamas",
-        "Bahrain",
-        "Bangladesh",
-        "Barbados",
-        "Belarus",
-        "Belgium",
-        "Belize",
-        "Benin",
-        "Bermuda",
-        "Bhutan",
-        "Bolivia (Plurinational State of)",
-        "Bonaire, Sint Eustatius and Saba",
-        "Bosnia and Herzegovina",
-        "Botswana",
-        "Bouvet Island",
-        "Brazil",
-        "British Indian Ocean Territory",
-        "Brunei Darussalam",
-        "Bulgaria",
-        "Burkina Faso",
-        "Burundi",
-        "Cabo Verde",
-        "Cambodia",
-        "Cameroon",
-        "Canada",
-        "Cayman Islands",
-        "Central African Republic",
-        "Chad",
-        "Chile",
-        "China",
-        "Christmas Island",
-        "Cocos Islands",
-        "Colombia",
-        "Comoros",
-        "The Democratic Republic of Congo",
-        "Congo",
-        "Cook Islands",
-        "Costa Rica",
-        "Croatia",
-        "Cuba",
-        "Curaçao",
-        "Cyprus",
-        "Czechia",
-        "Côte d'Ivoire",
-        "Denmark",
-        "Djibouti",
-        "Dominica",
-        "The Dominican Republic",
-        "Ecuador",
-        "Egypt",
-        "El Salvador",
-        "Equatorial Guinea",
-        "Eritrea",
-        "Estonia",
-        "Eswatini",
-        "Ethiopia",
-        "Falkland Islands",
-        "Faroe Islands",
-        "Fiji",
-        "Finland",
-        "France",
-        "French Guiana",
-        "French Polynesia",
-        "French Southern Territories",
-        "Gabon",
-        "Gambia",
-        "Georgia",
-        "Germany",
-        "Ghana",
-        "Gibraltar",
-        "Greece",
-        "Greenland",
-        "Grenada",
-        "Guadeloupe",
-        "Guam",
-        "Guatemala",
-        "Guernsey",
-        "Guinea",
-        "Guinea-Bissau",
-        "Guyana",
-        "Haiti",
-        "Heard Island and McDonald Islands",
-        "Holy See",
-        "Honduras",
-        "Hong Kong",
-        "Hungary",
-        "Iceland",
-        "India",
-        "Indonesia",
-        "Iran",
-        "Iraq",
-        "Ireland",
-        "Isle of Man",
-        "Israel",
-        "Italy",
-        "Jamaica",
-        "Japan",
-        "Jersey",
-        "Jordan",
-        "Kazakhstan",
-        "Kenya",
-        "Kiribati",
-        "DPRK",
-        "Korea",
-        "Kuwait",
-        "Kyrgyzstan",
-        "Lao People's Democratic Republic",
-        "Latvia",
-        "Lebanon",
-        "Lesotho",
-        "Liberia",
-        "Libya",
-        "Liechtenstein",
-        "Lithuania",
-        "Luxembourg",
-        "Macao",
-        "Madagascar",
-        "Malawi",
-        "Malaysia",
-        "Maldives",
-        "Mali",
-        "Malta",
-        "Marshall Islands",
-        "Martinique",
-        "Mauritania",
-        "Mauritius",
-        "Mayotte",
-        "Mexico",
-        "Micronesia",
-        "Moldova",
-        "Monaco",
-        "Mongolia",
-        "Montenegro",
-        "Montserrat",
-        "Morocco",
-        "Mozambique",
-        "Myanmar",
-        "Namibia",
-        "Nauru",
-        "Nepal",
-        "Netherlands",
-        "New Caledonia",
-        "New Zealand",
-        "Nicaragua",
-        "Niger (the)",
-        "Nigeria",
-        "Niue",
-        "Norfolk Island",
-        "Northern Mariana Islands",
-        "Norway",
-        "Oman",
-        "Pakistan",
-        "Palau",
-        "Palestine",
-        "Panama",
-        "Papua New Guinea",
-        "Paraguay",
-        "Peru",
-        "Philippines",
-        "Pitcairn",
-        "Poland",
-        "Portugal",
-        "Puerto Rico",
-        "Qatar",
-        "Republic of North Macedonia",
-        "Romania",
-        "Russian Federation",
-        "Rwanda",
-        "Réunion",
-        "Saint Barthélemy",
-        "Saint Helena, Ascension and Tristan da Cunha",
-        "Saint Kitts and Nevis",
-        "Saint Lucia",
-        "Saint Martin",
-        "Saint Pierre and Miquelon",
-        "Saint Vincent and the Grenadines",
-        "Samoa",
-        "San Marino",
-        "Sao Tome and Principe",
-        "Saudi Arabia",
-        "Senegal",
-        "Serbia",
-        "Seychelles",
-        "Sierra Leone",
-        "Singapore",
-        "Sint Maarten",
-        "Slovakia",
-        "Slovenia",
-        "Solomon Islands",
-        "Somalia",
-        "South Africa",
-        "South Georgia and the South Sandwich Islands",
-        "South Sudan",
-        "Spain",
-        "Sri Lanka",
-        "Sudan (the)",
-        "Suriname",
-        "Svalbard and Jan Mayen",
-        "Sweden",
-        "Switzerland",
-        "Syrian Arab Republic",
-        "Taiwan",
-        "Tajikistan",
-        "Tanzania",
-        "Thailand",
-        "Timor-Leste",
-        "Togo",
-        "Tokelau",
-        "Tonga",
-        "Trinidad and Tobago",
-        "Tunisia",
-        "Turkey",
-        "Turkmenistan",
-        "Turks and Caicos Islands",
-        "Tuvalu",
-        "Uganda",
-        "Ukraine",
-        "United Arab Emirates",
-        "United Kingdom of Great Britain and Northern Ireland",
-        "United States Minor Outlying Islands",
-        "United States of America",
-        "Uruguay",
-        "Uzbekistan",
-        "Vanuatu",
-        "Venezuela (Bolivarian Republic of)",
-        "Viet Nam",
-        "Virgin Islands (British)",
-        "Virgin Islands",
-        "Wallis and Futuna",
-        "Western Sahara",
-        "Yemen",
-        "Zambia",
-        "Zimbabwe",
-        "Åland Islands"
-    ]
-}
+
+

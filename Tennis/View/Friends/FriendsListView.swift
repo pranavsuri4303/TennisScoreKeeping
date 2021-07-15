@@ -37,7 +37,7 @@ struct FriendsListView: View {
                     }.padding(.all)
                 }
             }
-
+            
             if friendRequestVM.friendsList.count == 0{
                 VStack(alignment: .center, spacing: 20){
                     Spacer()
@@ -67,7 +67,7 @@ struct FriendsListView: View {
                 }.padding(.horizontal)
                 Spacer()
             }
-
+            
         }
         .background(Color("bg").ignoresSafeArea(.all, edges: .all))
         .onAppear(perform: {

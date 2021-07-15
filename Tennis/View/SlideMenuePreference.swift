@@ -14,6 +14,7 @@ enum SlideMenuView : String , Equatable , CaseIterable {
     case players = "Players"
     case matches = "Matches"
     case friends = "Friends"
+    case clubs = "Clubs"
     case none
 }
 

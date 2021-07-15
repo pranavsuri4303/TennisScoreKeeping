@@ -13,6 +13,7 @@ struct BasicMatchScoringView: View {
     @ObservedObject var vm :MatchVM
     
     @State var dashboardIsPresented = false
+    
     var body: some View {
         VStack{
             ZStack{
@@ -37,6 +38,7 @@ struct BasicMatchScoringView: View {
             }
             
             VStack{
+                
 
                 HStack{
                     VStack(alignment: .leading, spacing: 10){
@@ -76,16 +78,6 @@ struct BasicMatchScoringView: View {
                         
                     }.padding()
                     Spacer()
-//                    VStack(spacing: 10){
-//                        Text("\(vm.p1Sets)")
-//                            .font(.title3)
-//                            .foregroundColor(Color("green"))
-//                            .multilineTextAlignment(.leading)
-//                        Text("\(vm.p2Sets)")
-//                            .font(.title3)
-//                            .foregroundColor(Color("green"))
-//                            .multilineTextAlignment(.leading)
-//                    }.padding()
                     VStack(spacing: 10){
                         Text("\(vm.P1.games)")
                             .font(.headline)
@@ -166,8 +158,6 @@ struct BasicMatchScoringView: View {
         .fullScreenCover(isPresented: $vm.matchIsOver, content: {
             CurrentMatchStatistics(p1Stats: vm.P1, p2Stats: vm.P2, winner: vm.winner == .p1 ? "\(vm.P1.name)" : "\(vm.P2.name)", selfIsPresented: $vm.matchIsOver)
         })
-
-        
     }
 }
 

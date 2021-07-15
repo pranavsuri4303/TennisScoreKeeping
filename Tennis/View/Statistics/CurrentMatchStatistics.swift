@@ -86,7 +86,7 @@ struct PlayerStatsCard: View {
                     .foregroundColor(.white)
                     .font(.headline)
                 Spacer()
-                Text("\(player.totalPts)")
+                Text("\((player.firstServesIn/player.totalFirstServes)*100)")
                     .foregroundColor(Color("green"))
                     .font(.headline)
                 

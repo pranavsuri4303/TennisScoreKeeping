@@ -1,16 +1,15 @@
 //
-//  PlayersView.swift
+//  ClubsView.swift
 //  Tennis
 //
-//  Created by Sameer Suri on 31/1/21.
+//  Created by Pranav Suri on 15/7/21.
 //
 
 import SwiftUI
 
-struct PlayersSearchView: View {
+struct ClubsView: View {
     @State var showSearch = false
-    @StateObject var vm = PlayersVM()
-    
+    @State var playerName = ""
     var body: some View {
         ZStack{
             GeometryReader{ geo in
@@ -19,17 +18,17 @@ struct PlayersSearchView: View {
                     ZStack{
                         if showSearch{
                             HStack {
-                                TextField("Enter players' email...", text: $vm.playerName)
+                                TextField("Enter players' email...", text: $playerName)
                                     .padding(7)
                                     .padding(.horizontal, 10)
                                     .background(Color(.white).opacity(0.1))
                                     .cornerRadius(8)
                                     .padding(.horizontal, 50)
                                     .autocapitalization(.none)
-                                    .onChange(of: vm.playerName, perform: { value in
-                                        let _ =  downloadingImagesOperations.compactMap({$0}).map{$0.cancel()}
-                                        vm.searchPlayer()
-                                    })
+//                                    .onChange(of: playerName, perform: { value in
+//                                        let _ =  downloadingImagesOperations.compactMap({$0}).map{$0.cancel()}
+//                                        vm.searchPlayer()
+//                                    })
                                     .foregroundColor(.white)
                                     .accentColor(.white)
                             }
@@ -61,7 +60,7 @@ struct PlayersSearchView: View {
                             })
                         }
                     }
-                    if vm.playerName == ""{
+                    if playerName == ""{
                         VStack(alignment: .center, spacing: 20){
                             Spacer()
                             Image(systemName: "magnifyingglass.circle")
@@ -75,73 +74,29 @@ struct PlayersSearchView: View {
                                 .multilineTextAlignment(.center)
                             Spacer()
                         }
-                    }else{
-                        ScrollView{
-                            ForEach(vm.players, id: \.self) { player in
-                                
-                                SearchPlayerRowView(player: player)
-                                
-                            }.padding()
-                            .edgesIgnoringSafeArea(.bottom)
-                        }
-                        
                     }
+//                    else{
+//                        ScrollView{
+//                            ForEach(vm.players, id: \.self) { player in
+//                                
+//                                SearchPlayerRowView(player: player)
+//                                
+//                            }.padding()
+//                            .edgesIgnoringSafeArea(.bottom)
+//                        }
+//                        
+//                    }
                     
                     
                     Spacer()
                 }.background(Color("bg").ignoresSafeArea(.all, edges: .all))
             }
         }
-        
     }
 }
-struct SearchPlayerRowView : View {
-    let player : PlayerModel
-    @ObservedObject var searchPlayerVM : SearchPlayerVM
-    @State var isProfilePresented : Bool = false
-    
-    init(player : PlayerModel) {
-        self.player = player
-        self.searchPlayerVM = SearchPlayerVM(player: player)
-    }
-    
-    
-    
-    var body: some View{
-        
-        HStack(alignment: .center){
-            if let downloadedImage = searchPlayerVM.downloadedImage {
-                Image(uiImage: downloadedImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .clipShape(Circle())
-                    .frame(width: 50, height: 50, alignment: .center)
-            }
-            else {
-                Image(player.gender)
-                    .resizable()
-                    .frame(width: 50, height: 50, alignment: .center)
-                    .scaledToFit()
-            }
-            
-            Text(player.name)
-                .font(.title2)
-                .multilineTextAlignment(.leading)
-                .foregroundColor(.white)
-                .edgesIgnoringSafeArea(.all)
-            Spacer()
-            Image(systemName: "chevron.right")
-                .foregroundColor(Color("green"))
-        }.padding(.all)
-        .background(Color(.white).opacity(0.1).cornerRadius(8))
-        .edgesIgnoringSafeArea(.all)
-        .onTapGesture {
-            isProfilePresented.toggle()
-        }
-        .sheet(isPresented: $isProfilePresented, content: {
-            PlayerProfileView(playerModel: .init(uid: player.uid, name: player.name, gender: player.gender, imagePath: "", nationality: player.nationality , downloadedImage: searchPlayerVM.downloadedImage), searchVM: searchPlayerVM, profileIsPresented: $isProfilePresented)
-        })
-        
-        
+
+struct ClubsView_Previews: PreviewProvider {
+    static var previews: some View {
+        ClubsView()
     }
 }

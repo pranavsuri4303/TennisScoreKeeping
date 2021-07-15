@@ -16,33 +16,31 @@ class DownloadedProfileImage : ObservableObject {
     
     func loadImageFromStorageWithBiggerSize(){
         
-           
-    
         if let userID = Auth.auth().currentUser?.uid , profileImage == nil{
-                let imagePath = userID + "/2x/profileImage.png"
-                Storage.storage().reference().child(imagePath).getData(maxSize: .max) { (data, error) in
-                   
-                    data.publisher
-                        .compactMap {$0}
-                        .map { data in
-                            UIImage(data: data)
-                        }
-                        .assign(to: \.profileImage, on: self)
-                    
-                }
+            let imagePath = userID + "/2x/profileImage.png"
+            Storage.storage().reference().child(imagePath).getData(maxSize: .max) { (data, error) in
+                
+                data.publisher
+                    .compactMap {$0}
+                    .map { data in
+                        UIImage(data: data)
+                    }
+                    .assign(to: \.profileImage, on: self)
                 
             }
-
+            
+        }
+        
     }
 }
 
 struct Home: View {
     var body: some View {
         ViewSwitcher()
-//            .onAppear(perform: {
-//                print("Shown")
-//                SliderMenueVM.init().loadImageFromStorage()
-//            })
+        //            .onAppear(perform: {
+        //                print("Shown")
+        //                SliderMenueVM.init().loadImageFromStorage()
+        //            })
     }
 }
 
@@ -71,6 +69,7 @@ struct ViewSwitcher : View {
             case .players : PlayersSearchView()
             case .matches : MatchesHistoryView()
             case .friends: FriendsListView()
+            case .clubs: ClubsView()
             case .none: HomePage()
             }
             
@@ -78,8 +77,8 @@ struct ViewSwitcher : View {
             
             Button(action: {
                 // opening menu,..
-              
-                 isSliderMenuPresented.isPresented = true
+                
+                isSliderMenuPresented.isPresented = true
                 
             }) {
                 Image(systemName: "line.horizontal.3")
@@ -112,7 +111,7 @@ struct ViewSwitcher : View {
                                 }
                             })
                     )
-    
+                
                 
             }
             
@@ -129,7 +128,7 @@ struct SlideMenu : View {
     @Binding var currentSelectedView : SlideMenuView
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
     @ObservedObject var sliderMenueVM = DownloadedProfileImage.shared
-//    let sliderVM = SliderMenueVM()
+    //    let sliderVM = SliderMenueVM()
     @AppStorage("status") var logged = false
     
     
@@ -273,6 +272,15 @@ struct MenuButton : View {
                     .foregroundColor(.gray)
                     .aspectRatio(contentMode: .fill)
             }
+            else if title == "Clubs"{
+                Image(systemName: "heart.circle")
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 25, height: 25, alignment: .center)
+                    .foregroundColor(.gray)
+                    .aspectRatio(contentMode: .fill)
+            }
+            
             else{
                 Image(title)
                     .resizable()
@@ -326,8 +334,8 @@ struct SliderMenuTransition : AnimatableModifier {
                         Just(false)
                             
                             .sink { (bool) in
-                            SliderMenuPresentationManager.shared.isPresented = bool
-                        }
+                                SliderMenuPresentationManager.shared.isPresented = bool
+                            }
                     }
             }
             content.offset(x: xOffset)
