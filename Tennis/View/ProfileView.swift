@@ -13,18 +13,26 @@ struct ProfileView: View {
     @ObservedObject var vm = ProfileVM()
     var body: some View {
         VStack{
-            HStack{
-                
-                Text("Welcome")
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.top, 75)
-                Spacer()
-            }.padding()
-            .background(Color(.white).opacity(0))
-            
+            ZStack{
+                HStack(alignment: .center, spacing: nil, content: {
+                    Text("Profile")
+                        .fontWeight(.heavy)
+                        .font(.title3)
+                        .foregroundColor(.white)
+                    
+                }).padding(.horizontal)
+                HStack(alignment: .center, spacing: nil, content: {
+                    Spacer()
+                    NavigationLink(
+                        destination: Text("Edit Profile"),
+                        label: {
+                            Image(systemName: "pencil.circle")
+                                .font(.title2)
+                                .foregroundColor(Color("green"))
+                        })
+                    
+                }).padding(.horizontal)
+            }.padding(.bottom, 10)
             ScrollView(.vertical, showsIndicators: false, content: {
                 GeometryReader{reader in
                     // Type 2 Parollax....
@@ -32,29 +40,29 @@ struct ProfileView: View {
                         if let profileImage = sliderMenueVM.profileImage {
                             Image(uiImage: profileImage)
                                 .resizable()
-                                .padding(.top,120)
+                                .padding(.top,50)
                                 .aspectRatio(contentMode: .fill)
                                 // moving View Up....
                                 .offset(y: -reader.frame(in: .global).minY)
                                 // going to add parallax effect....
                                 .frame(width: UIScreen.main.bounds.width, height:  reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 480 : 480)
-
+                            
                             
                         }else {
                             Image("\(vm.gender)")
                                 .resizable()
-                                .padding(.top,120)
+                                .padding(.top,50)
                                 .aspectRatio(contentMode: .fill)
                                 // moving View Up....
                                 .offset(y: -reader.frame(in: .global).minY)
                                 // going to add parallax effect....
                                 .frame(width: UIScreen.main.bounds.width, height:  reader.frame(in: .global).minY > 0 ? reader.frame(in: .global).minY + 480 : 480)
-
+                            
                             
                         }
                     }
                 }
-                .frame(height: 480)
+                .frame(height: 400)
                 VStack(alignment: .leading,spacing: 15){
                     HStack{
                         Text("\(Auth.auth().currentUser?.displayName ?? "")")
@@ -112,8 +120,8 @@ struct ProfileView: View {
                             .foregroundColor(.white)
                     }
                     
-
-
+                    
+                    
                 }
                 .padding(.top, 25)
                 .padding(.horizontal)
@@ -125,15 +133,17 @@ struct ProfileView: View {
             .edgesIgnoringSafeArea(.all)
             .background(Color("bg").edgesIgnoringSafeArea(.all))
         }
-        .edgesIgnoringSafeArea(.all)
+//        .edgesIgnoringSafeArea(.all)
         .background(Color("bg").edgesIgnoringSafeArea(.all))
-//        .onAppear(perform: {
-//            print("Shown")
-//            SliderMenueVM.init().loadImageFromStorage()
-//        })
+        //        .onAppear(perform: {
+        //            print("Shown")
+        //            SliderMenueVM.init().loadImageFromStorage()
+        //        })
         
         .onAppear(perform: {
-            sliderMenueVM.loadImageFromStorageWithBiggerSize()
+            if DownloadedProfileImage.shared.profileImage == nil{
+                sliderMenueVM.loadImageFromStorageWithBiggerSize()
+            }
         })
     }
     

@@ -37,15 +37,55 @@ final class MatchVM : ObservableObject{
     }
     
     func pointWon(by: PlayerType, deuce: DeuceType, servingPlayer: PlayerType){
-        switch by {
-        case .p1:
-            self.P1.pts += 1
-            checkIfGameIsOver(p1: P1.pts, p2: P2.pts, deuce: deuce, servingPlayer: servingPlayer)
-        case .p2:
-            self.P2.pts += 1
-            checkIfGameIsOver(p1: P1.pts, p2: P2.pts, deuce: deuce, servingPlayer: servingPlayer)
+        switch deuce {
+        case .noDeuce:
+            if by == .p1{
+                self.P1.pts += 1
+                self.P1.totalPtsWon += 1
+                checkIfGameIsOver(p1: P1.pts, p2: P2.pts, deuce: deuce, servingPlayer: servingPlayer)
+            }else if by == .p2{
+                self.P2.pts += 1
+                self.P2.totalPtsWon += 1
+
+                checkIfGameIsOver(p1: P1.pts, p2: P2.pts, deuce: deuce, servingPlayer: servingPlayer)
+            }
+        case .deuce:
+            if by == .p1{
+                if P2.pts == 4 && P1.pts == 3{
+                    P2.pts -= 1
+                    self.P1.totalPtsWon += 1
+                    print("\(P1.pts) - \(P2.pts)" )
+                    checkIfGameIsOver(p1: P1.pts, p2: P2.pts, deuce: deuce, servingPlayer: servingPlayer)
+
+                }else{
+                    P1.pts += 1
+                    self.P1.totalPtsWon += 1
+                    print("\(P1.pts) - \(P2.pts)" )
+                    checkIfGameIsOver(p1: P1.pts, p2: P2.pts, deuce: deuce, servingPlayer: servingPlayer)
+                }
+            }else if by == .p2{
+                if P1.pts == 4 && P2.pts == 3{
+                    P1.pts -= 1
+                    self.P2.totalPtsWon += 1
+
+                    print("\(P1.pts) - \(P2.pts)" )
+                    checkIfGameIsOver(p1: P1.pts, p2: P2.pts, deuce: deuce, servingPlayer: servingPlayer)
+
+                }else{
+                    P2.pts += 1
+                    self.P2.totalPtsWon += 1
+
+                    print("\(P1.pts) - \(P2.pts)" )
+                    checkIfGameIsOver(p1: P1.pts, p2: P2.pts, deuce: deuce, servingPlayer: servingPlayer)
+
+                }
+            }
+        case .oneDeuce:
+            print("One Deuce")
         }
+
     }
+    
     func resetPts() {
         P1.pts = 0
         P2.pts = 0
@@ -90,6 +130,15 @@ final class MatchVM : ObservableObject{
             }
         case .deuce:
             print(p1,p2)
+            if P1.pts > P2.pts{
+                if (P1.pts == 4 || P1.pts == 5) && ((P1.pts - P2.pts) >= 2) {
+                    gameWon(by: .p1, servingPlayer: servingPlayer)
+                }
+            }else if P2.pts > P1.pts{
+                if (P2.pts == 4 || P2.pts == 5) && ((P2.pts - P1.pts) >= 2) {
+                    gameWon(by: .p2, servingPlayer: servingPlayer)
+                }
+            }
         case .oneDeuce:
             print(p1,p2)
         }
@@ -143,7 +192,7 @@ final class MatchVM : ObservableObject{
         case 3:
             return "40"
         case 4:
-            if self.deuceType == .oneDeuce{
+            if self.deuceType == .deuce{
                 return "AD"
             }else{
                 return "0"
@@ -184,8 +233,8 @@ struct Player {
     var games = 0
     // Service Ststs
     var aces = 0
-    var totalPts = 0
-    var totalGames = 0
+    var totalPtsWon = 0
+    var totalGamesWon = 0
     var doubleFaults = 0
     var totalServes = 0
     var totalFirstServes = 0

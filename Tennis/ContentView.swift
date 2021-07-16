@@ -10,7 +10,7 @@ import LocalAuthentication
 struct ContentView: View {
     @AppStorage("status") var logged = false
     @ObservedObject var sliderMenueVM = DownloadedProfileImage.shared
-    let sliderVM = SliderMenueVM()
+    let sliderVM = SliderMenuVM()
     var body: some View {
         NavigationView{
             
@@ -21,7 +21,7 @@ struct ContentView: View {
                     .navigationBarHidden(true)
                     .onAppear(perform: {
                         print("Shown")
-                        SliderMenueVM.init().loadImageFromStorage()
+                        SliderMenuVM.init().loadImageFromStorage()
                         
                     })
             }

@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct CurrentMatchStatistics: View {
-    @State var p1Stats : Player
-    @State var p2Stats : Player
+    @ObservedObject var vm : MatchVM
     @State var winner : String
     @Binding var selfIsPresented : Bool
     var body: some View {
@@ -23,22 +22,22 @@ struct CurrentMatchStatistics: View {
             VStack{
                 HStack{
                     VStack(alignment: .leading, spacing: 10){
-                        Text("\(p1Stats.name)")
+                        Text("\(vm.P1.name)")
                             .font(.headline)
                             .foregroundColor(.white)
                             .multilineTextAlignment(.leading)
-                        Text("\(p2Stats.name)")
+                        Text("\(vm.P2.name)")
                             .font(.headline)
                             .foregroundColor(.white)
                             .multilineTextAlignment(.leading)
                     }.padding()
                     Spacer()
                     VStack(spacing: 10){
-                        Text("\(p1Stats.games)")
+                        Text("\(vm.P1.games)")
                             .font(.headline)
                             .foregroundColor(Color("green"))
                             .multilineTextAlignment(.leading)
-                        Text("\(p2Stats.games)")
+                        Text("\(vm.P2.games)")
                             .font(.headline)
                             .foregroundColor(Color("green"))
                             .multilineTextAlignment(.leading)
@@ -48,8 +47,8 @@ struct CurrentMatchStatistics: View {
                 .padding()
             }
             ScrollView(){
-                PlayerStatsCard(player: p1Stats)
-                PlayerStatsCard(player: p2Stats)
+                PlayerStatsCard(player: vm.P1)
+                PlayerStatsCard(player: vm.P2)
             }.edgesIgnoringSafeArea(.all)
             Spacer()
             
@@ -76,7 +75,7 @@ struct PlayerStatsCard: View {
                     .foregroundColor(.white)
                     .font(.headline)
                 Spacer()
-                Text("\(player.totalPts)")
+                Text("\(player.totalPtsWon)")
                     .foregroundColor(Color("green"))
                     .font(.headline)
                 
@@ -86,7 +85,7 @@ struct PlayerStatsCard: View {
                     .foregroundColor(.white)
                     .font(.headline)
                 Spacer()
-                Text("\((player.firstServesIn/player.totalFirstServes)*100)")
+                Text("Serve %")
                     .foregroundColor(Color("green"))
                     .font(.headline)
                 
@@ -96,7 +95,7 @@ struct PlayerStatsCard: View {
                     .foregroundColor(.white)
                     .font(.headline)
                 Spacer()
-                Text("\(player.totalPts)")
+                Text("\(player.pts)")
                     .foregroundColor(Color("green"))
                     .font(.headline)
                 
@@ -106,7 +105,7 @@ struct PlayerStatsCard: View {
                     .foregroundColor(.white)
                     .font(.headline)
                 Spacer()
-                Text("\(player.totalPts)")
+                Text("\(player.pts)")
                     .foregroundColor(Color("green"))
                     .font(.headline)
                 
@@ -116,7 +115,7 @@ struct PlayerStatsCard: View {
                     .foregroundColor(.white)
                     .font(.headline)
                 Spacer()
-                Text("\(player.totalPts)")
+                Text("\(player.pts)")
                     .foregroundColor(Color("green"))
                     .font(.headline)
                 

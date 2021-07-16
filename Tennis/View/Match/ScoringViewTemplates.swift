@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BasicServerView: View {
-    @StateObject var vm : MatchVM
+    @ObservedObject var vm : MatchVM
     var body: some View {
         HStack{
             if vm.serveIn {
@@ -108,6 +108,9 @@ struct BasicServerView: View {
         }
     }
 }
+
+
+
 struct BasicNonServerView: View {
     @StateObject var vm : MatchVM
     var body: some View {

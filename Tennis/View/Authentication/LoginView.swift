@@ -14,8 +14,8 @@ struct LoginView : View {
     // when first time user logged in via email store this for future biometric login....
     @AppStorage("stored_User") var Stored_User = ""
     @AppStorage("stored_Password") var Stored_Password = ""
-    
     @AppStorage("status") var logged = false
+    
     @State private var goToSignup = false
     
     @State var startAnimate = false

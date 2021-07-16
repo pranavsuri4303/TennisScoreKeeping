@@ -10,7 +10,7 @@ import SwiftUI
 struct BasicMatchScoringView: View {
     @Binding var isPresented: Bool
     // Players Names
-    @ObservedObject var vm :MatchVM
+    @StateObject var vm = MatchVM()
     
     @State var dashboardIsPresented = false
     
@@ -156,7 +156,7 @@ struct BasicMatchScoringView: View {
             Spacer()
         }.background(Color("bg").ignoresSafeArea(.all, edges: .all))
         .fullScreenCover(isPresented: $vm.matchIsOver, content: {
-            CurrentMatchStatistics(p1Stats: vm.P1, p2Stats: vm.P2, winner: vm.winner == .p1 ? "\(vm.P1.name)" : "\(vm.P2.name)", selfIsPresented: $vm.matchIsOver)
+            CurrentMatchStatistics(vm: vm, winner: vm.winner == .p1 ? "\(vm.P1.name)" : "\(vm.P2.name)", selfIsPresented: $vm.matchIsOver)
         })
     }
 }

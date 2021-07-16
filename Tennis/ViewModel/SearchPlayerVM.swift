@@ -43,9 +43,7 @@ class SearchPlayerVM : ObservableObject{
     }
     
     func loadImageFromStorageWithBiggerSize(){
-        
-        
-        
+
         let imagePath = player.uid + "/2x/profileImage.png"
         print(imagePath)
         operation =  Storage.storage().reference().child(imagePath).getData(maxSize: .max) { (data, error) in

@@ -9,7 +9,7 @@ import Combine
 import Firebase
 import UIKit
 
-class SliderMenueVM : ObservableObject{
+class SliderMenuVM : ObservableObject{
     var imagePath : String {
         if let uid = Auth.auth().currentUser?.uid {
             return "/" + uid + "/1x/profileImage.png"
@@ -24,6 +24,7 @@ class SliderMenueVM : ObservableObject{
         if DownloadedProfileImage.shared.image == nil {
             print(imagePath)
             operation =  Storage.storage().reference().child(imagePath).getData(maxSize: .max) { (data, error) in
+                print("Donwloaded Data")
                 print(data)
                 data.publisher
                     .compactMap {$0}

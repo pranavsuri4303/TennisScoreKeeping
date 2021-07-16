@@ -19,7 +19,7 @@ class DownloadedProfileImage : ObservableObject {
         if let userID = Auth.auth().currentUser?.uid , profileImage == nil{
             let imagePath = userID + "/2x/profileImage.png"
             Storage.storage().reference().child(imagePath).getData(maxSize: .max) { (data, error) in
-                
+                print("Downloaded Data")
                 data.publisher
                     .compactMap {$0}
                     .map { data in
@@ -82,12 +82,12 @@ struct ViewSwitcher : View {
                 
             }) {
                 Image(systemName: "line.horizontal.3")
-                    .font(.system(size: 24))
+                    .font(.title2)
                     .foregroundColor(Color("green"))
             }
-            .clipped()
-            
-            .padding()
+//            .clipped()
+            .padding(.horizontal)
+            .padding(.top, 5)
             .shadow(color: Color(.white).opacity(0.0), radius: 5, x: 0, y: 5)
             
             
