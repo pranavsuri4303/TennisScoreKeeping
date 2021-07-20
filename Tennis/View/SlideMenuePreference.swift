@@ -2,7 +2,7 @@
 //  SlideMenuePreference.swift
 //  Tennis
 //
-//  Created by Hossam on 28/01/2021.
+//  Created by Pranav Suri on 28/01/2021.
 //
 
 import SwiftUI

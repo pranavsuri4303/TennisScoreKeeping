@@ -2,7 +2,7 @@
 //  FriendsListView.swift
 //  Tennis
 //
-//  Created by Sameer Suri on 6/2/21.
+//  Created by Pranav Suri on 6/2/21.
 //
 
 import SwiftUI
@@ -13,30 +13,34 @@ struct FriendsListView: View {
     var body: some View {
         VStack{
             
-            VStack{
-                ZStack{
+            ZStack{
+                HStack(alignment: .center, spacing: nil, content: {
                     Text("Friends")
-                        .multilineTextAlignment(.center)
+                        .fontWeight(.heavy)
+                        .font(.title3)
                         .foregroundColor(.white)
-                    HStack{
-                        Spacer()
-                        Button(action: {
-                            goToRequests.toggle()
-                        }, label: {
-                            if self.friendRequestVM.requestsUsers.count == 0{
-                                Image(systemName: "bell")
-                                    .foregroundColor(Color("green"))
-                            }else{
-                                Image(systemName: "bell.badge")
-                                    .foregroundColor(Color("green"))
-                            }
-                            
-                        }).fullScreenCover(isPresented: $goToRequests, content: {
-                            FriendRequestView(friendRequestPresented: $goToRequests)
-                        })
-                    }.padding(.all)
-                }
-            }
+                    
+                }).padding(.horizontal)
+                HStack(alignment: .center, spacing: nil, content: {
+                    Spacer()
+                    Button(action: {
+                        goToRequests.toggle()
+                    }, label: {
+                        if self.friendRequestVM.requestsUsers.count == 0{
+                            Image(systemName: "bell")
+                                .font(.title2)
+                                .foregroundColor(Color("green"))
+                        }else{
+                            Image(systemName: "bell.badge")
+                                .font(.title2)
+                                .foregroundColor(Color("green"))
+                        }
+                    }).fullScreenCover(isPresented: $goToRequests, content: {
+                        FriendRequestView(friendRequestPresented: $goToRequests)})
+                }).padding(.horizontal)
+            }.padding(.bottom, 10)
+            
+            
             
             if friendRequestVM.friendsList.count == 0{
                 VStack(alignment: .center, spacing: 20){

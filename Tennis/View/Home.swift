@@ -2,7 +2,7 @@
 //  Home.swift
 //  Login_Face_ID
 //
-//  Created by Sameer Suri on 21/1/21.
+//  Created by Pranav Suri on 21/1/21.
 //
 
 import SwiftUI
@@ -85,7 +85,7 @@ struct ViewSwitcher : View {
                     .font(.title2)
                     .foregroundColor(Color("green"))
             }
-//            .clipped()
+            //            .clipped()
             .padding(.horizontal)
             .padding(.top, 5)
             .shadow(color: Color(.white).opacity(0.0), radius: 5, x: 0, y: 5)
@@ -167,8 +167,7 @@ struct SlideMenu : View {
                             .foregroundColor(.white)
                         
                         Divider()
-                            .padding(.top,10)
-                            .foregroundColor(Color.green)
+                            .frame(height: 10)
                     }
                     Spacer(minLength: 0)
                     
@@ -237,58 +236,12 @@ struct MenuButton : View {
         HStack(spacing: 15){
             
             // both title and image names are same....
-            if title == "String"{
-                Image(systemName: "number.circle")
-                    .resizable()
-                    .renderingMode(.template)
-                    .frame(width: 25, height: 25)
-                    .foregroundColor(.gray)
-            }else if title == "Players"{
-                Image(systemName: "person.2.circle")
-                    .resizable()
-                    .renderingMode(.template)
-                    .frame(width: 25, height: 25, alignment: .center)
-                    .foregroundColor(.gray)
-                    .aspectRatio(contentMode: .fill)
-            }else if title == "Profile"{
-                Image(systemName: "person.circle")
-                    .resizable()
-                    .renderingMode(.template)
-                    .frame(width: 25, height: 25, alignment: .center)
-                    .foregroundColor(.gray)
-                    .aspectRatio(contentMode: .fill)
-            }else if title == "Dashboard"{
-                Image(systemName: "chart.pie")
-                    .resizable()
-                    .renderingMode(.template)
-                    .frame(width: 25, height: 25, alignment: .center)
-                    .foregroundColor(.gray)
-                    .aspectRatio(contentMode: .fill)
-            }else if title == "Friends"{
-                Image(systemName: "heart.circle")
-                    .resizable()
-                    .renderingMode(.template)
-                    .frame(width: 25, height: 25, alignment: .center)
-                    .foregroundColor(.gray)
-                    .aspectRatio(contentMode: .fill)
-            }
-            else if title == "Clubs"{
-                Image(systemName: "heart.circle")
-                    .resizable()
-                    .renderingMode(.template)
-                    .frame(width: 25, height: 25, alignment: .center)
-                    .foregroundColor(.gray)
-                    .aspectRatio(contentMode: .fill)
-            }
-            
-            else{
-                Image(title)
+            Image(title)
                     .resizable()
                     .renderingMode(.template)
                     .frame(width: 24, height: 24, alignment: .center)
                     .aspectRatio(1, contentMode: .fit)
                     .foregroundColor(.gray)
-            }
             
             
             

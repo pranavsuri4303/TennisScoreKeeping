@@ -2,7 +2,7 @@
 //  ResetPasswordVM.swift
 //  Tennis
 //
-//  Created by Sameer Suri on 27/3/21.
+//  Created by Pranav Suri on 27/3/21.
 //
 
 import SwiftUI

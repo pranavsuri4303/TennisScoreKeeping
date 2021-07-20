@@ -2,7 +2,7 @@
 //  NewUserView.swift
 //  Tennis
 //
-//  Created by Sameer Suri on 22/1/21.
+//  Created by Pranav Suri on 22/1/21.
 //
 
 import SwiftUI

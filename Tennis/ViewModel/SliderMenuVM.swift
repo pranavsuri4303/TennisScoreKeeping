@@ -2,7 +2,7 @@
 //  SliderMenueVM.swift
 //  Tennis
 //
-//  Created by Hossam on 03/02/2021.
+//  Created by Pranav Suri on 03/02/2021.
 //
 
 import Combine

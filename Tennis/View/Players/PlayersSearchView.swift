@@ -2,7 +2,7 @@
 //  PlayersView.swift
 //  Tennis
 //
-//  Created by Sameer Suri on 31/1/21.
+//  Created by Pranav Suri on 31/1/21.
 //
 
 import SwiftUI
@@ -16,6 +16,7 @@ struct PlayersSearchView: View {
             GeometryReader{ geo in
                 VStack{
                     ZStack{
+                        
                         HStack(alignment: .center, spacing: nil, content: {
                             if showSearch{
                                 TextField("Enter players' email...", text: $vm.playerName)
@@ -55,46 +56,7 @@ struct PlayersSearchView: View {
                             })
                         }).padding(.horizontal)
                     }.padding(.bottom, 10)
-//
-//                    ZStack{
-//                        if showSearch{
-//                            HStack {
-//                                TextField("Enter players' email...", text: $vm.playerName)
-//                                    .background(Color(.white).opacity(0.1))
-//                                    .cornerRadius(8)
-//                                    .padding(.horizontal, 50)
-//                                    .autocapitalization(.none)
-//                                    .onChange(of: vm.playerName, perform: { value in
-//                                        let _ =  downloadingImagesOperations.compactMap({$0}).map{$0.cancel()}
-//                                        vm.searchPlayer()
-//                                    })
-//                                    .foregroundColor(.white)
-//                                    .accentColor(.white)
-//                            }
-//
-//                        }else{
-//                            Text("Players")
-//                                .fontWeight(.heavy)
-//                                .font(.title3)
-//                                .foregroundColor(.white)
-//                        }
-//                        HStack{
-//                            Spacer()
-//                            Button(action: {
-//                                showSearch.toggle()
-//                            }, label: {
-//                                if showSearch{
-//                                    Image(systemName: "multiply")
-//                                        .padding()
-//                                        .foregroundColor(Color("green"))
-//                                }else{
-//                                    Image(systemName: "magnifyingglass")
-//                                        .padding()
-//                                        .foregroundColor(Color("green"))
-//                                }
-//                            })
-//                        }
-//                    }
+
                     Spacer()
                     if vm.playerName == ""{
                         VStack(alignment: .center, spacing: 20){

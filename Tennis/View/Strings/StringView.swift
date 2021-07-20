@@ -2,7 +2,7 @@
 //  SwiftUIView.swift
 //  Tennis
 //
-//  Created by Sameer Suri on 28/1/21.
+//  Created by Pranav Suri on 28/1/21.
 //
 
 import SwiftUI

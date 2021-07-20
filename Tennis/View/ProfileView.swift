@@ -2,7 +2,7 @@
 //  ProfileView().swift
 //  Tennis
 //
-//  Created by Sameer Suri on 3/2/21.
+//  Created by Pranav Suri on 3/2/21.
 //
 
 import SwiftUI
@@ -26,8 +26,9 @@ struct ProfileView: View {
                     NavigationLink(
                         destination: Text("Edit Profile"),
                         label: {
-                            Image(systemName: "pencil.circle")
-                                .font(.title2)
+                            Image("Person_Settings")
+                                .resizable()
+                                .frame(width: 24, height: 24, alignment: .center)
                                 .foregroundColor(Color("green"))
                         })
                     

@@ -14,16 +14,15 @@ struct ClubsView: View {
         ZStack{
             GeometryReader{ geo in
                 VStack{
-                    
                     ZStack{
-                        if showSearch{
-                            HStack {
-                                TextField("Enter players' email...", text: $playerName)
-                                    .padding(7)
-                                    .padding(.horizontal, 10)
+                        
+                        HStack(alignment: .center, spacing: nil, content: {
+                            if showSearch{
+                                TextField("Enter clubs' email...", text: $playerName)
+                                    .padding(.init(top:5, leading: 10,bottom:5, trailing: 10))
                                     .background(Color(.white).opacity(0.1))
                                     .cornerRadius(8)
-                                    .padding(.horizontal, 50)
+                                    .padding(.horizontal,40)
                                     .autocapitalization(.none)
 //                                    .onChange(of: playerName, perform: { value in
 //                                        let _ =  downloadingImagesOperations.compactMap({$0}).map{$0.cancel()}
@@ -31,36 +30,34 @@ struct ClubsView: View {
 //                                    })
                                     .foregroundColor(.white)
                                     .accentColor(.white)
+                            }else{
+                                Text("Clubs")
+                                    .fontWeight(.heavy)
+                                    .font(.title3)
+                                    .foregroundColor(.white)
                             }
-                            
-                        }else{
-                            Text("Players")
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(.white)
-                                .padding()
-                        }
-                        HStack{
-                            Button(action: {}, label: {
-                                Image("plus")
-                            }).opacity(0)
-                            .disabled(true)
+                        }).padding(.horizontal)
+
+                        HStack(alignment: .center, spacing: nil, content: {
                             Spacer()
                             Button(action: {
                                 showSearch.toggle()
                             }, label: {
                                 if showSearch{
                                     Image(systemName: "multiply")
-                                        .padding()
+                                        .font(.title2)
                                         .foregroundColor(Color("green"))
                                 }else{
                                     Image(systemName: "magnifyingglass")
-                                        .padding()
+                                        .font(.title2)
                                         .foregroundColor(Color("green"))
                                 }
                             })
-                        }
-                    }
-                    if playerName == ""{
+                        }).padding(.horizontal)
+                    }.padding(.bottom, 10)
+
+                    Spacer()
+//                    if playerName == ""{
                         VStack(alignment: .center, spacing: 20){
                             Spacer()
                             Image(systemName: "magnifyingglass.circle")
@@ -68,23 +65,23 @@ struct ClubsView: View {
                                 .foregroundColor(Color("green"))
                                 .frame(width: 100, height: 100, alignment: .center)
                             
-                            Text("Search for a user using his email...")
+                            Text("Search for a club using their unique Club ID...")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .multilineTextAlignment(.center)
                             Spacer()
                         }
-                    }
+//                    }
 //                    else{
 //                        ScrollView{
 //                            ForEach(vm.players, id: \.self) { player in
-//                                
+//
 //                                SearchPlayerRowView(player: player)
-//                                
+//
 //                            }.padding()
 //                            .edgesIgnoringSafeArea(.bottom)
 //                        }
-//                        
+//
 //                    }
                     
                     

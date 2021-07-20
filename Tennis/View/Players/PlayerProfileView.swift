@@ -2,7 +2,7 @@
 //  PlayerProfileView.swift
 //  Tennis
 //
-//  Created by Sameer Suri on 3/2/21.
+//  Created by Pranav Suri on 3/2/21.
 //
 
 import SwiftUI

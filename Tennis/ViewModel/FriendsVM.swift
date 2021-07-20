@@ -2,7 +2,7 @@
 //  SendFriendRequestVM.swift
 //  Tennis
 //
-//  Created by Hossam on 06/02/2021.
+//  Created by Pranav Suri on 06/02/2021.
 //
 
 import Foundation

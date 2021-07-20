@@ -2,7 +2,7 @@
 //  ProfileVM.swift
 //  Tennis
 //
-//  Created by Sameer Suri on 6/2/21.
+//  Created by Pranav Suri on 6/2/21.
 //
 
 import SwiftUI
