@@ -33,7 +33,7 @@ struct ProfileView: View {
                                 .frame(width: 24, height: 24, alignment: .center)
                                 .foregroundColor(Color("green"))
                     }).fullScreenCover(isPresented: $goToSettings, content: {
-                        ProfileSettings(profileSettingsPresented: $goToSettings)
+                        ProfileSettings(profileSettingsPresented: $goToSettings, vm: vm)
                     })
                     
                 }).padding(.horizontal)
