@@ -31,7 +31,7 @@ struct MatchesHistoryView: View {
                                     .font(.title2)
                                     .foregroundColor(Color("green"))
                             }).sheet(isPresented: $showAddMatch) {
-                                Text("Hello")
+                                NewMatchView()
                             }
                         }).padding(.horizontal)
                     }.padding(.bottom, 10)

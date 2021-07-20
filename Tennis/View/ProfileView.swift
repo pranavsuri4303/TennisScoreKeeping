@@ -11,6 +11,8 @@ struct ProfileView: View {
     @AppStorage("status") var logged = false
     @ObservedObject var sliderMenueVM = DownloadedProfileImage.shared
     @ObservedObject var vm = ProfileVM()
+    @State private var goToSettings = false
+    
     var body: some View {
         VStack{
             ZStack{
@@ -23,14 +25,16 @@ struct ProfileView: View {
                 }).padding(.horizontal)
                 HStack(alignment: .center, spacing: nil, content: {
                     Spacer()
-                    NavigationLink(
-                        destination: Text("Edit Profile"),
-                        label: {
-                            Image("Person_Settings")
+                    Button(action: {
+                        goToSettings.toggle()
+                    }, label: {
+                        Image("Person_Settings")
                                 .resizable()
                                 .frame(width: 24, height: 24, alignment: .center)
                                 .foregroundColor(Color("green"))
-                        })
+                    }).fullScreenCover(isPresented: $goToSettings, content: {
+                        ProfileSettings(profileSettingsPresented: $goToSettings)
+                    })
                     
                 }).padding(.horizontal)
             }.padding(.bottom, 10)
@@ -134,7 +138,7 @@ struct ProfileView: View {
             .edgesIgnoringSafeArea(.all)
             .background(Color("bg").edgesIgnoringSafeArea(.all))
         }
-//        .edgesIgnoringSafeArea(.all)
+        //        .edgesIgnoringSafeArea(.all)
         .background(Color("bg").edgesIgnoringSafeArea(.all))
         //        .onAppear(perform: {
         //            print("Shown")

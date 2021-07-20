@@ -58,6 +58,7 @@
 		B53309F325CFA66B00A98800 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B53309F225CFA66B00A98800 /* GoogleService-Info.plist */; };
 		B595E718269FB42900BAD8D6 /* ImagePickerView in Frameworks */ = {isa = PBXBuildFile; productRef = B595E717269FB42900BAD8D6 /* ImagePickerView */; };
 		B595E71A269FE17F00BAD8D6 /* MatchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7662D3F925C392BB004544BF /* MatchVM.swift */; };
+		B5B22A3526A6DECA002CAA61 /* ProfileSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B22A3426A6DECA002CAA61 /* ProfileSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		B513A39A26A038BD00145D2D /* MatchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVM.swift; sourceTree = "<group>"; };
 		B513A39C26A0390600145D2D /* ClubsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsView.swift; sourceTree = "<group>"; };
 		B53309F225CFA66B00A98800 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B5B22A3426A6DECA002CAA61 /* ProfileSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 				76D1B85F25BAEE4700FE1B4B /* LoadingScreenView.swift */,
 				9FCFE65A25C354100011F8C2 /* SlideMenuePreference.swift */,
 				76D7319F25CA7BB7001D2D64 /* ProfileView.swift */,
+				B5B22A3426A6DECA002CAA61 /* ProfileSettings.swift */,
 				76AADBC325C6718E00EB0C43 /* Authentication */,
 				762F87C725C9C0C9004B46FD /* Match */,
 				76AADBBF25C6717900EB0C43 /* Dashboard */,
@@ -497,6 +500,7 @@
 				76278C1F25B9E8060005EBD4 /* NewUserView.swift in Sources */,
 				7662D3F525C391A1004544BF /* NewMatchView.swift in Sources */,
 				B513A39D26A0390600145D2D /* ClubsView.swift in Sources */,
+				B5B22A3526A6DECA002CAA61 /* ProfileSettings.swift in Sources */,
 				9FCFE65B25C354100011F8C2 /* SlideMenuePreference.swift in Sources */,
 				76DB132425CEDA41003EDA38 /* ProfileVM.swift in Sources */,
 				7619A62925CA421800014ADA /* PlayerProfileView.swift in Sources */,

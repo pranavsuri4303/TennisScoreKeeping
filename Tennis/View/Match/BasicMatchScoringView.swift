@@ -26,10 +26,10 @@ struct BasicMatchScoringView: View {
                     Button(action: {
                         dashboardIsPresented.toggle()
                     }, label: {
-                        Text("Exit")
-                            .font(.headline)
+                        Image("more")
+                            .resizable()
+                            .frame(width: 25, height: 25, alignment: .center)
                             .foregroundColor(Color("green"))
-                            .multilineTextAlignment(.trailing)
                     }).fullScreenCover(isPresented: $dashboardIsPresented, content: {
                         Home()
                     }).padding(.all)
