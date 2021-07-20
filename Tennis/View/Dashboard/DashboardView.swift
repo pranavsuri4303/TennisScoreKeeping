@@ -14,22 +14,27 @@ struct DashboardView: View {
             GeometryReader{ geo in
                 VStack{
                     ZStack{
-                        Text("Dashboard")
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.white)
-                        HStack{
+                        HStack(alignment: .center, spacing: nil, content: {
+                            Text("Dashboard")
+                                .fontWeight(.heavy)
+                                .font(.title3)
+                                .foregroundColor(.white)
+                            
+                        }).padding(.horizontal)
+                        HStack(alignment: .center, spacing: nil, content: {
                             Spacer()
                             Button(action: {
                                 self.showAddMatch.toggle()
                             }, label: {
-                                Image(systemName: "plus")
+                                Image(systemName: "plus.circle")
+                                    .font(.title2)
                                     .foregroundColor(Color("green"))
-
                             }).sheet(isPresented: $showAddMatch) {
                                 NewMatchView()
-                            }.padding(.all)
-                        }
-                    }
+                            }
+                        }).padding(.horizontal)
+                    }.padding(.bottom, 10)
+                    
                     Spacer()
                 }.background(Color("bg").ignoresSafeArea(.all, edges: .all))
             }

@@ -14,24 +14,28 @@ struct StringView: View {
         ZStack{
             GeometryReader{ geo in
                 VStack{
+
                     ZStack{
-                        Text("String")
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.white)
-                        HStack{
+                        HStack(alignment: .center, spacing: nil, content: {
+                            Text("String")
+                                .fontWeight(.heavy)
+                                .font(.title3)
+                                .foregroundColor(.white)
+                            
+                        }).padding(.horizontal)
+                        HStack(alignment: .center, spacing: nil, content: {
                             Spacer()
                             Button(action: {
                                 self.vm.showAddString.toggle()
                             }, label: {
-                                Image(systemName: "plus")
+                                Image(systemName: "plus.circle")
+                                    .font(.title2)
                                     .foregroundColor(Color("green"))
-                                
                             }).sheet(isPresented: $vm.showAddString) {
                                 AddNewStringView(addStringIsPresented: $vm.showAddString)
-                            }.padding(.all)
-                        }
-                    }
-                    
+                            }
+                        }).padding(.horizontal)
+                    }.padding(.bottom, 10)
                     
                     ScrollView{
                         
@@ -78,7 +82,7 @@ struct StringView: View {
         
         
     }
-
+    
 }
 
 
